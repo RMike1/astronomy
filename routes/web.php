@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.index');
 });
 
 Route::middleware([
@@ -15,3 +15,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
