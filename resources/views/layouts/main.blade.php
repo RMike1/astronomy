@@ -7,7 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Astronomy') }}</title>
     <link rel="icon" href="{{ asset('user/favicon.ico') }}">
-    <script src="https://cdn.tailwindcss.com"></script>
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="{{ asset('user/css/style.css') }}" rel="stylesheet">
@@ -37,6 +36,10 @@
             transform: translateY(0);
         }
     </style>
+
+     <!-- Scripts -->
+     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 
 <body x-data="{ page: 'home', 'loaded': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }">
