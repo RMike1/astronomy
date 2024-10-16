@@ -3,7 +3,7 @@
         @scroll.window="stickyMenu = (window.scrollY > 0) ? true : false">
         <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0 lg:flex items-center justify-between relative">
             <div class="w-full lg:w-1/4 flex items-center justify-between">
-                <a href="index.html">
+                <a href="{{route('home')}}">
                     <h1 class="text-2xl font-bold">APOLLO</h1>
                 </a>
 
