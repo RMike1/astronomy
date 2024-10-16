@@ -40,6 +40,8 @@
      <!-- Scripts -->
      @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+        <!-- Styles -->
+        @livewireStyles
 </head>
 
 <body x-data="{ page: 'home', 'loaded': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }">
@@ -54,6 +56,7 @@
 
     @include('partials.footer')
 
+    @livewireScripts
     <script defer src="{{ asset('user/js/bundle.js') }}"></script>
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
