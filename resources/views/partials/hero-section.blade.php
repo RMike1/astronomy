@@ -1,4 +1,4 @@
-<section class="relative overflow-hidden z-10 min-h-screen pt-35 md:pt-40 xl:pt-45">
+<section id="Home" class="relative overflow-hidden z-10 min-h-screen pt-35 md:pt-40 xl:pt-45">
     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
     <div class="max-w-7xl mx-auto">
         <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
@@ -13,13 +13,12 @@
 
     <div class="mx-auto max-w-[900px] px-4 sm:px-8 xl:px-0 py-32 relative z-1 flex flex-col justify-center h-full">
         <div class="text-center wow fadeInRight">
-            <a href="{{route('home')}}"
-                class="hero-subtitle-gradient hover:hero-subtitle-hover relative mb-5 font-medium text-sm inline-flex items-center gap-2 py-2 px-4.5 rounded-full">
+            <span class="hero-subtitle-gradient hover:hero-subtitle-hover relative mb-5 font-medium text-sm inline-flex items-center gap-2 py-2 px-4.5 rounded-full">
                 <img src="{{ asset('user/images/icon-title.svg') }}" alt="icon">
                 <span class="hero-subtitle-text text-white">
                     Explore the Wonders of the Universe!
                 </span>
-            </a>
+        </span>
             <h1 class="text-white mb-6 text-3xl font-extrabold sm:text-5xl xl:text-heading-1">
                 {{$herosection->title}}
             </h1>
