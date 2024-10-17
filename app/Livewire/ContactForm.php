@@ -25,6 +25,8 @@ class ContactForm extends Component
         #[Rule('min:3', message: 'The message is too short. It must be at least 3 characters long')]
         #[Rule('max:1000', message: 'The message is too long. It can have a maximum of 1000 characters')]
 
+        public $message = '';
+
     public function ContactUs(){
 
         $validated=$this->validate();
