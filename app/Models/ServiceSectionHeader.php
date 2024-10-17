@@ -9,4 +9,5 @@ class ServiceSectionHeader extends Model
 {
     /** @use HasFactory<\Database\Factories\ServiceSectionHeaderFactory> */
     use HasFactory;
+    protected $guarded=[];
 }

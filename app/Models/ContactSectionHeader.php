@@ -9,4 +9,6 @@ class ContactSectionHeader extends Model
 {
     /** @use HasFactory<\Database\Factories\ContactSectionHeaderFactory> */
     use HasFactory;
+
+    protected $guarded=[];
 }

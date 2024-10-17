@@ -10,18 +10,7 @@
                 </p>
             </div>
             <div class="max-w-[534px] w-full">
-                <form>
-                    <div class="flex items-center gap-4">
-                        <div class="max-w-[395px] w-full">
-                            <input id="email" type="email" name="email" placeholder="Enter your Email"
-                                class="rounded-lg border border-white/[0.12] bg-white/[0.05] focus:border-purple w-full py-3 px-6 focus:outline-none focus:border-gray-600 focus:ring-gray-600" />
-                        </div>
-                        <a href="index.html#"
-                            class="button-border-gradient relative rounded-lg text-white text-sm flex items-center gap-1.5 py-3.5 px-7 shadow-button hover:button-gradient-hover hover:shadow-none">
-                            Subscribe
-                        </a>
-                    </div>
-                </form>
+               <livewire:subscribe>
             </div>
         </div>
     </div>
