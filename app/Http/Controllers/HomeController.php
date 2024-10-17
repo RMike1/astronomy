@@ -39,5 +39,11 @@ class HomeController extends Controller
         return view('user.index',compact('herosection','Homesections','Services','Service_section_header','Contact_section_header'));
     }
 
+    public function about(){
+        $herosection = HeroSection::select(['title', 'description', 'video'])->first();
+
+        return view('user.about',compact('herosection'));
+    }
+
 
 }

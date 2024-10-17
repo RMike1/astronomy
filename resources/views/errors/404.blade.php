@@ -5,7 +5,7 @@
             <nav>
                 <ul class="flex lg:items-center flex-col lg:flex-row gap-5 lg:gap-2">
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
-                        <a href="{{route('home')}}"
+                        <a wire:navigate href="{{route('home')}}"
                             class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient"
                             :class="{ '!text-white nav-gradient': page === 'home' }">Home</a>
                     </li>
@@ -18,9 +18,8 @@
                             class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient">Services</a>
                     </li>
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
-                        <a href="{{route('home')}}/#Contact"
+                        <a wire:navigate href="{{route('about')}}"
                             class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient">About
-                            Us
                             Us</a>
                     </li>
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
@@ -32,6 +31,8 @@
             </nav>
         </div>
     </x-slot>
+    <section class="relative z-10 pt-30 lg:pt-35 xl:pt-40 pb-2">
+    </section>
     <section class=" pt-20 lg:pt-22.5 xl:pt-27.5 pb-20 lg:pb-25 xl:pb-30 2xl:pb-[150px]">
         <div class="wow fadeInUp mx-auto w-full max-w-[597px] text-center px-4 sm:px-8 lg:px-0" data-wow-delay="0.1s">
             <img src="{{ asset('user/images/404.svg') }}" alt="404" class="mx-auto mb-12.5" />
