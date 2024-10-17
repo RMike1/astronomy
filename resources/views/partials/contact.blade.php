@@ -15,48 +15,7 @@
                     {{$Contact_section_header->description}}
                 </p>
             </div>
-
-            <div class="form-box-gradient relative overflow-hidden rounded-[25px] bg-dark p-6 sm:p-8 xl:p-15">
-                <form class="relative z-10">
-                    <div class="-mx-4 xl:-mx-10 flex flex-wrap">
-                        <div class="w-full px-4 xl:px-5 md:w-1/2">
-                            <div class="mb-9.5">
-                                <label for="name" class="text-white mb-2.5 block font-medium">
-                                    Name
-                                </label>
-                                <input id="name" type="text" name="name" placeholder="Enter your Name"
-                                    class="rounded-lg border-white/[0.12] bg-white/[0.05] focus:border-purple focus:outline-none focus:border-gray-600 focus:ring-gray-600 w-full py-3 px-6" />
-                            </div>
-                        </div>
-                        <div class="w-full px-4 xl:px-5 md:w-1/2">
-                            <div class="mb-9.5">
-                                <label for="email" class="text-white mb-2.5 block font-medium">
-                                    Email
-                                </label>
-                                <input id="email" type="email" name="email" placeholder="Enter your Email"
-                                    class="rounded-lg border border-white/[0.12] bg-white/[0.05] focus:border-purple w-full py-3 px-6 focus:outline-none focus:border-gray-600 focus:ring-gray-600" />
-                            </div>
-                        </div>
-                        <div class="w-full px-4 xl:px-5">
-                            <div class="mb-10">
-                                <label for="message" class="text-white mb-2.5 block font-medium">
-                                    Message
-                                </label>
-                                <textarea id="message" name="message" placeholder="Type your message" rows="6"
-                                    class="rounded-lg border border-white/[0.12] bg-white/[0.05] focus:border-purple w-full py-5 px-6 focus:outline-none focus:border-gray-600 focus:ring-gray-600"></textarea>
-                            </div>
-                        </div>
-                        <div class="w-full px-4 xl:px-5">
-                            <div class="text-center">
-                                <a href="index.html#"
-                                    class="button-border-gradient relative rounded-lg text-white text-sm inline-flex items-center py-3.5 px-7 shadow-button hover:button-gradient-hover hover:shadow-none">
-                                    Send Message
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+              <livewire:contact-form>
         </div>
     </div>
 </section>
