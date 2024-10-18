@@ -1,5 +1,5 @@
 @foreach ($Homesections as $Homesection)
-    <section id="Observatories" class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center"
+    <section  id="Observatories" class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center"
         {{-- style="background-image: url({{ asset('user/images/bc/image1.jpg') }});"> --}}
         style="background-image: url({{ asset('/'.$Homesection->image) }});">
         <!-- Gradient Overlay -->
@@ -27,7 +27,7 @@
                                     <p class="font-medium mb-10">
                                         {{$Homesection->summary_description}}
                                     </p>
-                                    <a href="index.html#"
+                                    <a href="{{route('explore',$Homesection->slug)}}"
                                         class="features-button-gradient relative inline-flex items-center gap-1.5 rounded-full py-3 px-6 text-white text-sm ease-in duration-300 hover:shadow-button">
                                         Learn more
                                         <svg width="14" height="12" viewBox="0 0 14 12" fill="none"

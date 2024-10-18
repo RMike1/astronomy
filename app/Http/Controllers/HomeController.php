@@ -34,7 +34,6 @@ class HomeController extends Controller
 
         $herosection = HeroSection::select(['title', 'description', 'video'])->first();
         $Homesections=HomePageSection::where('is_active',true)->select(['title','sub_title','slug','image','is_active','text_position','summary_description'])->latest()->take(4)->get();
-        $Homesections=HomePageSection::where('is_active',true)->select(['title','sub_title','slug','image','is_active','text_position','summary_description'])->latest()->take(4)->get();
         $Services=Service::where('is_active',true)->select(['title','slug','is_active','summary_description'])->latest()->take(6)->get();
         $Service_section_header = ServiceSectionHeader::select(['title', 'description'])->first();
         $Contact_section_header = ContactSectionHeader::select(['title', 'description'])->first();
@@ -47,6 +46,16 @@ class HomeController extends Controller
         $Services=Service::where('is_active',true)->select(['title','slug','is_active','summary_description'])->latest()->take(10)->get();
         $team_members=Team::all();
         return view('user.about',compact('about_data','Service_section_header','Services','team_members'));
+    }
+
+    public function explore($slug){
+        $about_data = About::select(['about_hero_title', 'about_hero_sub_title', 'about_hero_video','about_image','about_title','about_sub_title','about_description'])->first();
+        $Service_section_header = ServiceSectionHeader::select(['title', 'description'])->first();
+        $Services=Service::where('is_active',true)->select(['title','slug','is_active','summary_description'])->latest()->take(10)->get();
+        $team_members=Team::all();
+        $Homesection=HomePageSection::select(['title','sub_title','slug','image','is_active','text_position','summary_description','full_description'])->where('slug',$slug)->firstOrfail();
+        // $Homesections=HomePageSection::where('is_active',true)->select(['title','sub_title','slug','image','is_active','text_position','summary_description'])->latest()->take(4)->get();
+        return view('user.explore-page',compact('about_data','Service_section_header','Services','team_members','Homesection'));
     }
 
 

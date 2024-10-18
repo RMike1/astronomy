@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about-us',[HomeController::class,'about'])->name('about');
+Route::get('/explore/{slug}',[HomeController::class,'explore'])->name('explore');
 
 Route::middleware([
     'auth:sanctum',
