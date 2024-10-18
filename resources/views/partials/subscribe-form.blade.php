@@ -6,7 +6,7 @@
                     News & Update
                 </h3>
                 <p class="font-medium">
-                    Keep up to date with everything about our tool
+                    Keep up to date with everything.
                 </p>
             </div>
             <div class="max-w-[534px] w-full">

@@ -15,15 +15,15 @@
         <div class="w-full h-[1px] footer-divider-gradient absolute top-0 left-0"></div>
         <div class="flex flex-wrap justify-between">
             <div class="mb-10 max-w-[571px] w-full">
-                <a class="mb-8.5 inline-block" href="index.html">
+                <a class="mb-8.5 inline-block" href="{{route('home')}}">
                     <h1 class="text-2xl font-bold">APOLLO</h2>
                 </a>
                 <p class="mb-12 xl:w-4/5">
-                    AI writing tool is designed to empower you with exceptional writing
-                    capabilities.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque sunt expedita, doloribus, totam
+                    nam modi illo quia voluptatibus.
                 </p>
                 <div class="flex items-center gap-5">
-                    <a href="index.html#" class="hover:text-white ease-in duration-300">
+                    <a href="{{route('home')}}#" class="hover:text-white ease-in duration-300">
                         <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -31,7 +31,7 @@
                                 fill />
                         </svg>
                     </a>
-                    <a href="index.html#" class="hover:text-white ease-in duration-300">
+                    <a href="{{route('home')}}#" class="hover:text-white ease-in duration-300">
                         <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -39,7 +39,7 @@
                                 fill />
                         </svg>
                     </a>
-                    <a href="index.html#" class="hover:text-white ease-in duration-300">
+                    <a href="{{route('home')}}#" class="hover:text-white ease-in duration-300">
                         <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_368_11839)">
@@ -56,54 +56,21 @@
                     </a>
                 </div>
                 <p class="font-medium mt-5.5">
-                    AI Tool, LLC. All rights reserved.
+                    Apollo..
                 </p>
             </div>
             <div class="max-w-[571px] w-full">
                 <div class="flex flex-col sm:flex-row sm:justify-between gap-10">
                     <div>
-                        <h5 class="font-semibold text-white mb-5">Products</h5>
+                        <h5 class="font-semibold text-white mb-5">Links</h5>
                         <ul class="flex flex-col gap-3.5">
                             <li>
-                                <a href="index.html#"
-                                    class="font-medium ease-in duration-300 hover:text-white">Features</a>
-                            </li>
-                            <li>
-                                <a href="index.html#"
-                                    class="font-medium ease-in duration-300 hover:text-white">Integrations</a>
-                            </li>
-                            <li>
-                                <a href="index.html#"
-                                    class="font-medium ease-in duration-300 hover:text-white">Pricing</a>
-                            </li>
-                            <li>
-                                <a href="index.html#"
-                                    class="font-medium ease-in duration-300 hover:text-white">Changelog</a>
-                            </li>
-                            <li>
-                                <a href="index.html#"
-                                    class="font-medium ease-in duration-300 hover:text-white">Roadmap</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h5 class="font-semibold text-white mb-5">Company</h5>
-                        <ul class="flex flex-col gap-3.5">
-                            <li>
-                                <a href="index.html#" class="font-medium ease-in duration-300 hover:text-white">Privacy
+                                <a href="{{route('home')}}#" class="font-medium ease-in duration-300 hover:text-white">Privacy
                                     Policy</a>
                             </li>
                             <li>
-                                <a href="index.html#" class="font-medium ease-in duration-300 hover:text-white">Refund
-                                    Policy</a>
-                            </li>
-                            <li>
-                                <a href="index.html#"
-                                    class="font-medium ease-in duration-300 hover:text-white">Support</a>
-                            </li>
-                            <li>
-                                <a href="index.html#"
-                                    class="font-medium ease-in duration-300 hover:text-white">Community</a>
+                                <a href="{{route('home')}}#"
+                                    class="font-medium ease-in duration-300 hover:text-white">Terms</a>
                             </li>
                         </ul>
                     </div>
@@ -111,24 +78,12 @@
                         <h5 class="font-semibold text-white mb-5">Support</h5>
                         <ul class="flex flex-col gap-3.5">
                             <li>
-                                <a href="index.html#"
-                                    class="font-medium ease-in duration-300 hover:text-white">Features</a>
+                                <a href="{{route('home')}}/#Contact"
+                                    class="font-medium ease-in duration-300 hover:text-white">Contact us</a>
                             </li>
                             <li>
-                                <a href="index.html#"
-                                    class="font-medium ease-in duration-300 hover:text-white">Integrations</a>
-                            </li>
-                            <li>
-                                <a href="index.html#"
-                                    class="font-medium ease-in duration-300 hover:text-white">Pricing</a>
-                            </li>
-                            <li>
-                                <a href="index.html#"
-                                    class="font-medium ease-in duration-300 hover:text-white">Changelog</a>
-                            </li>
-                            <li>
-                                <a href="index.html#"
-                                    class="font-medium ease-in duration-300 hover:text-white">Roadmap</a>
+                                <a href="{{route('home')}}"
+                                    class="font-medium ease-in duration-300 hover:text-white">Home</a>
                             </li>
                         </ul>
                     </div>
