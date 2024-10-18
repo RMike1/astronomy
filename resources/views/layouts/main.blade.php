@@ -61,6 +61,21 @@
     @livewireScripts
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        var options = {
+            strings: ["", "{{App\Models\About::latest()->first()->about_hero_title}}"],
+            typeSpeed: 50, 
+            backSpeed: 30, 
+            loop: false,   
+            showCursor: true,
+            cursorChar: '|', 
+        };
+
+        var typed = new Typed("#typing-text", options);
+    });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             AOS.init({

@@ -10,6 +10,8 @@ use App\Models\HomePageSection;
 use App\Models\Service;
 use App\Models\ServiceSectionHeader;
 use App\Models\ContactSectionHeader;
+use App\Models\About;
+use App\Models\Team;
 
 class HomeController extends Controller
 {
@@ -40,9 +42,11 @@ class HomeController extends Controller
     }
 
     public function about(){
-        $herosection = HeroSection::select(['title', 'description', 'video'])->first();
-
-        return view('user.about',compact('herosection'));
+        $about_data = About::select(['about_hero_title', 'about_hero_sub_title', 'about_hero_video','about_image','about_title','about_sub_title','about_description'])->first();
+        $Service_section_header = ServiceSectionHeader::select(['title', 'description'])->first();
+        $Services=Service::where('is_active',true)->select(['title','slug','is_active','summary_description'])->latest()->take(10)->get();
+        $team_members=Team::all();
+        return view('user.about',compact('about_data','Service_section_header','Services','team_members'));
     }
 
 

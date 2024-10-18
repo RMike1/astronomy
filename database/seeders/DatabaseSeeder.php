@@ -10,6 +10,8 @@ use App\Models\ContactSectionHeader;
 use Illuminate\Database\Seeder;
 use Database\Seeders\HeroSectionSeeder;
 use Database\Seeders\HomePageSectionSeeder;
+use Database\Seeders\AboutSeeder;
+use Database\Seeders\TeamSeeder;
 
 
 
@@ -29,6 +31,8 @@ class DatabaseSeeder extends Seeder
             
             $this->call(HeroSectionSeeder::class);
             $this->call(HomePageSectionSeeder::class);
+            $this->call(AboutSeeder::class);
+            $this->call(TeamSeeder::class);
             Service::factory(7)->create();
             ServiceSectionHeader::factory(1)->create();
             ContactSectionHeader::factory(1)->create();
