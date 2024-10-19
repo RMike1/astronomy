@@ -21,6 +21,9 @@ class HeroSectionResource extends Resource
 {
     protected static ?string $model = HeroSection::class;
 
+    protected static ?string $slug = 'hero-section';
+    protected static ?string $navigationGroup = 'Home Pages';
+    protected static ?string $navigationLabel = 'Hero Section';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $modelLabel = 'Home Page Hero Section';
 

@@ -1,7 +1,6 @@
 @foreach ($Homesections as $Homesection)
-    <section  id="Observatories" class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center"
-        {{-- style="background-image: url({{ asset('user/images/bc/image1.jpg') }});"> --}}
-        style="background-image: url({{ asset('/'.$Homesection->image) }});">
+    <section  id="Observatories" class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center" data-aos="fade-down"
+        style="background-image: url({{ asset('storage/'.$Homesection->image) }});">
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
         <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Overlay for better text visibility -->
