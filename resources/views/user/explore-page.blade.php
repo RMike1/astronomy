@@ -33,7 +33,7 @@
     </x-slot>
 
     <section class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center"
-        style="background-image: url({{ asset('/' . $Homesection->image) }});">
+        style="background-image: url({{ asset('storage/' . $Homesection->image) }});">
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-gray"></div>
         <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -115,7 +115,7 @@
                 </a>
                 <span
                     class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-1 block w-32 h-32 rounded-full backdrop-blur-[5px] bg-white/[0.04]"></span>
-                <img class="rounded-xl" src="{{ asset('/' . $Homesection->image) }}" alt="video" />
+                <img class="rounded-xl" src="{{ asset('storage/'. $Homesection->image) }}" alt="video" />
             </div>
         </div>
     </section>

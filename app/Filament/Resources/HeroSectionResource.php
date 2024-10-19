@@ -33,7 +33,8 @@ class HeroSectionResource extends Resource
             ->schema([
                 TextInput::make('title')->required(),
                 TextInput::make('description')->required(),
-                FileUpload::make('video')->disk('public')->directory('Hero Videos'),
+                FileUpload::make('video')->disk('public')->directory('Hero-Videos')->maxSize(4096)
+                ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
             ]);
     }
 

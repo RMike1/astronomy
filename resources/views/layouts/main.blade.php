@@ -76,7 +76,7 @@
 
             var typed = new Typed('.text-slider', {
                 strings: [sentence], 
-                typeSpeed: 80,      
+                typeSpeed: 60,      
                 backSpeed: 0,       
                 loop: false,        
                 showCursor: true,   

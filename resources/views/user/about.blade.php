@@ -32,13 +32,13 @@
         </div>
     </x-slot>
 
-    <section id="Home" class="relative overflow-hidden z-10 min-h-screen pt-35 md:pt-40 xl:pt-45">
+    <section class="relative overflow-hidden z-10 min-h-screen pt-35 md:pt-40 xl:pt-45">
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
         <div class="max-w-7xl mx-auto">
             <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
                 <div class="absolute inset-0 top-0 left-0 w-full h-full">
                     <video class="video-bg absolute inset-0 w-full h-full object-cover" autoplay muted loop>
-                        <source src="{{ asset('/' . $about_data->about_hero_video) }}" type="video/mp4">
+                        <source src="{{ asset('storage/' . $about_data->about_hero_video) }}" type="video/mp4">
                         Your browser does not support HTML5 video.
                     </video>
                 </div>

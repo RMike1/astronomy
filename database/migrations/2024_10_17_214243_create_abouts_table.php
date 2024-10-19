@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('about_hero_sub_title');
             $table->string('about_hero_video');
             $table->string('about_image');
-            $table->string('about_title');
-            $table->string('about_sub_title');
+            $table->string('');
+            $table->string('abouabout_titlet_sub_title');
             $table->longText('about_description');
             $table->timestamps();
         });

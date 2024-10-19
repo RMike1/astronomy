@@ -1,6 +1,6 @@
 <section id="Contact" class="overflow-hidden scroll-mt-17 lg:py-22.5 xl:py-27.5 min-h-screen">
     <div class="max-w-[1104px] mx-auto px-4 sm:px-8 xl:px-0">
-        <div class="relative z-999 overflow-hidden bg-dark px-4 sm:px-20 lg:px-27.5">
+        <div class="relative z-999 overflow-hidden px-4 sm:px-20 lg:px-27.5">
             <div class="wow fadeInUp mb-16 text-center relative z-999">
                 <span
                     class="hero-subtitle-gradient relative mb-4 font-medium text-sm inline-flex items-center gap-2 py-2 px-4.5 rounded-full">
