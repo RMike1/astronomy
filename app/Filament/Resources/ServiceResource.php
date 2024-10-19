@@ -2,12 +2,14 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\ServiceResource\Pages;
+use App\Filament\Resources\ServiceResource\RelationManagers;
+use App\Models\Service;
 use Filament\Forms;
-use Filament\Tables;
 use Filament\Forms\Form;
-use Filament\Tables\Table;
-use App\Models\HomePageSection;
 use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Textarea;
@@ -20,49 +22,34 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\HomePageSectionResource\Pages;
-use App\Filament\Resources\HomePageSectionResource\RelationManagers;
 
-class HomePageSectionResource extends Resource
+class ServiceResource extends Resource
 {
-    protected static ?string $model = HomePageSection::class;
+    protected static ?string $model = Service::class;
 
-    protected static ?string $slug = 'home-section';
-    protected static ?string $navigationLabel = 'Home Section';
-    protected static ?string $modelLabel = 'Home section';
     protected static ?string $navigationGroup = 'Home Page';
 
+    protected static ?string $navigationLabel = 'Service Section';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
 
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Section::make()->schema([
-                    TextInput::make('title')
-                    ->label('Title')
-                    ->required(),
-                    TextInput::make('sub_title')
-                    ->label('Sub Title')
-                    ->required(),
-                    
-                    Select::make('text_position')
-                    ->label('Text Position')
-                    ->options([
-                        'right' => 'Right Position',
-                        'left' => 'Left Position',
-                    ])
-                    ->required(),
-
-                    Textarea::make('summary_description')->label('Summary Description')->required(),
-                    RichEditor::make('full_description')->label('Full Description')->columnSpan(2)->required(),
-                ])->columns(2),
-                FileUpload::make('image')->label('Image')->disk('public')->directory('Home_Section')->required(),
+        ->schema([
+            Section::make()->schema([
+                TextInput::make('title')
+                ->label('Title')
+                ->required(),
+                TextInput::make('slug')
+                ->label('Slug')
+                ->required(),
+                Textarea::make('summary_description')->label('Summary Description')->required()->columnSpan(2),
+                RichEditor::make('full_description')->label('Full Description')->columnSpan(2)->required(),
                 Toggle::make('is_active')
                 ->label('Active'),
-                
-            ]);
+            ])->columns(2),
+            
+        ]);
     }
 
     public static function table(Table $table): Table
@@ -77,10 +64,9 @@ class HomePageSectionResource extends Resource
                 })
                 ->sortable(false),
                 TextColumn::make('title')->label('Title')->searchable()->sortable(),
-                TextColumn::make('sub_title')->label('Sub Title')->searchable()->sortable(),
-                ImageColumn::make('image')->label('Background Image')->disk('public'),
+                TextColumn::make('slug')->label('Slug')->limit(50)->searchable()->sortable(),
                 ToggleColumn::make('is_active')->label('Active')->sortable(),
-                TextColumn::make('summary_description')->label('Summary Description')->limit(50)->searchable()->sortable(),
+                TextColumn::make('summary_description')->limit(50)->label('Summary Description')->searchable()->sortable(),
             ])
             ->filters([
                 //
@@ -106,9 +92,9 @@ class HomePageSectionResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListHomePageSections::route('/'),
-            'create' => Pages\CreateHomePageSection::route('/create'),
-            'edit' => Pages\EditHomePageSection::route('/{record}/edit'),
+            'index' => Pages\ListServices::route('/'),
+            'create' => Pages\CreateService::route('/create'),
+            'edit' => Pages\EditService::route('/{record}/edit'),
         ];
     }
 }

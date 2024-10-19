@@ -22,10 +22,10 @@ class HeroSectionResource extends Resource
     protected static ?string $model = HeroSection::class;
 
     protected static ?string $slug = 'hero-section';
-    protected static ?string $navigationGroup = 'Home Pages';
+    protected static ?string $navigationGroup = 'Home Page';
     protected static ?string $navigationLabel = 'Hero Section';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $modelLabel = 'Home Page Hero Section';
+    protected static ?string $pluralLabel = 'Home Page Header';
 
     public static function form(Form $form): Form
     {
@@ -41,10 +41,10 @@ class HeroSectionResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')->Searchable(),
-                TextColumn::make('description')->Searchable(),
+                TextColumn::make('title'),
+                
                 TextColumn::make('video')
-                ->label('Video')
+                ->label('Background Video')
                 ->formatStateUsing(function ($record) {
                     return '<video width="150" height="100" controls>
                                 <source src="'. asset('storage/' . $record->video) .'" type="video/mp4">
@@ -52,6 +52,7 @@ class HeroSectionResource extends Resource
                             </video>';
                 })
                 ->html(),
+                TextColumn::make('description'),
             
                  
             ])
@@ -62,6 +63,7 @@ class HeroSectionResource extends Resource
                 Tables\Actions\EditAction::make(),
                 // Tables\Actions\DeleteAction::make(),
             ])
+            ->paginated(false)
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     // Tables\Actions\DeleteBulkAction::make(),
