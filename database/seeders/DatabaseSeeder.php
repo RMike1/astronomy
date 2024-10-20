@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Service;
 use App\Models\ServiceSectionHeader;
 use App\Models\ContactSectionHeader;
+use App\Models\TermsOfUse;
 use Illuminate\Database\Seeder;
 use Database\Seeders\HeroSectionSeeder;
 use Database\Seeders\HomePageSectionSeeder;
@@ -29,12 +30,13 @@ class DatabaseSeeder extends Seeder
             //     'email' => 'test@example.com',
             // ]);
             
-            $this->call(HeroSectionSeeder::class);
-            $this->call(HomePageSectionSeeder::class);
-            $this->call(AboutSeeder::class);
-            $this->call(TeamSeeder::class);
-            Service::factory(7)->create();
-            ServiceSectionHeader::factory(1)->create();
-            ContactSectionHeader::factory(1)->create();
+            // $this->call(HeroSectionSeeder::class);
+            // $this->call(HomePageSectionSeeder::class);
+            // $this->call(AboutSeeder::class);
+            // $this->call(TeamSeeder::class);
+            // Service::factory(7)->create();
+            // ServiceSectionHeader::factory(1)->create();
+            // ContactSectionHeader::factory(1)->create();
+            TermsOfUse::factory(1)->create();
     }
 }

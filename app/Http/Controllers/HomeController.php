@@ -12,6 +12,7 @@ use App\Models\ServiceSectionHeader;
 use App\Models\ContactSectionHeader;
 use App\Models\About;
 use App\Models\Team;
+use App\Models\TermsOfUse;
 
 class HomeController extends Controller
 {
@@ -54,7 +55,10 @@ class HomeController extends Controller
         $Services=Service::where('is_active',true)->select(['title','slug','is_active','summary_description'])->latest()->take(10)->get();
         $team_members=Team::all();
         $Homesection=HomePageSection::select(['title','sub_title','slug','image','is_active','text_position','summary_description','full_description'])->where('slug',$slug)->firstOrfail();
-        // $Homesections=HomePageSection::where('is_active',true)->select(['title','sub_title','slug','image','is_active','text_position','summary_description'])->latest()->take(4)->get();
+        return view('user.explore-page',compact('about_data','Service_section_header','Services','team_members','Homesection'));
+    }
+    public function terms_of_use(){
+        $terms=TermsOfUse::select(['title','sub_title','slug','image','is_active','text_position','summary_description','full_description'])->where('slug',$slug)->firstOrfail();
         return view('user.explore-page',compact('about_data','Service_section_header','Services','team_members','Homesection'));
     }
 
