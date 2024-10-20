@@ -2,10 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\TermsOfUseResource\Pages;
-use App\Filament\Resources\TermsOfUseResource\RelationManagers;
-use App\Models\TermsOfUse;
-use Faker\Provider\Lorem;
+use App\Filament\Resources\PrivacyPolicyResource\Pages;
+use App\Filament\Resources\PrivacyPolicyResource\RelationManagers;
+use App\Models\PrivacyPolicy;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -19,17 +18,16 @@ use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class TermsOfUseResource extends Resource
+class PrivacyPolicyResource extends Resource
 {
-    protected static ?string $model = TermsOfUse::class;
+    protected static ?string $model = PrivacyPolicy::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-
-    protected static ?string $slug = 'terms-of-use';
-    protected static ?string $navigationLabel = 'Terms of use';
-    protected static ?string $modelLabel = 'Terms of use';
-    protected static ?string $pluralLabel = 'Terms of use';
+    protected static ?string $slug = 'privacy-policy';
+    protected static ?string $navigationLabel = 'Privacy Policy';
+    protected static ?string $modelLabel = 'Privacy Policy';
+    protected static ?string $pluralLabel = 'Privacy Policy';
     protected static ?int $navigationSort = 30;
     protected static ?string $navigationGroup = 'Terms & Policy';
 
@@ -40,7 +38,7 @@ class TermsOfUseResource extends Resource
                 TextInput::make('title')
                 ->label('Title')
                 ->required(),
-                FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('Terms')->required()->maxSize(2048) 
+                FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('privacy-background-images')->required()->maxSize(2048) 
                 ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
                 RichEditor::make('description')->label('Description')
                 ->toolbarButtons([
@@ -60,9 +58,10 @@ class TermsOfUseResource extends Resource
                     'undo',
                 ])
                 ->fileAttachmentsDisk('public')
-                ->fileAttachmentsDirectory('terms-images')
+                ->fileAttachmentsDirectory('privacy-images')
                 ->fileAttachmentsVisibility('public')
                 ->columnSpan(2)->required(),
+
             ]);
     }
 
@@ -83,6 +82,7 @@ class TermsOfUseResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->paginated(false)
@@ -103,10 +103,10 @@ class TermsOfUseResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTermsOfUses::route('/'),
-            'create' => Pages\CreateTermsOfUse::route('/create'),
-            'edit' => Pages\EditTermsOfUse::route('/{record}/edit'),
-            // 'view' => Pages\Show<YourResourceName>::route('/{record}'),
+            'index' => Pages\ListPrivacyPolicies::route('/'),
+            'create' => Pages\CreatePrivacyPolicy::route('/create'),
+            'view' => Pages\ViewPrivacyPolicy::route('/{record}'),
+            'edit' => Pages\EditPrivacyPolicy::route('/{record}/edit'),
         ];
     }
 }

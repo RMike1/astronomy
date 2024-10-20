@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PrivacyPolicy;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Service;
@@ -37,6 +38,7 @@ class DatabaseSeeder extends Seeder
             // Service::factory(7)->create();
             // ServiceSectionHeader::factory(1)->create();
             // ContactSectionHeader::factory(1)->create();
-            TermsOfUse::factory(1)->create();
+            // TermsOfUse::factory(1)->create();
+            PrivacyPolicy::factory(1)->create();
     }
 }

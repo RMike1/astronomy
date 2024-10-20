@@ -13,6 +13,7 @@ use App\Models\ContactSectionHeader;
 use App\Models\About;
 use App\Models\Team;
 use App\Models\TermsOfUse;
+use App\Models\PrivacyPolicy;
 
 class HomeController extends Controller
 {
@@ -60,6 +61,10 @@ class HomeController extends Controller
     public function terms_of_use(){
         $terms=TermsOfUse::select(['title','background_image','description'])->latest()->firstOrfail();
         return view('user.terms-of-use',compact('terms'));
+    }
+    public function privacy_policy(){
+        $policies=PrivacyPolicy::select(['title','background_image','description'])->latest()->firstOrfail();
+        return view('user.privacy-policy',compact('policies'));
     }
 
 
