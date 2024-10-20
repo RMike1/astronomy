@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Section;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
@@ -37,11 +38,14 @@ class TermsOfUseResource extends Resource
     {
         return $form
             ->schema([
+                Section::make()->schema([
                 TextInput::make('title')
                 ->label('Title')
                 ->required(),
                 FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('Terms')->required()->maxSize(3048) 
                 ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                ])->columns(2),
+                Section::make()->schema([
                 RichEditor::make('description')->label('Description')
                 ->toolbarButtons([
                     'attachFiles',
@@ -63,6 +67,7 @@ class TermsOfUseResource extends Resource
                 ->fileAttachmentsDirectory('terms-images')
                 ->fileAttachmentsVisibility('public')
                 ->columnSpan(2)->required(),
+                ]),
             ]);
     }
 
@@ -83,6 +88,7 @@ class TermsOfUseResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->paginated(false)
@@ -106,7 +112,7 @@ class TermsOfUseResource extends Resource
             'index' => Pages\ListTermsOfUses::route('/'),
             'create' => Pages\CreateTermsOfUse::route('/create'),
             'edit' => Pages\EditTermsOfUse::route('/{record}/edit'),
-            // 'view' => Pages\Show<YourResourceName>::route('/{record}'),
+            'view' => Pages\ViewTermsOfUse::route('/{record}'),
         ];
     }
 }

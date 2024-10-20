@@ -85,6 +85,7 @@ class AboutResource extends Resource
             ])
             ->paginated(false)
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -107,6 +108,7 @@ class AboutResource extends Resource
             'index' => Pages\ListAbouts::route('/'),
             'create' => Pages\CreateAbout::route('/create'),
             'edit' => Pages\EditAbout::route('/{record}/edit'),
+            'view' => Pages\ViewAbout::route('/{record}'),
         ];
     }
 }

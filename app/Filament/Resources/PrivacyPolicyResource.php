@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Section;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
@@ -35,11 +36,14 @@ class PrivacyPolicyResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title')
-                ->label('Title')
-                ->required(),
-                FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('privacy-background-images')->required()->maxSize(3048) 
-                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                Section::make()->schema([
+                    TextInput::make('title')
+                    ->label('Title')
+                    ->required(),
+                    FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('privacy-background-images')->required()->maxSize(3048) 
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                ])->columns(2),
+                Section::make()->schema([
                 RichEditor::make('description')->label('Description')
                 ->toolbarButtons([
                     'attachFiles',
@@ -61,7 +65,7 @@ class PrivacyPolicyResource extends Resource
                 ->fileAttachmentsDirectory('privacy-images')
                 ->fileAttachmentsVisibility('public')
                 ->columnSpan(2)->required(),
-
+            ]),
             ]);
     }
 
