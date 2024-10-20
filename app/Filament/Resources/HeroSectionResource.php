@@ -62,7 +62,7 @@ class HeroSectionResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                // Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->paginated(false)
             ->bulkActions([
@@ -83,7 +83,7 @@ class HeroSectionResource extends Resource
     {
         return [
             'index' => Pages\ListHeroSections::route('/'),
-            // 'create' => Pages\CreateHeroSection::route('/create'),
+            'view' => Pages\ViewHeroSection::route('/{record}'),
             'edit' => Pages\EditHeroSection::route('/{record}/edit'),
         ];
     }
