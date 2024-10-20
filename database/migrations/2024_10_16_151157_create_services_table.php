@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean('is_active')->default(1);
             $table->mediumText('summary_description');
             $table->longText('full_description');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

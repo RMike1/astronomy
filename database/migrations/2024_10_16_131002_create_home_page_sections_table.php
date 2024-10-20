@@ -18,10 +18,13 @@ return new class extends Migration
             $table->string('title')->unique();
             $table->string('sub_title');
             $table->string('image');
+            $table->string('background_video');
+            $table->string('background_type')->default('image');
             $table->boolean('is_active')->default(1);
             $table->string('text_position')->default('right')->nullable();
             $table->mediumText('summary_description');
             $table->longText('full_description');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -31,14 +31,14 @@ class DatabaseSeeder extends Seeder
             //     'email' => 'test@example.com',
             // ]);
             
-            // $this->call(HeroSectionSeeder::class);
-            // $this->call(HomePageSectionSeeder::class);
-            // $this->call(AboutSeeder::class);
-            // $this->call(TeamSeeder::class);
-            // Service::factory(7)->create();
-            // ServiceSectionHeader::factory(1)->create();
-            // ContactSectionHeader::factory(1)->create();
-            // TermsOfUse::factory(1)->create();
+            $this->call(HeroSectionSeeder::class);
+            $this->call(HomePageSectionSeeder::class);
+            $this->call(AboutSeeder::class);
+            $this->call(TeamSeeder::class);
+            Service::factory(7)->create();
+            ServiceSectionHeader::factory(1)->create();
+            ContactSectionHeader::factory(1)->create();
+            TermsOfUse::factory(1)->create();
             PrivacyPolicy::factory(1)->create();
     }
 }

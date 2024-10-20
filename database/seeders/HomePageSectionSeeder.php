@@ -24,6 +24,8 @@ class HomePageSectionSeeder extends Seeder
             'summary_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit-1',
             'full_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua-1',
             'image' => 'user/images/bc/image1.jpg',
+            'background_video' => 'user/video/video1.mp4',
+            'background_type' => 'image',
         ],
             [
                 'title' => 'Lorem Ipsum 2',
@@ -34,6 +36,8 @@ class HomePageSectionSeeder extends Seeder
                 'summary_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit-2',
                 'full_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua-2',
                 'image' => 'user/images/bc/image2.jpg',
+                'background_video' => 'user/video/video1.mp4',
+                'background_type' => 'video',
             ],
             [
                 'title' => 'Lorem Ipsum 3',
@@ -44,6 +48,8 @@ class HomePageSectionSeeder extends Seeder
                 'summary_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit-3',
                 'full_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua-3',
                 'image' => 'user/images/bc/image3.jpg',
+                'background_video' => 'user/video/video1.mp4',
+                'background_type' => 'image',
             ],
             [
                 'title' => 'Lorem Ipsum 4',
@@ -54,6 +60,8 @@ class HomePageSectionSeeder extends Seeder
                 'summary_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit-4',
                 'full_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua-4',
                 'image' => 'user/images/bc/image4.jpg',
+                'background_video' => 'user/video/video1.mp4',
+                'background_type' => 'video',
             ],
             [
                 'title' => 'Lorem Ipsum 5',
@@ -64,6 +72,8 @@ class HomePageSectionSeeder extends Seeder
                 'summary_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit-5',
                 'full_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua-5',
                 'image' => 'user/images/bc/image5.jpg',
+                'background_video' => 'user/video/video1.mp4',
+                'background_type' => 'image',
             ],
             ]
         );

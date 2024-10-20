@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('image');
             $table->string('position');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
