@@ -19,10 +19,16 @@
                     Explore the Wonders of the Universe!
                 </span>
         </span>
-            <h1 class="text-white mb-6 text-3xl font-extrabold sm:text-5xl xl:text-heading-1">
+            <h1 class="text-white mb-6 text-3xl font-extrabold sm:text-5xl xl:text-heading-1" data-aos="fade-right"
+            data-aos-anchor="#example-anchor"
+            data-aos-offset="500"
+            data-aos-duration="500">
                 {{$herosection->title}}
             </h1>
-            <p class="max-w-[500px] mx-auto mb-6 text-slate-400 md:text-lg">
+            <p class="max-w-[500px] mx-auto mb-6 text-slate-400 md:text-lg" data-aos="fade-left"
+            data-aos-anchor="#example-anchor"
+            data-aos-offset="500"
+            data-aos-duration="500">
                 {{$herosection->description}}
             </p>
         </div>

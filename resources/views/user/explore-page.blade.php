@@ -35,7 +35,7 @@
     <section class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center"
         style="background-image: url({{ asset('storage/' . $Homesection->image) }});">
         <!-- Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-gray"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
         <div class="absolute inset-0 bg-black opacity-50"></div>
 
         <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
@@ -43,21 +43,30 @@
             <div class="grid sm:grid-cols-12 gap-7.5" data-highlighter>
                 <div class="sm:col-span-12 pt-32">
                     <div class="relative">
-                        <div class="relative overflow-hidden p-10 xl:p-15" data-aos="fade-up">
+                        <div class="relative overflow-hidden p-10 xl:p-15">
                             <div
                                 class="flex {{ $Homesection->text_position === 'left' ? 'justify-between' : 'justify-end' }} items-center relative z-20">
                                 <div class="max-w-[477px] w-full">
-                                    <span
+                                    <span data-aos="fade-left"
+                                    data-aos-anchor="#example-anchor"
+                                    data-aos-offset="200"
+                                    data-aos-duration="200"
                                         class="hero-subtitle-gradient relative mb-4 font-medium text-sm inline-flex items-center gap-2 py-2 px-4.5">
                                         <img src="{{ asset('user/images/icon-title.svg') }}" alt="icon">
                                         <span class="hero-subtitle-text">
                                             {{ $Homesection->sub_title }}
                                         </span>
                                     </span>
-                                    <h3 class="text-white mb-4.5 font-bold text-heading-4">
+                                    <h3 class="text-white mb-4.5 font-bold text-heading-4" data-aos="fade-left"
+                                    data-aos-anchor="#example-anchor"
+                                    data-aos-offset="300"
+                                    data-aos-duration="300">
                                         {{ $Homesection->title }}
                                     </h3>
-                                    <p class="font-normal text-base mb-10">
+                                    <p class="font-normal text-base mb-10" data-aos="fade-left"
+                                    data-aos-anchor="#example-anchor"
+                                    data-aos-offset="400"
+                                    data-aos-duration="400">
                                         {{ $Homesection->summary_description }}
                                     </p>
                                 </div>
@@ -125,7 +134,7 @@
             {{-- <img src="{{ asset('/' . $Homesection->image) }}" alt="blog" class="mb-10" /> --}}
             <div class="max-w-[870px] mx-auto">
                 <h2 class="font-semibold text-white text-[34px] leading-[45px] max-w-[579px] mb-7.5">
-                    Revolution in Content Creation and Communication
+                    Lorem ipsum dolor sit amet consectetur
                 </h2>
                 <p class="font-medium mb-6">
                     {{ $Homesection->full_description }}
@@ -136,7 +145,7 @@
                     reprehenderit? Quia, aliquam dolor!
                 </p>
                 <h3 class="font-extrabold text-2xl text-white mb-6">
-                    how I churn out 2000 words in 20 minutes
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </h3>
                 <p class="font-medium mb-6">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit fugiat est, praesentium magnam hic
@@ -151,7 +160,7 @@
             </div>
         </div>
     </section>
-g
+
     <!----------Subscribe form----------->
 
     @include('partials.subscribe-form')

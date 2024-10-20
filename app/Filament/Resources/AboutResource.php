@@ -29,6 +29,12 @@ class AboutResource extends Resource
     protected static ?string $modelLabel = 'About Page';
     protected static ?string $pluralLabel = 'About ';
     protected static ?int $navigationSort = 20;
+    protected static ?string $navigationGroup = 'About Page';
+
+
+
+
+
 
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
@@ -50,7 +56,7 @@ class AboutResource extends Resource
                     TextInput::make('about_sub_title')
                     ->label('Sub Title')
                     ->required(),
-                    FileUpload::make('about_hero_video')->label('Background Video')->disk('public')->directory('About-video')->required()->maxSize(4096)
+                    FileUpload::make('about_hero_video')->label('Background Video')->disk('public')->directory('About-video')->required()->maxSize(6096)
                     ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
                     FileUpload::make('about_image')->label('Image')->disk('public')->directory('About')->required()->maxSize(2048) 
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),

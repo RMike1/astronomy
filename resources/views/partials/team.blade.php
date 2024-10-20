@@ -21,7 +21,7 @@
                 <div class="wow fadeInUp group text-center">
                     <div
                         class="team-img-gradient group-hover:before:gradient-3 max-w-50 mx-auto w-full h-50 rounded-full relative mb-7.5">
-                        <img src="{{ asset('/' . $team_member->image) }}" alt="team" />
+                        <img src="{{ asset('storage/' . $team_member->image) }}" alt="team" />
                     </div>
                     <h4 class="text-white font-semibold text-heading-6 mb-2.5">
                         {{ $team_member->first_name }} {{ $team_member->last_name }}
