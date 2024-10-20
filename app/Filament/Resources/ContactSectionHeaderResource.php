@@ -10,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
@@ -33,12 +34,14 @@ class ContactSectionHeaderResource extends Resource
     {
         return $form
         ->schema([
+            Section::make()->schema([
             TextInput::make('title')
             ->label('Title')
             ->required(),
             Textarea::make('description')
             ->label('Description')
             ->required(),
+            ])->columns(1),
         ]);
     }
 
@@ -46,13 +49,14 @@ class ContactSectionHeaderResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')->label('Title'),
-                TextColumn::make('description')->label('Description'),
+                    TextColumn::make('title')->label('Title'),
+                    TextColumn::make('description')->label('Description'),
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -73,7 +77,7 @@ class ContactSectionHeaderResource extends Resource
     {
         return [
             'index' => Pages\ListContactSectionHeaders::route('/'),
-            // 'create' => Pages\CreateContactSectionHeader::route('/create'),
+            'create' => Pages\ViewContactSectionHeader::route('/{record}'),
             'edit' => Pages\EditContactSectionHeader::route('/{record}/edit'),
         ];
     }

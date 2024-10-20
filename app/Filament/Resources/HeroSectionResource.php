@@ -12,6 +12,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\HtmlColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\HeroSectionResource\Pages;
@@ -31,10 +32,16 @@ class HeroSectionResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title')->required(),
-                TextInput::make('description')->required(),
-                FileUpload::make('video')->disk('public')->directory('Hero-Videos')->maxSize(5096)
-                ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
+                Section::make()->schema([
+
+                    TextInput::make('title')->label('Title')->required(),
+                    TextInput::make('description')->label('Decription')->required(),
+                    ])->columns(1),
+                Section::make()->schema([
+                    FileUpload::make('video')->label('Background Video')->disk('public')->directory('Hero-Videos')->maxSize(5096)
+                    ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
+
+                    ])->columns(2),
             ]);
     }
 

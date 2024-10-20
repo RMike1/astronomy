@@ -10,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
@@ -34,13 +35,15 @@ class ServiceSectionHeaderResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title')
-                ->label('Title')
-                ->required(),
-                Textarea::make('description')
-                ->label('Description')
-                ->required(),
-            ]);
+                Section::make()->schema([
+                    TextInput::make('title')
+                    ->label('Title')
+                    ->required(),
+                    Textarea::make('description')
+                    ->label('Description')
+                    ->required(),
+                    ])
+                ])->columns(1);
     }
 
     public static function table(Table $table): Table
@@ -54,6 +57,7 @@ class ServiceSectionHeaderResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->paginated(false)
@@ -75,7 +79,7 @@ class ServiceSectionHeaderResource extends Resource
     {
         return [
             'index' => Pages\ListServiceSectionHeaders::route('/'),
-            // 'create' => Pages\CreateServiceSectionHeader::route('/create'),
+            'view' => Pages\ViewServiceSectionHeader::route('/{record}'),
             'edit' => Pages\EditServiceSectionHeader::route('/{record}/edit'),
         ];
     }
