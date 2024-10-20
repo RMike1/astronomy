@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('service_section_headers', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->longText('description');
             $table->timestamps();
         });
     }

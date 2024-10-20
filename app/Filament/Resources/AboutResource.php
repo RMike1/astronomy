@@ -53,7 +53,7 @@ class AboutResource extends Resource
                     ->required(),
                     FileUpload::make('about_hero_video')->label('Background Video')->disk('public')->directory('About-video')->required()->maxSize(6096)
                     ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
-                    FileUpload::make('about_image')->label('Image')->disk('public')->directory('About')->required()->maxSize(2048) 
+                    FileUpload::make('about_image')->label('Image')->disk('public')->directory('About')->required()->maxSize(4048) 
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
                     Textarea::make('about_description')->label('Description')->required()->columnSpan(2),
                 ])->columns(2),

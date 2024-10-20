@@ -65,11 +65,11 @@
                         <h5 class="font-semibold text-white mb-5">Links</h5>
                         <ul class="flex flex-col gap-3.5">
                             <li>
-                                <a href="{{route('home')}}#" class="font-medium ease-in duration-300 hover:text-white">Privacy
+                                <a href="{{route('privacy-policy')}}" class="font-medium ease-in duration-300 hover:text-white">Privacy
                                     Policy</a>
                             </li>
                             <li>
-                                <a href="{{route('home')}}#"
+                                <a href="{{route('terms-of-use')}}"
                                     class="font-medium ease-in duration-300 hover:text-white">Terms</a>
                             </li>
                         </ul>

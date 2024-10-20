@@ -31,52 +31,124 @@
             </nav>
         </div>
     </x-slot>
+    @if ($Homesection->background_type === 'image')
+        <section class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center"
+            style="background-image: url({{ asset('storage/' . $Homesection->image) }});">
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
+            <div class="absolute inset-0 bg-black opacity-50"></div>
 
-    <section class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center"
-        style="background-image: url({{ asset('storage/' . $Homesection->image) }});">
-        <!-- Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
-        <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
 
-        <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
-
-            <div class="grid sm:grid-cols-12 gap-7.5" data-highlighter>
-                <div class="sm:col-span-12 pt-32">
-                    <div class="relative">
-                        <div class="relative overflow-hidden p-10 xl:p-15">
-                            <div
-                                class="flex {{ $Homesection->text_position === 'left' ? 'justify-between' : 'justify-end' }} items-center relative z-20">
-                                <div class="max-w-[477px] w-full">
-                                    <span data-aos="fade-left"
-                                    data-aos-anchor="#example-anchor"
-                                    data-aos-offset="200"
-                                    data-aos-duration="200"
-                                        class="hero-subtitle-gradient relative mb-4 font-medium text-sm inline-flex items-center gap-2 py-2 px-4.5">
-                                        <img src="{{ asset('user/images/icon-title.svg') }}" alt="icon">
-                                        <span class="hero-subtitle-text">
-                                            {{ $Homesection->sub_title }}
+                <div class="grid sm:grid-cols-12 gap-7.5" data-highlighter>
+                    <div class="sm:col-span-12 pt-32">
+                        <div class="relative">
+                            <div class="relative overflow-hidden p-10 xl:p-15">
+                                <div
+                                    class="flex {{ $Homesection->text_position === 'left' ? 'justify-between' : 'justify-end' }} items-center relative z-20">
+                                    <div class="max-w-[477px] w-full">
+                                        <span data-aos="fade-left" data-aos-anchor="#example-anchor"
+                                            data-aos-offset="200" data-aos-duration="200"
+                                            class="hero-subtitle-gradient relative mb-4 font-medium text-sm inline-flex items-center gap-2 py-2 px-4.5">
+                                            <img src="{{ asset('user/images/icon-title.svg') }}" alt="icon">
+                                            <span class="hero-subtitle-text">
+                                                {{ $Homesection->sub_title }}
+                                            </span>
                                         </span>
-                                    </span>
-                                    <h3 class="text-white mb-4.5 font-bold text-heading-4" data-aos="fade-left"
-                                    data-aos-anchor="#example-anchor"
-                                    data-aos-offset="300"
-                                    data-aos-duration="300">
-                                        {{ $Homesection->title }}
-                                    </h3>
-                                    <p class="font-normal text-base mb-10" data-aos="fade-left"
-                                    data-aos-anchor="#example-anchor"
-                                    data-aos-offset="400"
-                                    data-aos-duration="400">
-                                        {{ $Homesection->summary_description }}
-                                    </p>
+                                        <h3 class="text-white mb-4.5 font-bold text-heading-4" data-aos="fade-left"
+                                            data-aos-anchor="#example-anchor" data-aos-offset="300"
+                                            data-aos-duration="300">
+                                            {{ $Homesection->title }}
+                                        </h3>
+                                        <p class="font-normal text-base mb-10" data-aos="fade-left"
+                                            data-aos-anchor="#example-anchor" data-aos-offset="400"
+                                            data-aos-duration="400">
+                                            {{ $Homesection->summary_description }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @elseif($Homesection->background_type === 'video')
+        <section class="relative overflow-hidden z-10 min-h-screen pt-35 md:pt-40 xl:pt-45">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
+            <div class="max-w-7xl mx-auto">
+                <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+                    <div class="absolute inset-0 top-0 left-0 w-full h-full">
+                        <video class="video-bg absolute inset-0 w-full h-full object-cover" autoplay muted loop>
+                            <source src="{{ asset('storage/' . $Homesection->background_video) }}" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="mx-auto max-w-[900px] px-4 sm:px-8 xl:px-0 py-32 relative z-1 flex flex-col justify-start h-full">
+                <div class="text-left wow fadeInRight">
+                    <span data-aos="fade-left" data-aos-duration="1000"
+                        class="hero-subtitle-gradient hover:hero-subtitle-hover relative mb-5 font-medium text-sm inline-flex items-center gap-4 py-2 px-4.5 rounded-full">
+                        <img src="{{ asset('user/images/icon-title.svg') }}" alt="icon">
+                        <span class="hero-subtitle-text text-white">
+                            {{ $Homesection->sub_title }}
+                        </span>
+                    </span>
+                    <h1 class="text-white mb-6 text-5xl font-extrabold sm:text-5xl xl:text-heading-1"
+                        data-aos="fade-left">
+                        <span class="text-slider-items hidden">{{ $Homesection->title }}</span>
+                        <span class="text-slider text-5xl"></span>
+                    </h1>
+                </div>
+            </div>
+        </section>
+    @else
+        <section class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center"
+            style="background-image: url({{ asset('storage/' . $Homesection->image) }});">
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+
+            <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
+
+                <div class="grid sm:grid-cols-12 gap-7.5" data-highlighter>
+                    <div class="sm:col-span-12 pt-32">
+                        <div class="relative">
+                            <div class="relative overflow-hidden p-10 xl:p-15">
+                                <div
+                                    class="flex {{ $Homesection->text_position === 'left' ? 'justify-between' : 'justify-end' }} items-center relative z-20">
+                                    <div class="max-w-[477px] w-full">
+                                        <span data-aos="fade-left" data-aos-anchor="#example-anchor"
+                                            data-aos-offset="200" data-aos-duration="200"
+                                            class="hero-subtitle-gradient relative mb-4 font-medium text-sm inline-flex items-center gap-2 py-2 px-4.5">
+                                            <img src="{{ asset('user/images/icon-title.svg') }}" alt="icon">
+                                            <span class="hero-subtitle-text">
+                                                {{ $Homesection->sub_title }}
+                                            </span>
+                                        </span>
+                                        <h3 class="text-white mb-4.5 font-bold text-heading-4" data-aos="fade-left"
+                                            data-aos-anchor="#example-anchor" data-aos-offset="300"
+                                            data-aos-duration="300">
+                                            {{ $Homesection->title }}
+                                        </h3>
+                                        <p class="font-normal text-base mb-10" data-aos="fade-left"
+                                            data-aos-anchor="#example-anchor" data-aos-offset="400"
+                                            data-aos-duration="400">
+                                            {{ $Homesection->summary_description }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
 
     <section class="overflow-hidden">
         <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0 py-20 lg:py-25 relative">
@@ -124,7 +196,7 @@
                 </a>
                 <span
                     class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-1 block w-32 h-32 rounded-full backdrop-blur-[5px] bg-white/[0.04]"></span>
-                <img class="rounded-xl" src="{{ asset('storage/'. $Homesection->image) }}" alt="video" />
+                <img class="rounded-xl" src="{{ asset('storage/' . $Homesection->image) }}" alt="video" />
             </div>
         </div>
     </section>

@@ -58,9 +58,23 @@ class HomePageSectionResource extends Resource
                     Textarea::make('summary_description')->label('Summary Description')->required(),
                     RichEditor::make('full_description')->label('Full Description')->columnSpan(2)->required(),
                 ])->columns(2),
-                FileUpload::make('image')->label('Image')->disk('public')->directory('Home_Section')->required(),
-                Toggle::make('is_active')
-                ->label('Active'),
+                Section::make()->schema([
+                    FileUpload::make('background_video')->label('Background Video')->disk('public')->directory('Home-Section-videos')->required()->maxSize(6096)
+                    ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
+                    FileUpload::make('image')->label('Image')->disk('public')->directory('Home-Section-images')->required()->maxSize(6096)
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                    Select::make('background_type')
+                    ->label('Choose Background For Single page')
+                    ->options([
+                        'video' => 'Video',
+                        'image' => 'Image',
+                    ])
+                    ->required(),
+    
+                    Toggle::make('is_active')
+                    ->label('Active'),
+
+                ])->columns(2),
                 
             ]);
     }
@@ -72,13 +86,21 @@ class HomePageSectionResource extends Resource
                 TextColumn::make('counter')
                 ->label('No.')
                 ->getStateUsing(function ($rowLoop, $record) {
-                    // Return the current row index + 1
                     return $rowLoop->iteration;
                 })
                 ->sortable(false),
                 TextColumn::make('title')->label('Title')->searchable()->sortable(),
                 TextColumn::make('sub_title')->label('Sub Title')->searchable()->sortable(),
                 ImageColumn::make('image')->label('Background Image')->disk('public'),
+                TextColumn::make('background_video')
+                ->label('Background Video')
+                ->formatStateUsing(function ($record) {
+                    return '<video width="350" height="200" controls>
+                                <source src="'. asset('storage/' . $record->video) .'" type="video/mp4, video/mpeg,">
+                                Your browser does not support the video tag.
+                            </video>';
+                })
+                ->html(),
                 ToggleColumn::make('is_active')->label('Active')->sortable(),
                 TextColumn::make('summary_description')->label('Summary Description')->limit(50)->searchable()->sortable(),
             ])
@@ -88,10 +110,14 @@ class HomePageSectionResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ForceDeleteAction::make(),
+                Tables\Actions\RestoreAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\ForceDeleteBulkAction::make(),
+                    Tables\Actions\RestoreBulkAction::make(),
                 ]),
             ]);
     }
@@ -111,4 +137,11 @@ class HomePageSectionResource extends Resource
             'edit' => Pages\EditHomePageSection::route('/{record}/edit'),
         ];
     }
+    public static function getEloquentQuery(): Builder
+{
+    return parent::getEloquentQuery()
+        ->withoutGlobalScopes([
+            SoftDeletingScope::class,
+        ]);
+}
 }

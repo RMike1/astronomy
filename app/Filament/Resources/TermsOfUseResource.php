@@ -40,7 +40,7 @@ class TermsOfUseResource extends Resource
                 TextInput::make('title')
                 ->label('Title')
                 ->required(),
-                FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('Terms')->required()->maxSize(2048) 
+                FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('Terms')->required()->maxSize(3048) 
                 ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
                 RichEditor::make('description')->label('Description')
                 ->toolbarButtons([

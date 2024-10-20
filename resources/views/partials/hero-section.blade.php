@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto">
         <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
             <div class="absolute inset-0 top-0 left-0 w-full h-full">
-                <video class="video-bg absolute inset-0 w-full h-full object-cover" autoplay muted loop>
+                <video id="Background-Video"  class="video-bg absolute inset-0 w-full h-full object-cover" autoplay muted loop>
                     <source src="{{ asset('storage/'.$herosection->video) }}" type="video/mp4">
                     Your browser does not support HTML5 video.
                 </video>
