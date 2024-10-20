@@ -108,6 +108,7 @@ class HomePageSectionResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
                 Tables\Actions\ForceDeleteAction::make(),
@@ -135,6 +136,7 @@ class HomePageSectionResource extends Resource
             'index' => Pages\ListHomePageSections::route('/'),
             'create' => Pages\CreateHomePageSection::route('/create'),
             'edit' => Pages\EditHomePageSection::route('/{record}/edit'),
+            'view' => Pages\ViewHomePageSection::route('/{record}'),
         ];
     }
     public static function getEloquentQuery(): Builder
