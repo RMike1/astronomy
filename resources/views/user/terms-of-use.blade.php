@@ -32,7 +32,7 @@
         </div>
     </x-slot>
     <section class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center"
-        style="background-image: url({{ asset('storage/' . $Homesection->image) }});">
+        style="background-image: url({{ asset('storage/' . $terms->background_image) }});">
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
         <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -44,24 +44,20 @@
                     <div class="relative">
                         <div class="relative overflow-hidden p-10 xl:p-15">
                             <div
-                                class="flex {{ $Homesection->text_position === 'left' ? 'justify-between' : 'justify-end' }} items-center relative z-20">
+                                class="flex justify-end items-center relative z-20">
                                 <div class="max-w-[477px] w-full">
-                                    <span data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="200"
-                                        data-aos-duration="200"
+                                    <span data-aos="fade-down" data-aos-anchor="#example-anchor" data-aos-offset="200"
+                                        data-aos-duration="1000"
                                         class="hero-subtitle-gradient relative mb-4 font-medium text-sm inline-flex items-center gap-2 py-2 px-4.5">
                                         <img src="{{ asset('user/images/icon-title.svg') }}" alt="icon">
                                         <span class="hero-subtitle-text">
-                                            {{ $Homesection->sub_title }}
+                                           here is Our
                                         </span>
                                     </span>
-                                    <h3 class="text-white mb-4.5 font-bold text-heading-4" data-aos="fade-left"
-                                        data-aos-anchor="#example-anchor" data-aos-offset="300" data-aos-duration="300">
-                                        {{ $Homesection->title }}
+                                    <h3 class="text-white mb-4.5 font-bold text-heading-2" data-aos="fade-down"
+                                        data-aos-anchor="#example-anchor" data-aos-offset="300" data-aos-duration="2000">
+                                        {{ $terms->title }}
                                     </h3>
-                                    <p class="font-normal text-base mb-10" data-aos="fade-left"
-                                        data-aos-anchor="#example-anchor" data-aos-offset="400" data-aos-duration="400">
-                                        {{ $Homesection->summary_description }}
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -79,25 +75,7 @@
                     Lorem ipsum dolor sit amet consectetur
                 </h2>
                 <p class="font-medium mb-6">
-                    {{ $Homesection->full_description }}
-                </p>
-                <p class="font-medium mb-6">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates aperiam est repellat eos cumque
-                    harum molestiae. Modi aperiam quam dolores quis possimus voluptatem nemo ipsam. Doloribus,
-                    reprehenderit? Quia, aliquam dolor!
-                </p>
-                <h3 class="font-extrabold text-2xl text-white mb-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h3>
-                <p class="font-medium mb-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit fugiat est, praesentium magnam hic
-                    deserunt iure animi provident eveniet aut! In laborum dolorem ad velit delectus quo consectetur at
-                    et.
-                </p>
-                <p class="font-medium mb-12.5">
-                    Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt
-                    qui esse pariatur duis deserunt mollit dolore cillum minim tempor
-                    enim. Elit aute irure tempor cupidatat incididunt.
+                    {!! $terms->description !!}
                 </p>
             </div>
         </div>

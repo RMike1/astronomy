@@ -58,8 +58,8 @@ class HomeController extends Controller
         return view('user.explore-page',compact('about_data','Service_section_header','Services','team_members','Homesection'));
     }
     public function terms_of_use(){
-        $terms=TermsOfUse::select(['title','sub_title','slug','image','is_active','text_position','summary_description','full_description'])->where('slug',$slug)->firstOrfail();
-        return view('user.explore-page',compact('about_data','Service_section_header','Services','team_members','Homesection'));
+        $terms=TermsOfUse::select(['title','background_image','description'])->latest()->firstOrfail();
+        return view('user.terms-of-use',compact('terms'));
     }
 
 
