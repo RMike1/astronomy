@@ -28,7 +28,7 @@ class ContactSectionHeaderResource extends Resource
     // protected static ?string $navigationParentItem = 'Contacts';
     protected static ?string $pluralLabel = 'Contact Header ';
     protected static ?int $navigationSort = 10;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-bottom-center';
 
     public static function form(Form $form): Form
     {

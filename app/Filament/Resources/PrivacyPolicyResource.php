@@ -23,7 +23,7 @@ class PrivacyPolicyResource extends Resource
 {
     protected static ?string $model = PrivacyPolicy::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
     protected static ?string $slug = 'privacy-policy';
     protected static ?string $navigationLabel = 'Privacy Policy';

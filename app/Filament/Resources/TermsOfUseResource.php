@@ -24,7 +24,7 @@ class TermsOfUseResource extends Resource
 {
     protected static ?string $model = TermsOfUse::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-exclamation-triangle';
 
 
     protected static ?string $slug = 'terms-of-use';
