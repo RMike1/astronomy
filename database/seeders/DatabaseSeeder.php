@@ -14,6 +14,7 @@ use Database\Seeders\HeroSectionSeeder;
 use Database\Seeders\HomePageSectionSeeder;
 use Database\Seeders\AboutSeeder;
 use Database\Seeders\TeamSeeder;
+use Database\Seeders\SocialMediaSeeder;
 
 
 
@@ -35,6 +36,7 @@ class DatabaseSeeder extends Seeder
             $this->call(HomePageSectionSeeder::class);
             $this->call(AboutSeeder::class);
             $this->call(TeamSeeder::class);
+            $this->call(SocialMediaSeeder::class);
             Service::factory(7)->create();
             ServiceSectionHeader::factory(1)->create();
             ContactSectionHeader::factory(1)->create();
