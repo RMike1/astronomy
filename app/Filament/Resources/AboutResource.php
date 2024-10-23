@@ -65,9 +65,11 @@ class AboutResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('about_hero_title')->label('Hero Title'),
-                TextColumn::make('about_hero_sub_title')->label('Hero Sub Title'),
+                TextColumn::make('about_hero_sub_title')->label('Hero Sub Title')
+                ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('about_title')->label('Title'),
-                TextColumn::make('about_sub_title')->label('Sub Title'),
+                TextColumn::make('about_sub_title')->label('Sub Title')
+                ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('about_description')->limit(50)->label('Description'),
                 ImageColumn::make('about_image')->label('Image'),
                 TextColumn::make('about_hero_video')

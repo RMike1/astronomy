@@ -56,6 +56,12 @@ class HomePageSectionResource extends Resource
                     ->required(),
 
                     Textarea::make('summary_description')->label('Summary Description')->required(),
+                    Forms\Components\Textarea::make('meta_keyword')->label('Meta Keyword')
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('meta_title')->label('Meta Title')
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('meta_description')->label('Meta Description')
+                    ->maxLength(255)->columnSpanFull(),
                     RichEditor::make('full_description')->label('Full Description')->columnSpan(2)->required(),
                 ])->columns(2),
                 Section::make()->schema([
@@ -90,7 +96,8 @@ class HomePageSectionResource extends Resource
                 })
                 ->sortable(false),
                 TextColumn::make('title')->label('Title')->searchable()->sortable(),
-                TextColumn::make('sub_title')->label('Sub Title')->searchable()->sortable(),
+                TextColumn::make('sub_title')->label('Sub Title')->searchable()->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
                 ImageColumn::make('image')->label('Background Image')->disk('public'),
                 TextColumn::make('background_video')
                 ->label('Background Video')
@@ -103,6 +110,14 @@ class HomePageSectionResource extends Resource
                 ->html(),
                 ToggleColumn::make('is_active')->label('Active')->sortable(),
                 TextColumn::make('summary_description')->label('Summary Description')->limit(50)->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('meta_keyword')
+                ->searchable()
+                ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('meta_title')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('meta_description')
+                    ->toggleable(isToggledHiddenByDefault: true)
             ])
             ->filters([
                 //

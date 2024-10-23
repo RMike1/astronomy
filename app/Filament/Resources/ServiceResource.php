@@ -59,12 +59,12 @@ class ServiceResource extends Resource
                 TextColumn::make('counter')
                 ->label('No.')
                 ->getStateUsing(function ($rowLoop, $record) {
-                    // Return the current row index + 1
                     return $rowLoop->iteration;
                 })
                 ->sortable(false),
                 TextColumn::make('title')->label('Title')->searchable()->sortable(),
-                TextColumn::make('slug')->label('Slug')->limit(50)->searchable()->sortable(),
+                TextColumn::make('slug')->label('Slug')->limit(50)->searchable()->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
                 ToggleColumn::make('is_active')->label('Active')->sortable(),
                 TextColumn::make('summary_description')->limit(50)->label('Summary Description')->searchable()->sortable(),
             ])

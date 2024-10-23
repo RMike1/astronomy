@@ -50,7 +50,7 @@ class ContactSectionHeaderResource extends Resource
         return $table
             ->columns([
                     TextColumn::make('title')->label('Title'),
-                    TextColumn::make('description')->label('Description'),
+                    TextColumn::make('description')->label('Description')->limit(70),
             ])
             ->filters([
                 //
