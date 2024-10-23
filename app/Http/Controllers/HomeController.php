@@ -39,6 +39,7 @@ class HomeController extends Controller
         $Services=Service::where('is_active',true)->select(['title','slug','is_active','summary_description'])->latest()->take(6)->get();
         $Service_section_header = ServiceSectionHeader::select(['title', 'description'])->first();
         $Contact_section_header = ContactSectionHeader::select(['title', 'description'])->first();
+        
         return view('user.index',compact('herosection','Homesections','Services','Service_section_header','Contact_section_header'));
     }
 

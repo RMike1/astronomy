@@ -26,6 +26,9 @@ class HomePageSectionSeeder extends Seeder
             'image' => 'user/images/bc/image1.jpg',
             'background_video' => 'user/video/video1.mp4',
             'background_type' => 'image',
+            'meta_title'=>'Lorem ipsum',
+            'meta_keyword'=>'title lorem ipsum',
+            'meta_description'=>'description lorem ipsum'
         ],
             [
                 'title' => 'Lorem Ipsum 2',
@@ -38,6 +41,9 @@ class HomePageSectionSeeder extends Seeder
                 'image' => 'user/images/bc/image2.jpg',
                 'background_video' => 'user/video/video1.mp4',
                 'background_type' => 'video',
+                'meta_title'=>'Lorem ipsum',
+                'meta_keyword'=>'title lorem ipsum',
+                'meta_description'=>'description lorem ipsum'
             ],
             [
                 'title' => 'Lorem Ipsum 3',
@@ -50,6 +56,9 @@ class HomePageSectionSeeder extends Seeder
                 'image' => 'user/images/bc/image3.jpg',
                 'background_video' => 'user/video/video1.mp4',
                 'background_type' => 'image',
+                'meta_title'=>'Lorem ipsum',
+                'meta_keyword'=>'title lorem ipsum',
+                'meta_description'=>'description lorem ipsum'
             ],
             [
                 'title' => 'Lorem Ipsum 4',
@@ -62,6 +71,9 @@ class HomePageSectionSeeder extends Seeder
                 'image' => 'user/images/bc/image4.jpg',
                 'background_video' => 'user/video/video1.mp4',
                 'background_type' => 'video',
+                'meta_title'=>'Lorem ipsum',
+                'meta_keyword'=>'title lorem ipsum',
+                'meta_description'=>'description lorem ipsum'
             ],
             [
                 'title' => 'Lorem Ipsum 5',
@@ -74,6 +86,9 @@ class HomePageSectionSeeder extends Seeder
                 'image' => 'user/images/bc/image5.jpg',
                 'background_video' => 'user/video/video1.mp4',
                 'background_type' => 'image',
+                'meta_title'=>'Lorem ipsum',
+                'meta_keyword'=>'title lorem ipsum',
+                'meta_description'=>'description lorem ipsum'
             ],
             ]
         );

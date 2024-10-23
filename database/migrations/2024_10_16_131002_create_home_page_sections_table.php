@@ -22,6 +22,9 @@ return new class extends Migration
             $table->string('background_type')->default('image');
             $table->boolean('is_active')->default(1);
             $table->string('text_position')->default('right')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keyword')->nullable();
+            $table->longText('meta_description')->nullable();
             $table->mediumText('summary_description');
             $table->longText('full_description');
             $table->softDeletes();

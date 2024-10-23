@@ -19,7 +19,11 @@ return new class extends Migration
             $table->string('about_image');
             $table->string('about_title');
             $table->string('about_sub_title');
+            $table->longText('about_summary_description');
             $table->longText('about_description');
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keyword')->nullable();
+            $table->longText('meta_description')->nullable();
             $table->timestamps();
         });
     }

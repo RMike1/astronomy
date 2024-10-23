@@ -121,7 +121,7 @@
             video.play();  
           }
         });
-      </script>
+    </script>
 </body>
 
 </html>
