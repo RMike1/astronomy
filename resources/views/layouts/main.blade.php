@@ -110,17 +110,17 @@
         });
     </script>
     <script>
-        var video = document.getElementById("Background-Video");
-        video.addEventListener('play', function() {
-          video.currentTime = 0; 
-        });
-        video.addEventListener('timeupdate', function() {
-          if (video.currentTime >= 35) { 
-            video.pause(); 
-            video.currentTime = 0;
-            video.play();  
-          }
-        });
+        // var video = document.getElementById("Background-Video");
+        // video.addEventListener('play', function() {
+        //   video.currentTime = 0; 
+        // });
+        // video.addEventListener('timeupdate', function() {
+        //   if (video.currentTime >= 35) { 
+        //     video.pause(); 
+        //     video.currentTime = 0;
+        //     video.play();  
+        //   }
+        // });
     </script>
 </body>
 
