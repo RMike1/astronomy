@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\ServiceSectionHeader;
 use App\Models\ContactSectionHeader;
 use App\Models\TermsOfUse;
+use App\Models\Setting;
 use Illuminate\Database\Seeder;
 use Database\Seeders\HeroSectionSeeder;
 use Database\Seeders\HomePageSectionSeeder;
@@ -45,5 +46,6 @@ class DatabaseSeeder extends Seeder
             ContactSectionHeader::factory(1)->create();
             TermsOfUse::factory(1)->create();
             PrivacyPolicy::factory(1)->create();
+            Setting::factory(1)->create();
     }
 }
