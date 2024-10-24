@@ -121,7 +121,7 @@ class SocialMediaRelationManager extends RelationManager
             ->columns([
                 TextColumn::make('name')->label('Social Media Name')->searchable()->sortable(),
                 TextColumn::make('url')->label('Url')->searchable()->sortable(),
-                TextColumn::make('icon_path')->label('')->searchable()->sortable()->limit(50),
+                // TextColumn::make('icon_path')->label('')->searchable()->sortable()->limit(50),
             ])
             ->filters([
                 //
@@ -131,7 +131,8 @@ class SocialMediaRelationManager extends RelationManager
                 
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                ->slideOver(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
