@@ -20,10 +20,10 @@ class CompanySocialMediaResource extends Resource
 {
     protected static ?string $model = CompanySocialMedia::class;
 
-    protected static ?string $slug = 'social-media-section';
+    protected static ?string $slug = 'social-media-platform';
     protected static ?string $navigationLabel = 'Social Media';
-    protected static ?string $modelLabel = 'Social Medias';
-    protected static ?string $pluralLabel = 'Social Media';
+    protected static ?string $modelLabel = 'Platform';
+    protected static ?string $pluralLabel = 'Social Media Platforms';
     protected static ?int $navigationSort = 25;
     protected static ?string $navigationGroup = 'Settings';
 

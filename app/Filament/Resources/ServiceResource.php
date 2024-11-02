@@ -32,6 +32,8 @@ class ServiceResource extends Resource
     protected static ?string $navigationLabel = 'Service Section';
     protected static ?string $navigationIcon = 'heroicon-o-list-bullet';
 
+    protected static ?string $pluralLabel = 'Services Content';
+
     public static function form(Form $form): Form
     {
         return $form

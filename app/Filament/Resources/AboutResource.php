@@ -24,10 +24,10 @@ class AboutResource extends Resource
 {
     protected static ?string $model = About::class;
 
-    protected static ?string $slug = 'about-page';
-    protected static ?string $navigationLabel = 'About Page';
-    protected static ?string $modelLabel = 'About Page';
-    protected static ?string $pluralLabel = 'About ';
+    protected static ?string $slug = 'company-profile';
+    protected static ?string $navigationLabel = 'Company Profile';
+    protected static ?string $modelLabel = 'Company Profile';
+    protected static ?string $pluralLabel = 'Company Profile';
     protected static ?int $navigationSort = 20;
     protected static ?string $navigationGroup = 'About Page';
 

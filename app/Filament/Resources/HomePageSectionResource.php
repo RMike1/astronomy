@@ -28,8 +28,8 @@ class HomePageSectionResource extends Resource
     protected static ?string $model = HomePageSection::class;
 
     protected static ?string $slug = 'home-section';
-    protected static ?string $navigationLabel = 'Home Section';
-    protected static ?string $modelLabel = 'Home section';
+    protected static ?string $navigationLabel = 'Main Page Setup';
+    protected static ?string $modelLabel = 'Home Page Content';
     protected static ?string $navigationGroup = 'Home Page';
 
     protected static ?string $navigationIcon = 'heroicon-o-home-modern';

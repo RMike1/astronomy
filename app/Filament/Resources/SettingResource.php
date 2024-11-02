@@ -22,8 +22,8 @@ class SettingResource extends Resource
 
     protected static ?string $slug = 'settings';
     protected static ?string $navigationLabel = 'S.E.O Management';
-    protected static ?string $modelLabel = 'Settings';
-    protected static ?string $pluralLabel = 'Settings';
+    protected static ?string $modelLabel = 'Meta Tags';
+    protected static ?string $pluralLabel = 'SEO Configurations';
     protected static ?int $navigationSort = 25;
     protected static ?string $navigationGroup = 'Settings';
 

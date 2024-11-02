@@ -26,7 +26,7 @@ class HeroSectionResource extends Resource
     protected static ?string $navigationGroup = 'Home Page';
     protected static ?string $navigationLabel = 'Hero Section';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $pluralLabel = 'Home Page Header';
+    protected static ?string $pluralLabel = 'Homepage Hero Section';
 
     public static function form(Form $form): Form
     {
@@ -60,7 +60,7 @@ class HeroSectionResource extends Resource
                             </video>';
                 })
                 ->html(),
-                TextColumn::make('description'),
+                TextColumn::make('description')->limit(50),
             
                  
             ])
