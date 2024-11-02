@@ -14,9 +14,9 @@ return new class extends Migration
     {
         Schema::create('social_media', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('url');
-            $table->longText('icon_path')->nullable();
+            $table->longText('platform');
+            $table->string('url')->nullable();
+            $table->boolean('is_active')->default(1);
             $table->foreignIdFor(Team::class);
             $table->timestamps();
         });

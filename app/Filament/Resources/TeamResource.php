@@ -29,7 +29,7 @@ class TeamResource extends Resource
     protected static ?string $pluralLabel = 'Team';
     protected static ?int $navigationSort = 20;
     protected static ?string $navigationGroup = 'About Page';
-    protected static ?string $navigationParentItem = 'About Page';
+    protected static ?string $navigationParentItem = 'Company Profile';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
