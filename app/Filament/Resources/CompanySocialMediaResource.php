@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use App\Models\CompanySocialMedia;
 use Filament\Forms\Components\Section;
 use Filament\Tables\Columns\ToggleColumn;
+use Filament\Forms\Components\CheckboxList;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CompanySocialMediaResource\Pages;
@@ -33,11 +34,15 @@ class CompanySocialMediaResource extends Resource
         return $form
             ->schema([
                 Section::make()->schema([
+
+                    Forms\Components\Placeholder::make('platform')
+                    ->label('Editing Platform:')
+                    ->content(fn ($record) => ucfirst($record->platform->name) ?? 'New Platform'),
+
                     Forms\Components\TextInput::make('url')
                         ->maxLength(255),
                     Forms\Components\Toggle::make('is_active')
                         ->required(),
-                    
                 ])
             ]);
     }
@@ -46,7 +51,7 @@ class CompanySocialMediaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('platform')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('url')
                     ->searchable(),

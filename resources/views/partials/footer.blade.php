@@ -26,14 +26,14 @@
                 </p>
                 <div class="flex items-center gap-5">
                     @php
-                        $companySocialmedias=App\Models\CompanySocialMedia::where('is_active','1')->select(['name','url','icon_path'])->get();
+                        $companySocialmedias=App\Models\CompanySocialMedia::where('is_active','1')->select(['platform','url'])->get();
                     @endphp
                     @forelse ($companySocialmedias as $companySocialmedia)
-                    <a target="_blank" href="{{$companySocialmedia->url}}" class="hover:text-white ease-in duration-300">
+                    <a target="_blank" href="{{$companySocialmedia->url ?? "#" }}" class="hover:text-white ease-in duration-300">
                         <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0,0,256,256" fill="none">
                             <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                                 <g transform="scale(10.66667,10.66667)">
-                                    {!!$companySocialmedia->icon_path!!}
+                                    {!!$companySocialmedia->platform->iconPath()!!}
                                 </g>
                             </g>
                         </svg>

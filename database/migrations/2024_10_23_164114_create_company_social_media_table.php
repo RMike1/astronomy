@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('company_social_media', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->longText('platform');
             $table->string('url')->nullable();
             $table->boolean('is_active')->default(1);
-            $table->longText('icon_path')->nullable();
             $table->timestamps();
         });
     }

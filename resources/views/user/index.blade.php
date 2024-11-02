@@ -18,7 +18,7 @@
                         class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient">Services</a>
                 </li>
                 <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
-                    <a wire:navigate href="{{route('about')}}"
+                    <a href="{{route('about')}}"
                         class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient">About
                         Us</a>
                 </li>
