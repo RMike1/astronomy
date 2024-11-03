@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('service_section_headers', function (Blueprint $table) {
+        Schema::create('team_section_headers', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
             $table->string('sub_title')->nullable();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('service_section_headers');
+        Schema::dropIfExists('team_section_headers');
     }
 };

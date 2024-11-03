@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('contact_section_headers', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->longText('description');
+            $table->string('title')->nullable();
+            $table->string('sub_title')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

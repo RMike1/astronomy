@@ -18,6 +18,7 @@ class ContactSectionHeaderFactory extends Factory
     {
         return [
             'title'=>fake()->sentence(),
+            'sub_title'=>fake()->sentence(),
             'description'=>fake()->paragraph(),
         ];
     }
