@@ -6,6 +6,7 @@ use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 use App\Models\HomePageSection;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
@@ -41,8 +42,19 @@ class HomePageSectionResource extends Resource
         return $form
             ->schema([
                 Section::make()->schema([
-                    TextInput::make('title')
+                    TextInput::make('title')->maxLength(150)->minLength(2)
                     ->label('Title')
+                    ->required()
+                    ->live(onBlur:true)
+                    ->afterStateUpdated( function(string $operation, string $state, $set){
+                        if($operation==='edit'){
+                            return;
+                        }
+                        $set('slug', Str::slug($state));
+                    }),
+                    TextInput::make('slug')->unique(ignoreRecord:true)->maxLength(150)
+                    ->label('Slug')
+                    ->readOnly(fn ($record) => true)
                     ->required(),
                     TextInput::make('sub_title')
                     ->label('Sub Title')
@@ -64,8 +76,7 @@ class HomePageSectionResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('meta_description')->label('Meta Description')
-                    ->required()
-                    ->columnSpanFull(),
+                    ->required(),
                     RichEditor::make('full_description')->label('Full Description')->columnSpan(2)->required(),
                 ])->columns(2),
                 Section::make()->schema([
@@ -74,7 +85,7 @@ class HomePageSectionResource extends Resource
                     FileUpload::make('image')->label('Image')->disk('public')->directory('Home-Section-images')->required()->maxSize(6096)
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
                     Select::make('background_type')
-                    ->label('Choose Background For Single page')
+                    ->label('Select Background For Details page')
                     ->options([
                         'video' => 'Video',
                         'image' => 'Image',
@@ -82,7 +93,7 @@ class HomePageSectionResource extends Resource
                     ->required(),
     
                     Toggle::make('is_active')
-                    ->label('Active'),
+                    ->label('Is Active ?'),
 
                 ])->columns(2),
                 
@@ -100,6 +111,8 @@ class HomePageSectionResource extends Resource
                 })
                 ->sortable(false),
                 TextColumn::make('title')->label('Title')->searchable()->sortable(),
+                TextColumn::make('slug')->label('Slug')->searchable()->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('sub_title')->label('Sub Title')->searchable()->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),
                 ImageColumn::make('image')->label('Background Image')->disk('public'),

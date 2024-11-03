@@ -6,6 +6,7 @@ use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\SocialMedia;
 use App\Enums\SocialMediaType;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
@@ -33,16 +34,16 @@ class SocialMediaRelationManager extends RelationManager
         return $form
             ->schema([
                 Select::make('platform')
-                    ->label('Platform Name')
-                    ->options(SocialMediaType::class)
-                    ->required(),
-                    TextInput::make('url')
-                    ->label('Platform Url')
-                    ->required()
-                    ->maxLength(255),
-                    Toggle::make('is_active')
-                    ->required(),
-
+                ->label('Platform Name')
+                ->options(SocialMediaType::class)
+                ->disabled(fn ($record) => !is_null($record)),
+                TextInput::make('url')
+                ->label('Platform Url')
+                ->required()
+                ->maxLength(255),
+                Toggle::make('is_active')
+                ->label('is Active ??')
+                ->required(),
             ]);
     }
 
@@ -56,7 +57,6 @@ class SocialMediaRelationManager extends RelationManager
                 IconColumn::make('is_active')->label('Is Active')
                 ->boolean()
                 ->sortable(),
-                // ToggleColumn::make('is_active')->label('Is Active')->sortable(),
             ])
             ->filters([
                 //

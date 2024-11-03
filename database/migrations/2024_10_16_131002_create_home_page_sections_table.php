@@ -14,19 +14,19 @@ return new class extends Migration
     {
         Schema::create('home_page_sections', function (Blueprint $table) {
             $table->id();
-            $table->string('slug')->unique();
+            $table->string('slug')->unique()->nullable();
             $table->string('title')->unique();
-            $table->string('sub_title');
-            $table->string('image');
-            $table->string('background_video');
+            $table->string('sub_title')->nullable();
+            $table->string('image')->nullable();
+            $table->string('background_video')->nullable();
             $table->string('background_type')->default('image');
             $table->boolean('is_active')->default(1);
             $table->string('text_position')->default('right')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_keyword')->nullable();
             $table->longText('meta_description')->nullable();
-            $table->mediumText('summary_description');
-            $table->longText('full_description');
+            $table->mediumText('summary_description')->nullable();
+            $table->longText('full_description')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
