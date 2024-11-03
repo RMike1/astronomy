@@ -28,6 +28,7 @@ class ServiceResource extends Resource
     protected static ?string $model = Service::class;
 
     protected static ?string $navigationGroup = 'Home Page';
+    protected static ?string $slug = 'services';
 
     protected static ?string $navigationLabel = 'Service Section';
     protected static ?string $navigationIcon = 'heroicon-o-list-bullet';
@@ -100,9 +101,9 @@ class ServiceResource extends Resource
     {
         return [
             'index' => Pages\ListServices::route('/'),
-            'view' => Pages\ViewService::route('/{record}'),
             'create' => Pages\CreateService::route('/create'),
             'edit' => Pages\EditService::route('/{record}/edit'),
+            'view' => Pages\ViewService::route('/{record}'),
         ];
     }
     public static function getEloquentQuery(): Builder

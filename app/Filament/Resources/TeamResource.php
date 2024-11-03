@@ -8,7 +8,9 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
@@ -52,6 +54,8 @@ class TeamResource extends Resource
                         ->required(),
                     FileUpload::make('image')->label('Image')->disk('public')->directory('Team')->required()->maxSize(2048)
                         ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                    Toggle::make('is_active')
+                        ->label('Active'),
                 ])->columns(2),
             ]);
     }
@@ -71,6 +75,9 @@ class TeamResource extends Resource
                 TextColumn::make('email')->label('Email')->searchable()->sortable(),
                 TextColumn::make('position')->label('Position')->searchable()->sortable(),
                 ImageColumn::make('image')->limit(50)->label('Photo'),
+                IconColumn::make('is_active')->label('Is Active')
+                ->boolean()
+                ->sortable(),
             ])
             ->filters([
                 //

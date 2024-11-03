@@ -20,6 +20,7 @@ class TeamSeeder extends Seeder
                 'email'=>'johndoe@gmail.com',
                 'image'=>'user/images/team-05.png',
                 'position'=>'astronaut',
+                'is_active' => true,
             ],
             [
                 'first_name'=>'Peter',
@@ -27,6 +28,7 @@ class TeamSeeder extends Seeder
                 'email'=>'eric@gmail.com',
                 'image'=>'user/images/team-04.png',
                 'position'=>'developer',
+                'is_active' => true,
             ],
             [
                 'first_name'=>'Danny',
@@ -34,6 +36,7 @@ class TeamSeeder extends Seeder
                 'email'=>'danny@gmail.com',
                 'image'=>'user/images/team-03.png',
                 'position'=>'astronaut',
+                'is_active' => true,
             ],
             [
                 'first_name'=>'Lorenzo',
@@ -41,6 +44,7 @@ class TeamSeeder extends Seeder
                 'email'=>'jack@gmail.com',
                 'image'=>'user/images/team-01.png',
                 'position'=>'astronaut',
+                'is_active' => true,
             ],
 
         ]);

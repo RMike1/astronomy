@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Team;
+use App\Enums\SocialMediaType;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SocialMedia extends Model
 {
@@ -15,4 +16,11 @@ class SocialMedia extends Model
     public function teams(){
         return $this->belongsTo(Team::class);
     }
+
+    protected $casts = [
+        'platform' => SocialMediaType::class,
+        'is_active' => 'boolean',
+    ];
+
+
 }

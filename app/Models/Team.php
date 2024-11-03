@@ -17,6 +17,4 @@ class Team extends Model
     public function social_media(){
         return $this->hasMany(SocialMedia::class);
     }
-
-
 }

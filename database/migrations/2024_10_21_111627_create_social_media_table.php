@@ -17,7 +17,7 @@ return new class extends Migration
             $table->longText('platform');
             $table->string('url')->nullable();
             $table->boolean('is_active')->default(1);
-            $table->foreignIdFor(Team::class);
+            $table->foreignIdFor(Team::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

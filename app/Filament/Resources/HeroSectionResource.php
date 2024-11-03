@@ -39,7 +39,8 @@ class HeroSectionResource extends Resource
                     ])->columns(1),
                 Section::make()->schema([
                     FileUpload::make('video')->label('Background Video')->disk('public')->directory('Hero-Videos')->maxSize(5096)
-                    ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
+                    ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi'])
+                    ->required(),
 
                     ])->columns(2),
             ]);

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('image');
             $table->string('position');
+            $table->boolean('is_active')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

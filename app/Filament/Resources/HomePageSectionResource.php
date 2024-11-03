@@ -10,8 +10,9 @@ use App\Models\HomePageSection;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
@@ -57,11 +58,14 @@ class HomePageSectionResource extends Resource
 
                     Textarea::make('summary_description')->label('Summary Description')->required(),
                     Forms\Components\Textarea::make('meta_keyword')->label('Meta Keyword')
+                    ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('meta_title')->label('Meta Title')
+                    ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('meta_description')->label('Meta Description')
-                    ->maxLength(255)->columnSpanFull(),
+                    ->required()
+                    ->columnSpanFull(),
                     RichEditor::make('full_description')->label('Full Description')->columnSpan(2)->required(),
                 ])->columns(2),
                 Section::make()->schema([
@@ -108,7 +112,9 @@ class HomePageSectionResource extends Resource
                             </video>';
                 })
                 ->html(),
-                ToggleColumn::make('is_active')->label('Active')->sortable(),
+                IconColumn::make('is_active')->label('Is Active')
+                ->boolean()
+                ->sortable(),
                 TextColumn::make('summary_description')->label('Summary Description')->limit(50)->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('meta_keyword')
                 ->searchable()
