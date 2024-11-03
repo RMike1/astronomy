@@ -27,13 +27,11 @@ class TeamResource extends Resource
 
     protected static ?string $slug = 'team-members';
     protected static ?string $navigationLabel = 'Team';
-    protected static ?string $modelLabel = 'Team';
+    protected static ?string $modelLabel = 'Team Member';
     protected static ?string $pluralLabel = 'Team';
     protected static ?int $navigationSort = 20;
     protected static ?string $navigationGroup = 'About Page';
-    protected static ?string $navigationParentItem = 'Company Profile';
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     public static function form(Form $form): Form
     {

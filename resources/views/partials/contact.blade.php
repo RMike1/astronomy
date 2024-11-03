@@ -5,11 +5,10 @@
                 <span
                     class="hero-subtitle-gradient relative mb-4 font-medium text-sm inline-flex items-center gap-2 py-2 px-4.5 rounded-full">
                     <img src="{{ asset('user/images/icon-title.svg') }}" alt="icon">
-                    <span class="hero-subtitle-text"> Need Any Help? </span>
+                    <span class="hero-subtitle-text"> {{$Contact_section_header->sub_title}} </span>
                 </span>
                 <h2 class="text-white mb-4.5 text-2xl font-extrabold sm:text-4xl xl:text-heading-2">
-                    Contact Us
-                    {{-- {{$Contact_section_header->title}} --}}
+                    {{$Contact_section_header->title}}
                 </h2>
                 <p class="max-w-[714px] mx-auto font-medium">
                     {{$Contact_section_header->description}}

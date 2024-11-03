@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ContactSectionHeaderResource\Pages;
-use App\Filament\Resources\ContactSectionHeaderResource\RelationManagers;
-use App\Models\ContactSectionHeader;
+use App\Filament\Resources\TeamSectionHeaderResource\Pages;
+use App\Filament\Resources\TeamSectionHeaderResource\RelationManagers;
+use App\Models\TeamSectionHeader;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -17,18 +17,17 @@ use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ContactSectionHeaderResource extends Resource
+class TeamSectionHeaderResource extends Resource
 {
-    protected static ?string $model = ContactSectionHeader::class;
+    protected static ?string $model = TeamSectionHeader::class;
 
-    protected static ?string $slug = 'contact-header';
-    protected static ?string $navigationLabel = 'Contact Section Header';
-    protected static ?string $modelLabel = 'Contact Header';
-    protected static ?string $navigationGroup = 'Home Page';
-    // protected static ?string $navigationParentItem = 'Contacts';
-    protected static ?string $pluralLabel = 'Contact Header ';
-    protected static ?int $navigationSort = 10;
-    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-bottom-center';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationParentItem = 'Team';
+    protected static ?string $slug = 'team-section-header';
+    protected static ?string $navigationLabel = 'Team Section Header';
+    protected static ?string $modelLabel = 'Team Section Header';
+    protected static ?string $navigationGroup = 'About Page';
+    protected static ?string $pluralLabel = 'Team Section Header ';
 
     public static function form(Form $form): Form
     {
@@ -53,12 +52,14 @@ class ContactSectionHeaderResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')->label('Title'),
-                TextColumn::make('description')->label('Description')->limit(70),
+                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('sub_title')->limit(20),
+                Tables\Columns\TextColumn::make('description')->limit(70),
             ])
             ->filters([
                 //
             ])
+            ->paginated(false)
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
@@ -80,9 +81,9 @@ class ContactSectionHeaderResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListContactSectionHeaders::route('/'),
-            'create' => Pages\ViewContactSectionHeader::route('/{record}'),
-            'edit' => Pages\EditContactSectionHeader::route('/{record}/edit'),
+            'index' => Pages\ListTeamSectionHeaders::route('/'),
+            'create' => Pages\CreateTeamSectionHeader::route('/create'),
+            'edit' => Pages\EditTeamSectionHeader::route('/{record}/edit'),
         ];
     }
 }

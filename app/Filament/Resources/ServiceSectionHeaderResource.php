@@ -39,11 +39,15 @@ class ServiceSectionHeaderResource extends Resource
                     TextInput::make('title')
                     ->label('Title')
                     ->required(),
+                    TextInput::make('sub_title')
+                    ->label('Sub Title')
+                    ->required(),
                     Textarea::make('description')
                     ->label('Description')
-                    ->required(),
-                    ])
-                ])->columns(1);
+                    ->required()
+                    ->columnSpan(2),
+                    ]),
+                ])->columns(2);
     }
 
     public static function table(Table $table): Table

@@ -5,15 +5,13 @@
             <span
                 class="hero-subtitle-gradient relative mb-4 font-medium text-sm inline-flex items-center gap-2 py-2 px-4.5 rounded-full">
                 <img src="{{ asset('user/images/icon-title.svg') }}" alt="icon">
-                <span class="hero-subtitle-text"> Meet Out Team </span>
+                <span class="hero-subtitle-text"> {{$Team_section_header->sub_title}} </span>
             </span>
             <h2 class="text-white mb-4.5 text-2xl font-extrabold sm:text-4xl xl:text-heading-2">
-                Our Dynamic Team
+                {{$Team_section_header->title}}
             </h2>
             <p class="max-w-[714px] mx-auto font-medium">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam perferendis quos aperiam ut,
-                reprehenderit magnam itaque fugit ea quasi rerum labore tenetur. Neque et expedita eius sunt,
-                repellendus ducimus ratione!
+                {{$Team_section_header->description}}
             </p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 lg:gap-17.5">

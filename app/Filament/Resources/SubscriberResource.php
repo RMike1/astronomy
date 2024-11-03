@@ -17,7 +17,7 @@ class SubscriberResource extends Resource
 {
     protected static ?string $model = Subscriber::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-queue-list';
 
     protected static ?string $slug = 'subscribers';
     protected static ?string $navigationLabel = 'Subscribers';

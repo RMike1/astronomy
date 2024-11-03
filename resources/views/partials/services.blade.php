@@ -5,7 +5,7 @@
             <span
                 class="hero-subtitle-gradient relative mb-4 font-medium text-sm inline-flex items-center gap-2 py-2 px-4.5 rounded-full">
                 <img src="{{ asset('user/images/icon-title.svg') }}" alt="icon">
-                <span class="hero-subtitle-text"> Some of Main Features </span>
+                <span class="hero-subtitle-text"> {{$Service_section_header->sub_title}} </span>
             </span>
             <h2 class="text-white mb-4.5 text-2xl font-extrabold sm:text-4xl xl:text-heading-2">
                 {{$Service_section_header->title}}
