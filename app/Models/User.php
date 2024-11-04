@@ -6,6 +6,7 @@ namespace App\Models;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
+use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 use Filament\Models\Contracts\FilamentUser;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,10 +15,11 @@ use Filament\Panel;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements FilamentUser 
+// class User extends Authenticatable 
 {
 
 
-    use HasApiTokens, HasRoles;
+    use HasApiTokens, HasRoles, HasPanelShield;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
@@ -26,9 +28,9 @@ class User extends Authenticatable implements FilamentUser
     use TwoFactorAuthenticatable;
 
 
-    public function canAccessPanel(Panel $panel): bool{
-            return $this->email==="admin@gmail.com";
-    }
+    // public function canAccessPanel(Panel $panel): bool{
+    //         return $this->email==="admin@gmail.com";
+    // }
 
 
     /**
