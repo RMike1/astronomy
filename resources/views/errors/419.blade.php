@@ -35,13 +35,12 @@
     </section>
     <section class=" pt-20 lg:pt-22.5 xl:pt-27.5 pb-20 lg:pb-25 xl:pb-30 2xl:pb-[150px]">
         <div class="wow fadeInUp mx-auto w-full max-w-[597px] text-center px-4 sm:px-8 lg:px-0" data-wow-delay="0.1s">
-            <img src="{{ asset('user/images/404.svg') }}" alt="404" class="mx-auto mb-12.5" />
+            <h1 class="mb-5.5 text-heading-2 text-7xl text-white">419</h1>
             <h2 class="mb-5.5 text-heading-3 font-bold text-white">
-                Oops! Page Not Found.
+                Oops! Something went wrong.
             </h2>
             <p class="font-medium mb-9">
-                We couldn’t find the page you’re looking for. It might have been moved or no longer exists. Try
-                exploring other pages or return to the homepage using the button below.
+                Why not try refreshing your page? or you can contact
             </p>
             <a href="{{ route('home') }}"
                 class="button-border-gradient relative rounded-lg text-white text-sm inline-flex items-center py-3.5 px-7 shadow-button hover:button-gradient-hover hover:shadow-none">

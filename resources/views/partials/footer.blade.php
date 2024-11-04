@@ -42,7 +42,7 @@
                     @endforelse
                 </div>
                 <p class="font-medium mt-5.5">
-                    Apollo..
+                    © {{now()->year}} Apollo.
                 </p>
             </div>
             <div class="max-w-[571px] w-full">

@@ -37,7 +37,8 @@ class UserResource extends Resource
                     ->password()
                     ->required()
                     ->maxLength(255),
-                FileUpload::make('profile_photo_path')->label('Profile Photo')->disk('public')->directory('profile-photo-')->required()->maxSize(3096)
+                    
+                FileUpload::make('profile_photo_path')->label('Profile Photo')->disk('public')->directory('profile-photo')->maxSize(3096)
                 ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
                 Forms\Components\Select::make('roles')
                 ->relationship('roles', 'name')
@@ -71,8 +72,9 @@ class UserResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                // Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -93,7 +95,6 @@ class UserResource extends Resource
         return [
             'index' => Pages\ListUsers::route('/'),
             'create' => Pages\CreateUser::route('/create'),
-            'view' => Pages\ViewUser::route('/{record}'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }

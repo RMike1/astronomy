@@ -38,7 +38,6 @@ class CompanySocialMediaResource extends Resource
                     Forms\Components\Placeholder::make('platform')
                     ->label('Editing Platform:')
                     ->content(fn ($record) => ucfirst($record->platform->name) ?? 'New Platform'),
-
                     Forms\Components\TextInput::make('url')
                         ->maxLength(255),
                     Forms\Components\Toggle::make('is_active')
