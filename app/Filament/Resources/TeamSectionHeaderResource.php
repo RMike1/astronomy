@@ -16,8 +16,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 
-class TeamSectionHeaderResource extends Resource
+class TeamSectionHeaderResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = TeamSectionHeader::class;
 
@@ -32,18 +33,18 @@ class TeamSectionHeaderResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-        ->schema([
-            Section::make()->schema([
-                TextInput::make('title')
-                ->label('Title')
-                ->required(),
-                TextInput::make('sub_title')
-                ->label('Sub Title')
-                ->required(),
-                Textarea::make('description')
-                ->label('Description')
-                ->required()
-                ->columnSpan(2),
+            ->schema([
+                Section::make()->schema([
+                    TextInput::make('title')
+                        ->label('Title')
+                        ->required(),
+                    TextInput::make('sub_title')
+                        ->label('Sub Title')
+                        ->required(),
+                    Textarea::make('description')
+                        ->label('Description')
+                        ->required()
+                        ->columnSpan(2),
                 ]),
             ])->columns(2);
     }
@@ -84,6 +85,15 @@ class TeamSectionHeaderResource extends Resource
             'index' => Pages\ListTeamSectionHeaders::route('/'),
             'create' => Pages\CreateTeamSectionHeader::route('/create'),
             'edit' => Pages\EditTeamSectionHeader::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'update',
         ];
     }
 }

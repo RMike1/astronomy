@@ -15,14 +15,14 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CompanySocialMediaResource\Pages;
 use App\Filament\Resources\CompanySocialMediaResource\RelationManagers;
-
-class CompanySocialMediaResource extends Resource
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
+class CompanySocialMediaResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = CompanySocialMedia::class;
 
     protected static ?string $slug = 'social-media-platform';
-    protected static ?string $navigationLabel = 'Social Media';
-    protected static ?string $modelLabel = 'Platform';
+    protected static ?string $navigationLabel = 'Social Media Platforms';
+    protected static ?string $modelLabel = 'Social Media Platforms';
     protected static ?string $pluralLabel = 'Social Media Platforms';
     protected static ?int $navigationSort = 25;
     protected static ?string $navigationGroup = 'Settings';
@@ -85,6 +85,15 @@ class CompanySocialMediaResource extends Resource
             'index' => Pages\ListCompanySocialMedia::route('/'),
             'create' => Pages\CreateCompanySocialMedia::route('/create'),
             'edit' => Pages\EditCompanySocialMedia::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'update',
         ];
     }
 }

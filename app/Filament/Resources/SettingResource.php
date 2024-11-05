@@ -13,8 +13,9 @@ use Filament\Tables\Table;
 use Filament\Forms\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 
-class SettingResource extends Resource
+class SettingResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Setting::class;
 
@@ -91,4 +92,14 @@ class SettingResource extends Resource
             'edit' => Pages\EditSetting::route('/{record}/edit'),
         ];
     }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'update',
+        ];
+    }
+
 }

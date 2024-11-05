@@ -24,13 +24,14 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\HomePageSectionResource\Pages;
 use App\Filament\Resources\HomePageSectionResource\RelationManagers;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 
-class HomePageSectionResource extends Resource
+class HomePageSectionResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = HomePageSection::class;
 
     protected static ?string $slug = 'home-section';
-    protected static ?string $navigationLabel = 'Main Page Setup';
+    protected static ?string $navigationLabel = 'Home Page Contents';
     protected static ?string $modelLabel = 'Home Page Content';
     protected static ?string $navigationGroup = 'Home Page';
 
@@ -43,60 +44,60 @@ class HomePageSectionResource extends Resource
             ->schema([
                 Section::make()->schema([
                     TextInput::make('title')->maxLength(150)->minLength(2)
-                    ->label('Title')
-                    ->required()
-                    ->live(onBlur:true)
-                    ->afterStateUpdated( function(string $operation, string $state, $set){
-                        if($operation==='edit'){
-                            return;
-                        }
-                        $set('slug', Str::slug($state));
-                    }),
-                    TextInput::make('slug')->unique(ignoreRecord:true)->maxLength(150)
-                    ->label('Slug')
-                    ->readOnly(fn ($record) => true)
-                    ->required(),
+                        ->label('Title')
+                        ->required()
+                        ->live(onBlur: true)
+                        ->afterStateUpdated(function (string $operation, string $state, $set) {
+                            if ($operation === 'edit') {
+                                return;
+                            }
+                            $set('slug', Str::slug($state));
+                        }),
+                    TextInput::make('slug')->unique(ignoreRecord: true)->maxLength(150)
+                        ->label('Slug')
+                        ->readOnly(fn($record) => true)
+                        ->required(),
                     TextInput::make('sub_title')
-                    ->label('Sub Title')
-                    ->required(),
-                    
+                        ->label('Sub Title')
+                        ->required(),
+
                     Select::make('text_position')
-                    ->label('Text Position')
-                    ->options([
-                        'right' => 'Right Position',
-                        'left' => 'Left Position',
-                    ])
-                    ->required(),
+                        ->label('Text Position')
+                        ->options([
+                            'right' => 'Right Position',
+                            'left' => 'Left Position',
+                        ])
+                        ->required(),
 
                     Textarea::make('summary_description')->label('Summary Description')->required(),
                     Forms\Components\Textarea::make('meta_keyword')->label('Meta Keyword')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('meta_title')->label('Meta Title')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('meta_description')->label('Meta Description')
-                    ->required(),
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\Textarea::make('meta_title')->label('Meta Title')
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\Textarea::make('meta_description')->label('Meta Description')
+                        ->required(),
                     RichEditor::make('full_description')->label('Full Description')->columnSpan(2)->required(),
                 ])->columns(2),
                 Section::make()->schema([
                     FileUpload::make('background_video')->label('Background Video')->disk('public')->directory('Home-Section-videos')->required()->maxSize(6096)
-                    ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
+                        ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
                     FileUpload::make('image')->label('Image')->disk('public')->directory('Home-Section-images')->required()->maxSize(6096)
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
                     Select::make('background_type')
-                    ->label('Select Background For Details page')
-                    ->options([
-                        'video' => 'Video',
-                        'image' => 'Image',
-                    ])
-                    ->required(),
-    
+                        ->label('Select Background For Details page')
+                        ->options([
+                            'video' => 'Video',
+                            'image' => 'Image',
+                        ])
+                        ->required(),
+
                     Toggle::make('is_active')
-                    ->label('Is Active ?'),
+                        ->label('Is Active ?'),
 
                 ])->columns(2),
-                
+
             ]);
     }
 
@@ -105,33 +106,33 @@ class HomePageSectionResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('counter')
-                ->label('No.')
-                ->getStateUsing(function ($rowLoop, $record) {
-                    return $rowLoop->iteration;
-                })
-                ->sortable(false),
+                    ->label('No.')
+                    ->getStateUsing(function ($rowLoop, $record) {
+                        return $rowLoop->iteration;
+                    })
+                    ->sortable(false),
                 TextColumn::make('title')->label('Title')->searchable()->sortable(),
                 TextColumn::make('slug')->label('Slug')->searchable()->sortable()
-                ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('sub_title')->label('Sub Title')->searchable()->sortable()
-                ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 ImageColumn::make('image')->label('Background Image')->disk('public'),
                 TextColumn::make('background_video')
-                ->label('Background Video')
-                ->formatStateUsing(function ($record) {
-                    return '<video width="350" height="200" controls>
-                                <source src="'. asset('storage/' . $record->video) .'" type="video/mp4, video/mpeg,">
+                    ->label('Background Video')
+                    ->formatStateUsing(function ($record) {
+                        return '<video width="350" height="200" controls>
+                                <source src="' . asset('storage/' . $record->video) . '" type="video/mp4, video/mpeg,">
                                 Your browser does not support the video tag.
                             </video>';
-                })
-                ->html(),
+                    })
+                    ->html(),
                 IconColumn::make('is_active')->label('Is Active')
-                ->boolean()
-                ->sortable(),
+                    ->boolean()
+                    ->sortable(),
                 TextColumn::make('summary_description')->label('Summary Description')->limit(50)->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('meta_keyword')
-                ->searchable()
-                ->toggleable(isToggledHiddenByDefault: true),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('meta_title')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -174,10 +175,25 @@ class HomePageSectionResource extends Resource
         ];
     }
     public static function getEloquentQuery(): Builder
-{
-    return parent::getEloquentQuery()
-        ->withoutGlobalScopes([
-            SoftDeletingScope::class,
-        ]);
-}
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
+    }
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'create',
+            'update',
+            'restore',
+            'restore_any',
+            'delete',
+            'delete_any',
+            'force_delete',
+            'force_delete_any',
+        ];
+    }
 }

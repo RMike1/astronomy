@@ -14,12 +14,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Filament\Panel;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements FilamentUser 
-// class User extends Authenticatable 
+class User extends Authenticatable
 {
 
 
-    use HasApiTokens, HasRoles, HasPanelShield;
+    use HasApiTokens, HasRoles;
+    // use HasApiTokens, HasRoles, HasPanelShield;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;

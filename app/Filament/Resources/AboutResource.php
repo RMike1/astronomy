@@ -19,8 +19,8 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
-class AboutResource extends Resource
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
+class AboutResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = About::class;
 
@@ -113,4 +113,14 @@ class AboutResource extends Resource
             'view' => Pages\ViewAbout::route('/{record}'),
         ];
     }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'update',
+        ];
+    }
+
 }

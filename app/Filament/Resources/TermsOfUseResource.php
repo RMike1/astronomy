@@ -19,14 +19,13 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 
-class TermsOfUseResource extends Resource
+
+class TermsOfUseResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = TermsOfUse::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-exclamation-triangle';
-
-
     protected static ?string $slug = 'terms-of-use';
     protected static ?string $navigationLabel = 'Terms of use';
     protected static ?string $modelLabel = 'Terms of use';
@@ -39,34 +38,34 @@ class TermsOfUseResource extends Resource
         return $form
             ->schema([
                 Section::make()->schema([
-                TextInput::make('title')
-                ->label('Title')
-                ->required(),
-                FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('Terms')->required()->maxSize(3048) 
-                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                    TextInput::make('title')
+                        ->label('Title')
+                        ->required(),
+                    FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('Terms')->required()->maxSize(3048)
+                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
                 ])->columns(2),
                 Section::make()->schema([
-                RichEditor::make('description')->label('Description')
-                ->toolbarButtons([
-                    'attachFiles',
-                    'blockquote',
-                    'bold',
-                    'bulletList',
-                    'codeBlock',
-                    'h2',
-                    'h3',
-                    'italic',
-                    'link',
-                    'orderedList',
-                    'redo',
-                    'strike',
-                    'underline',
-                    'undo',
-                ])
-                ->fileAttachmentsDisk('public')
-                ->fileAttachmentsDirectory('terms-images')
-                ->fileAttachmentsVisibility('public')
-                ->columnSpan(2)->required(),
+                    RichEditor::make('description')->label('Description')
+                        ->toolbarButtons([
+                            'attachFiles',
+                            'blockquote',
+                            'bold',
+                            'bulletList',
+                            'codeBlock',
+                            'h2',
+                            'h3',
+                            'italic',
+                            'link',
+                            'orderedList',
+                            'redo',
+                            'strike',
+                            'underline',
+                            'undo',
+                        ])
+                        ->fileAttachmentsDisk('public')
+                        ->fileAttachmentsDirectory('terms-images')
+                        ->fileAttachmentsVisibility('public')
+                        ->columnSpan(2)->required(),
                 ]),
             ]);
     }
@@ -78,11 +77,11 @@ class TermsOfUseResource extends Resource
                 TextColumn::make('title')->label('Title'),
                 ImageColumn::make('background_image')->label('Image'),
                 TextColumn::make('description')
-                ->label('Description')
-                ->html() 
-                ->formatStateUsing(function ($state) {
-                    return \Illuminate\Support\Str::limit(strip_tags($state), 50);
-                }),
+                    ->label('Description')
+                    ->html()
+                    ->formatStateUsing(function ($state) {
+                        return \Illuminate\Support\Str::limit(strip_tags($state), 50);
+                    }),
             ])
             ->filters([
                 //
@@ -113,6 +112,14 @@ class TermsOfUseResource extends Resource
             'create' => Pages\CreateTermsOfUse::route('/create'),
             'edit' => Pages\EditTermsOfUse::route('/{record}/edit'),
             'view' => Pages\ViewTermsOfUse::route('/{record}'),
+        ];
+    }
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'update',
         ];
     }
 }

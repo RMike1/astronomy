@@ -17,6 +17,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -54,7 +55,22 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->plugins([
-                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+                FilamentShieldPlugin::make(),
+                // ->gridColumns([
+                //     'default' => 1,
+                //     'sm' => 2,
+                //     'lg' => 2
+                // ])
+                // ->sectionColumnSpan(1)
+                // ->checkboxListColumns([
+                //     'default' => 1,
+                //     'sm' => 2,
+                //     'lg' => 3,
+                // ])
+                // ->resourceCheckboxListColumns([
+                //     'default' => 1,
+                //     'sm' => 2,
+                // ]),
             ]);
     }
 }

@@ -12,8 +12,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 
-class SubscriberResource extends Resource
+class SubscriberResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Subscriber::class;
 
@@ -87,4 +88,17 @@ class SubscriberResource extends Resource
                 SoftDeletingScope::class,
             ]);
     }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'restore',
+            'restore_any',
+            'delete',
+            'delete_any',
+            'force_delete',
+            'force_delete_any',
+        ];
+    }
+
 }

@@ -17,15 +17,18 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\HeroSectionResource\Pages;
 use App\Filament\Resources\HeroSectionResource\RelationManagers;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 
-class HeroSectionResource extends Resource
+class HeroSectionResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = HeroSection::class;
 
     protected static ?string $slug = 'hero-section';
     protected static ?string $navigationGroup = 'Home Page';
-    protected static ?string $navigationLabel = 'Hero Section';
+    protected static ?string $navigationLabel = 'Homepage Hero Section';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $modelLabel = 'Homepage Hero Section';
+
     protected static ?string $pluralLabel = 'Homepage Hero Section';
 
     public static function form(Form $form): Form
@@ -93,6 +96,15 @@ class HeroSectionResource extends Resource
             'index' => Pages\ListHeroSections::route('/'),
             'view' => Pages\ViewHeroSection::route('/{record}'),
             'edit' => Pages\EditHeroSection::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'update',
         ];
     }
 }

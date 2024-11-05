@@ -17,17 +17,18 @@ use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 
-class ServiceSectionHeaderResource extends Resource
+class ServiceSectionHeaderResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = ServiceSectionHeader::class;
 
     protected static ?string $slug = 'service-header';
     protected static ?string $navigationLabel = 'Service Header';
-    protected static ?string $modelLabel = 'Service Header';
+    protected static ?string $modelLabel = 'Service Section Header';
     protected static ?string $navigationGroup = 'Home Page';
     protected static ?string $navigationParentItem = 'Service Section';
-    protected static ?string $pluralLabel = 'Service Header ';
+    protected static ?string $pluralLabel = 'Service Section Header';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -85,6 +86,15 @@ class ServiceSectionHeaderResource extends Resource
             'index' => Pages\ListServiceSectionHeaders::route('/'),
             'view' => Pages\ViewServiceSectionHeader::route('/{record}'),
             'edit' => Pages\EditServiceSectionHeader::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'update',
         ];
     }
 }

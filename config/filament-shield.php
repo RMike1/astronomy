@@ -28,6 +28,10 @@ return [
         'enabled' => true,
         'name' => 'panel_user',
     ],
+    'editor' => [
+        'enabled' => true,
+        'name' => 'editor',
+    ],
 
     'permission_prefixes' => [
         'resource' => [

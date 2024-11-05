@@ -18,8 +18,9 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 
-class PrivacyPolicyResource extends Resource
+class PrivacyPolicyResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = PrivacyPolicy::class;
 
@@ -113,4 +114,14 @@ class PrivacyPolicyResource extends Resource
             'edit' => Pages\EditPrivacyPolicy::route('/{record}/edit'),
         ];
     }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'update',
+        ];
+    }
+
 }

@@ -20,8 +20,9 @@ use Filament\Forms\Components\CheckBoxList;
 use App\Filament\Resources\TeamResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\TeamResource\RelationManagers\SocialMediaRelationManager;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 
-class TeamResource extends Resource
+class TeamResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Team::class;
 
@@ -118,5 +119,21 @@ class TeamResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'create',
+            'update',
+            'restore',
+            'restore_any',
+            'delete',
+            'delete_any',
+            'force_delete',
+            'force_delete_any',
+        ];
     }
 }
