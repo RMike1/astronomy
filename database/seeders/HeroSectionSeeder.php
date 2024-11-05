@@ -15,6 +15,7 @@ class HeroSectionSeeder extends Seeder
     {
         DB::table('hero_sections')->insert([
             'title'=>'Exploring the Milky Way',
+            'sub_title'=>'Explore the Wonders of the Universe!',
             'description' => 'Journey through our home galaxy, the Milky Way, and explore its billions of stars and planets.',
             'video' => 'user/video/hero-video.mp4'
         ]);
