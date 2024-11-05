@@ -95,7 +95,7 @@ class TeamPolicy
      */
     public function replicate(User $user, Team $team): bool
     {
-        return $user->can('replicate_team');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class TeamPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_team');
+        return $user->can('{{ Reorder }}');
     }
 }

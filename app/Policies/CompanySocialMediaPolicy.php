@@ -31,7 +31,7 @@ class CompanySocialMediaPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_company::social::media');
+        return $user->can('{{ Create }}');
     }
 
     /**
@@ -47,7 +47,7 @@ class CompanySocialMediaPolicy
      */
     public function delete(User $user, CompanySocialMedia $companySocialMedia): bool
     {
-        return $user->can('delete_company::social::media');
+        return $user->can('{{ Delete }}');
     }
 
     /**
@@ -55,7 +55,7 @@ class CompanySocialMediaPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_company::social::media');
+        return $user->can('{{ DeleteAny }}');
     }
 
     /**
@@ -63,7 +63,7 @@ class CompanySocialMediaPolicy
      */
     public function forceDelete(User $user, CompanySocialMedia $companySocialMedia): bool
     {
-        return $user->can('force_delete_company::social::media');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -71,7 +71,7 @@ class CompanySocialMediaPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_company::social::media');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
@@ -79,7 +79,7 @@ class CompanySocialMediaPolicy
      */
     public function restore(User $user, CompanySocialMedia $companySocialMedia): bool
     {
-        return $user->can('restore_company::social::media');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -87,7 +87,7 @@ class CompanySocialMediaPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_company::social::media');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class CompanySocialMediaPolicy
      */
     public function replicate(User $user, CompanySocialMedia $companySocialMedia): bool
     {
-        return $user->can('replicate_company::social::media');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class CompanySocialMediaPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_company::social::media');
+        return $user->can('{{ Reorder }}');
     }
 }

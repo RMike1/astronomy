@@ -31,7 +31,7 @@ class TeamSectionHeaderPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_team::section::header');
+        return $user->can('{{ Create }}');
     }
 
     /**
@@ -47,7 +47,7 @@ class TeamSectionHeaderPolicy
      */
     public function delete(User $user, TeamSectionHeader $teamSectionHeader): bool
     {
-        return $user->can('delete_team::section::header');
+        return $user->can('{{ Delete }}');
     }
 
     /**
@@ -55,7 +55,7 @@ class TeamSectionHeaderPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_team::section::header');
+        return $user->can('{{ DeleteAny }}');
     }
 
     /**
@@ -63,7 +63,7 @@ class TeamSectionHeaderPolicy
      */
     public function forceDelete(User $user, TeamSectionHeader $teamSectionHeader): bool
     {
-        return $user->can('force_delete_team::section::header');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -71,7 +71,7 @@ class TeamSectionHeaderPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_team::section::header');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
@@ -79,7 +79,7 @@ class TeamSectionHeaderPolicy
      */
     public function restore(User $user, TeamSectionHeader $teamSectionHeader): bool
     {
-        return $user->can('restore_team::section::header');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -87,7 +87,7 @@ class TeamSectionHeaderPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_team::section::header');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class TeamSectionHeaderPolicy
      */
     public function replicate(User $user, TeamSectionHeader $teamSectionHeader): bool
     {
-        return $user->can('replicate_team::section::header');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class TeamSectionHeaderPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_team::section::header');
+        return $user->can('{{ Reorder }}');
     }
 }

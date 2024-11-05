@@ -31,7 +31,7 @@ class HeroSectionPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_hero::section');
+        return $user->can('{{ Create }}');
     }
 
     /**
@@ -47,7 +47,7 @@ class HeroSectionPolicy
      */
     public function delete(User $user, HeroSection $heroSection): bool
     {
-        return $user->can('delete_hero::section');
+        return $user->can('{{ Delete }}');
     }
 
     /**
@@ -55,7 +55,7 @@ class HeroSectionPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_hero::section');
+        return $user->can('{{ DeleteAny }}');
     }
 
     /**
@@ -63,7 +63,7 @@ class HeroSectionPolicy
      */
     public function forceDelete(User $user, HeroSection $heroSection): bool
     {
-        return $user->can('force_delete_hero::section');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -71,7 +71,7 @@ class HeroSectionPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_hero::section');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
@@ -79,7 +79,7 @@ class HeroSectionPolicy
      */
     public function restore(User $user, HeroSection $heroSection): bool
     {
-        return $user->can('restore_hero::section');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -87,7 +87,7 @@ class HeroSectionPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_hero::section');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class HeroSectionPolicy
      */
     public function replicate(User $user, HeroSection $heroSection): bool
     {
-        return $user->can('replicate_hero::section');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class HeroSectionPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_hero::section');
+        return $user->can('{{ Reorder }}');
     }
 }

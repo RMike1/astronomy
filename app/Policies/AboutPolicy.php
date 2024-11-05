@@ -31,7 +31,7 @@ class AboutPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_about');
+        return $user->can('{{ Create }}');
     }
 
     /**
@@ -47,7 +47,7 @@ class AboutPolicy
      */
     public function delete(User $user, About $about): bool
     {
-        return $user->can('delete_about');
+        return $user->can('{{ Delete }}');
     }
 
     /**
@@ -55,7 +55,7 @@ class AboutPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_about');
+        return $user->can('{{ DeleteAny }}');
     }
 
     /**
@@ -63,7 +63,7 @@ class AboutPolicy
      */
     public function forceDelete(User $user, About $about): bool
     {
-        return $user->can('force_delete_about');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -71,7 +71,7 @@ class AboutPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_about');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
@@ -79,7 +79,7 @@ class AboutPolicy
      */
     public function restore(User $user, About $about): bool
     {
-        return $user->can('restore_about');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -87,7 +87,7 @@ class AboutPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_about');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class AboutPolicy
      */
     public function replicate(User $user, About $about): bool
     {
-        return $user->can('replicate_about');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class AboutPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_about');
+        return $user->can('{{ Reorder }}');
     }
 }

@@ -95,7 +95,7 @@ class HomePageSectionPolicy
      */
     public function replicate(User $user, HomePageSection $homePageSection): bool
     {
-        return $user->can('replicate_home::page::section');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class HomePageSectionPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_home::page::section');
+        return $user->can('{{ Reorder }}');
     }
 }

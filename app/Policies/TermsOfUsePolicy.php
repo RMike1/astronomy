@@ -31,7 +31,7 @@ class TermsOfUsePolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_terms::of::use');
+        return $user->can('{{ Create }}');
     }
 
     /**
@@ -47,7 +47,7 @@ class TermsOfUsePolicy
      */
     public function delete(User $user, TermsOfUse $termsOfUse): bool
     {
-        return $user->can('delete_terms::of::use');
+        return $user->can('{{ Delete }}');
     }
 
     /**
@@ -55,7 +55,7 @@ class TermsOfUsePolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_terms::of::use');
+        return $user->can('{{ DeleteAny }}');
     }
 
     /**
@@ -63,7 +63,7 @@ class TermsOfUsePolicy
      */
     public function forceDelete(User $user, TermsOfUse $termsOfUse): bool
     {
-        return $user->can('force_delete_terms::of::use');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -71,7 +71,7 @@ class TermsOfUsePolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_terms::of::use');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
@@ -79,7 +79,7 @@ class TermsOfUsePolicy
      */
     public function restore(User $user, TermsOfUse $termsOfUse): bool
     {
-        return $user->can('restore_terms::of::use');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -87,7 +87,7 @@ class TermsOfUsePolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_terms::of::use');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class TermsOfUsePolicy
      */
     public function replicate(User $user, TermsOfUse $termsOfUse): bool
     {
-        return $user->can('replicate_terms::of::use');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class TermsOfUsePolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_terms::of::use');
+        return $user->can('{{ Reorder }}');
     }
 }

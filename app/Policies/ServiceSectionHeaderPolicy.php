@@ -31,7 +31,7 @@ class ServiceSectionHeaderPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_service::section::header');
+        return $user->can('{{ Create }}');
     }
 
     /**
@@ -47,7 +47,7 @@ class ServiceSectionHeaderPolicy
      */
     public function delete(User $user, ServiceSectionHeader $serviceSectionHeader): bool
     {
-        return $user->can('delete_service::section::header');
+        return $user->can('{{ Delete }}');
     }
 
     /**
@@ -55,7 +55,7 @@ class ServiceSectionHeaderPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_service::section::header');
+        return $user->can('{{ DeleteAny }}');
     }
 
     /**
@@ -63,7 +63,7 @@ class ServiceSectionHeaderPolicy
      */
     public function forceDelete(User $user, ServiceSectionHeader $serviceSectionHeader): bool
     {
-        return $user->can('force_delete_service::section::header');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -71,7 +71,7 @@ class ServiceSectionHeaderPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_service::section::header');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
@@ -79,7 +79,7 @@ class ServiceSectionHeaderPolicy
      */
     public function restore(User $user, ServiceSectionHeader $serviceSectionHeader): bool
     {
-        return $user->can('restore_service::section::header');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -87,7 +87,7 @@ class ServiceSectionHeaderPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_service::section::header');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class ServiceSectionHeaderPolicy
      */
     public function replicate(User $user, ServiceSectionHeader $serviceSectionHeader): bool
     {
-        return $user->can('replicate_service::section::header');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class ServiceSectionHeaderPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_service::section::header');
+        return $user->can('{{ Reorder }}');
     }
 }

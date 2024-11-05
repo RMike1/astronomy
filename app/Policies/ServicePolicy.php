@@ -95,7 +95,7 @@ class ServicePolicy
      */
     public function replicate(User $user, Service $service): bool
     {
-        return $user->can('replicate_service');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class ServicePolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_service');
+        return $user->can('{{ Reorder }}');
     }
 }

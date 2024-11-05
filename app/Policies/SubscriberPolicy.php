@@ -15,7 +15,7 @@ class SubscriberPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_subscriber');
+        return $user->can('{{ ViewAny }}');
     }
 
     /**
@@ -23,7 +23,7 @@ class SubscriberPolicy
      */
     public function view(User $user, Subscriber $subscriber): bool
     {
-        return $user->can('view_subscriber');
+        return $user->can('{{ View }}');
     }
 
     /**
@@ -31,7 +31,7 @@ class SubscriberPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_subscriber');
+        return $user->can('{{ Create }}');
     }
 
     /**
@@ -39,7 +39,7 @@ class SubscriberPolicy
      */
     public function update(User $user, Subscriber $subscriber): bool
     {
-        return $user->can('update_subscriber');
+        return $user->can('{{ Update }}');
     }
 
     /**
@@ -95,7 +95,7 @@ class SubscriberPolicy
      */
     public function replicate(User $user, Subscriber $subscriber): bool
     {
-        return $user->can('replicate_subscriber');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -103,6 +103,6 @@ class SubscriberPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_subscriber');
+        return $user->can('{{ Reorder }}');
     }
 }
