@@ -4,7 +4,7 @@ return [
     'shield_resource' => [
         'should_register_navigation' => true,
         'slug' => 'roles',
-        'navigation_sort' => 7,
+        'navigation_sort' => 70,
         'navigation_badge' => true,
         'navigation_group' => false,
         'is_globally_searchable' => false,
@@ -27,10 +27,6 @@ return [
     'panel_user' => [
         'enabled' => true,
         'name' => 'panel_user',
-    ],
-    'editor' => [
-        'enabled' => true,
-        'name' => 'editor',
     ],
 
     'permission_prefixes' => [
