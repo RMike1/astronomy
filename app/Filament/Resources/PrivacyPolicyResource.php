@@ -41,6 +41,9 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
                     TextInput::make('title')
                     ->label('Title')
                     ->required(),
+                    TextInput::make('sub_title')
+                        ->label('Sub Title')
+                        ->required(),
                     FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('privacy-background-images')->required()->maxSize(3048) 
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
                 ])->columns(2),
@@ -75,6 +78,7 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
         return $table
             ->columns([
                 TextColumn::make('title')->label('Title'),
+                TextColumn::make('sub_title')->label('Sub Title'),
                 ImageColumn::make('background_image')->label('Image'),
                 TextColumn::make('description')
                 ->label('Description')

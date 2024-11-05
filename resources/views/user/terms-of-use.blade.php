@@ -46,7 +46,7 @@
         </div>
     </x-slot>
     <section class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center"
-        style="background-image: url({{ asset('storage/' . $terms->background_image) }});">
+        style="background-image: url({{ Storage::url($terms->background_image) }});">
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
         <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -64,7 +64,7 @@
                                         class="hero-subtitle-gradient relative mb-4 font-medium text-sm inline-flex items-center gap-2 py-2 px-4.5">
                                         <img src="{{ asset('user/images/icon-title.svg') }}" alt="icon">
                                         <span class="hero-subtitle-text">
-                                            here is Our
+                                        {{ $terms->sub_title }}
                                         </span>
                                     </span>
                                     <h3 class="text-white mb-4.5 font-bold text-heading-2" data-aos="fade-down"
@@ -83,14 +83,13 @@
 
     <section class="pt-20 lg:pt-25 pb-17.5 lg:pb-22.5 xl:pb-27.5">
         <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
-            {{-- <img src="{{ asset('/' . $Homesection->image) }}" alt="blog" class="mb-10" /> --}}
             <div class="max-w-[870px] mx-auto">
                 <h2 class="font-semibold text-white text-[34px] leading-[45px] max-w-[579px] mb-7.5">
                     Lorem ipsum dolor sit amet consectetur
                 </h2>
-                <p class="font-medium mb-6">
-                    {!! $terms->description !!}
-                </p>
+                <div>
+                    {!! str($terms->description)!!}
+                </div>
             </div>
         </div>
     </section>

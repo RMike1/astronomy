@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('terms_of_uses', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('background_image');
-            $table->longText('description');
+            $table->string('title')->nullable();
+            $table->string('sub_title')->nullable();
+            $table->string('background_image')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

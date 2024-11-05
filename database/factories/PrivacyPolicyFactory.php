@@ -18,6 +18,7 @@ class PrivacyPolicyFactory extends Factory
     {
         return [
             'title'=>fake()->sentence(),
+            'sub_title'=>fake()->sentence(),
             'background_image'=>fake()->url(),
             'description'=>fake()->paragraph(6),
         ];
