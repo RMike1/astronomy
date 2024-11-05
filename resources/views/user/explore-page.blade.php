@@ -1,6 +1,6 @@
 <x-main-layout>
     <x-slot name="meta">
-        <title>{{ config('app.name', 'Astronomy') }}</title>
+        <title>{{ $Homesection->meta_title }} Apollo</title>
         <meta name="description" content="{{ $Homesection->meta_description}}">
         <meta name="keywords" content="{{ $Homesection->meta_keyword }}">
     </x-slot>
@@ -169,7 +169,7 @@
                     </p>
                     <a href="{{ route('home') }}/#Contact"
                         class="features-button-gradient relative inline-flex items-center gap-1.5 rounded-full py-3 px-6 text-white text-sm ease-in duration-300 hover:shadow-button">
-                        Get in Touch!
+                        Learn more!
                         <svg width="14" height="12" viewBox="0 0 14 12" fill="none"
                             xmlns="http://www.w3.org/2000/svg')}}">
                             <path
@@ -190,7 +190,7 @@
     <section>
         <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
             <div class="relative rounded-3xl z-999">
-                <a href="https://www.youtube.com/watch?v=xcJtL7QggTI" data-fslightbox
+                {{-- <a href="#" data-fslightbox
                     class="absolute z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-27.5 h-27.5 rounded-full flex items-center justify-center bg-gradient-to-b from-[#A073EE] to-[#6E25ED] shadow-video">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                         xmlns="http://www.w3.org/2000/svg')}}">
@@ -200,39 +200,20 @@
                     </svg>
                 </a>
                 <span
-                    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-1 block w-32 h-32 rounded-full backdrop-blur-[5px] bg-white/[0.04]"></span>
-                <img class="rounded-xl" src="{{ asset('storage/' . $Homesection->image) }}" alt="video" />
+                    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-1 block w-32 h-32 rounded-full backdrop-blur-[5px] bg-white/[0.04]"></span> --}}
+                <img class="rounded-xl" src="{{ Storage::url($Homesection->image) }}" alt="video" />
             </div>
         </div>
     </section>
 
     <section class="pt-20 lg:pt-25 pb-17.5 lg:pb-22.5 xl:pb-27.5">
         <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
-            {{-- <img src="{{ asset('/' . $Homesection->image) }}" alt="blog" class="mb-10" /> --}}
             <div class="max-w-[870px] mx-auto">
                 <h2 class="font-semibold text-white text-[34px] leading-[45px] max-w-[579px] mb-7.5">
                     Lorem ipsum dolor sit amet consectetur
                 </h2>
                 <p class="font-medium mb-6">
-                    {{ $Homesection->full_description }}
-                </p>
-                <p class="font-medium mb-6">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates aperiam est repellat eos cumque
-                    harum molestiae. Modi aperiam quam dolores quis possimus voluptatem nemo ipsam. Doloribus,
-                    reprehenderit? Quia, aliquam dolor!
-                </p>
-                <h3 class="font-extrabold text-2xl text-white mb-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h3>
-                <p class="font-medium mb-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit fugiat est, praesentium magnam hic
-                    deserunt iure animi provident eveniet aut! In laborum dolorem ad velit delectus quo consectetur at
-                    et.
-                </p>
-                <p class="font-medium mb-12.5">
-                    Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt
-                    qui esse pariatur duis deserunt mollit dolore cillum minim tempor
-                    enim. Elit aute irure tempor cupidatat incididunt.
+                    {!! $Homesection->full_description !!}
                 </p>
             </div>
         </div>
