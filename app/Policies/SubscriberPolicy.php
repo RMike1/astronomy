@@ -15,7 +15,7 @@ class SubscriberPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('{{ ViewAny }}');
+        return $user->can('view_any_subscriber');
     }
 
     /**
@@ -23,7 +23,7 @@ class SubscriberPolicy
      */
     public function view(User $user, Subscriber $subscriber): bool
     {
-        return $user->can('{{ View }}');
+        return $user->can('view_subscriber');
     }
 
     /**

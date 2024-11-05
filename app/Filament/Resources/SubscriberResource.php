@@ -92,6 +92,8 @@ class SubscriberResource extends Resource implements HasShieldPermissions
     public static function getPermissionPrefixes(): array
     {
         return [
+            'view',
+            'view_any',
             'restore',
             'restore_any',
             'delete',
