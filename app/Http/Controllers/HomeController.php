@@ -22,7 +22,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $herosection = HeroSection::select(['title', 'description', 'video'])->first();
+        $herosection = HeroSection::select(['title', 'description', 'video','sub_title'])->first();
         $Homesections = HomePageSection::where('is_active', true)->select(['title', 'sub_title', 'slug', 'image', 'is_active', 'text_position', 'summary_description'])->latest()->take(4)->get();
         $Services = Service::where('is_active', true)->select(['title', 'slug', 'is_active', 'summary_description'])->latest()->take(6)->get();
         $Service_section_header = ServiceSectionHeader::select(['title', 'sub_title','description'])->first();
