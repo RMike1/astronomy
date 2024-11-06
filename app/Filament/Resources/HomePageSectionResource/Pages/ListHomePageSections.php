@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\HomePageSectionResource\Pages;
 
 use App\Filament\Resources\HomePageSectionResource;
+use App\Filament\Widgets\HomePageSectionWidget;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -14,6 +15,12 @@ class ListHomePageSections extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            HomePageSectionWidget::class
         ];
     }
 }

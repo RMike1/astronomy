@@ -54,15 +54,19 @@ class CompanySocialMediaResource extends Resource implements HasShieldPermission
                     ->searchable(),
                 Tables\Columns\TextColumn::make('url')
                     ->searchable(),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->boolean()
-                    ->sortable(),
+                
+                Tables\Columns\ToggleColumn::make('is_active'),
+                    // ->sortable(),
+                // Tables\Columns\IconColumn::make('is_active')
+                //     ->boolean()
+                //     ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                ->slideOver(),
             ])
             ->paginated(false)
             ->bulkActions([

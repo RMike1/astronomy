@@ -54,9 +54,10 @@ class SocialMediaRelationManager extends RelationManager
             ->columns([
                 TextColumn::make('platform')->label('Social Media Name')->searchable()->sortable(),
                 TextColumn::make('url')->label('Url')->searchable()->sortable(),
-                IconColumn::make('is_active')->label('Is Active')
-                ->boolean()
-                ->sortable(),
+                Tables\Columns\ToggleColumn::make('is_active'),
+                // IconColumn::make('is_active')->label('Is Active')
+                // ->boolean()
+                // ->sortable(),
             ])
             ->filters([
                 //

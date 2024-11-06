@@ -2,8 +2,9 @@
 
 namespace App\Filament\Resources\TeamResource\Pages;
 
-use App\Filament\Resources\TeamResource;
 use Filament\Actions;
+use App\Filament\Widgets\TeamWidget;
+use App\Filament\Resources\TeamResource;
 use Filament\Resources\Pages\ListRecords;
 
 class ListTeams extends ListRecords
@@ -14,6 +15,12 @@ class ListTeams extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            TeamWidget::class
         ];
     }
 }

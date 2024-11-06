@@ -15,6 +15,8 @@ class TeamWidget extends BaseWidget
             Stat::make('Team Members', Team::count())
             ->description('total number of team members')
             ->descriptionIcon('heroicon-m-user-group',IconPosition::Before)
+            ->chart([3,4,6,1,6])
+            ->color('success')
         ];
     }
 }
