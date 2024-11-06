@@ -43,7 +43,7 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
     {
         return $form
             ->schema([
-                    Section::make()->description('Home Page Contents here...')->collapsible()->schema([
+                    Section::make()->description('Home Page Contents...')->collapsible()->schema([
                         TextInput::make('title')->maxLength(150)->minLength(2)
                             ->label('Title')
                             ->required()

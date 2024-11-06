@@ -8,16 +8,17 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Models\HeroSection;
 use Filament\Resources\Resource;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Section;
 use Filament\Tables\Columns\HtmlColumn;
+use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\HeroSectionResource\Pages;
-use App\Filament\Resources\HeroSectionResource\RelationManagers;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
+use App\Filament\Resources\HeroSectionResource\RelationManagers;
 
 class HeroSectionResource extends Resource implements HasShieldPermissions
 {
@@ -54,16 +55,16 @@ class HeroSectionResource extends Resource implements HasShieldPermissions
         return $table
             ->columns([
                 TextColumn::make('title'),
-                
                 TextColumn::make('video')
                 ->label('Background Video')
                 ->formatStateUsing(function ($record) {
                     return '<video width="150" height="100" controls>
-                                <source src="'. asset('storage/' . $record->video) .'" type="video/mp4">
+                                <source src="'. Storage::url($record->video) .'" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>';
                 })
                 ->html(),
+
                 TextColumn::make('description')->limit(50),
             
                  

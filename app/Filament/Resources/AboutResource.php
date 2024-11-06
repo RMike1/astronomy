@@ -2,24 +2,26 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AboutResource\Pages;
-use App\Filament\Resources\AboutResource\RelationManagers;
-use App\Models\About;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\About;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
-use Filament\Forms\Components\Textarea;
+use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\AboutResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\AboutResource\RelationManagers;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
+
 class AboutResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = About::class;
@@ -75,8 +77,8 @@ class AboutResource extends Resource implements HasShieldPermissions
                 TextColumn::make('about_hero_video')
                 ->label('Background Video')
                 ->formatStateUsing(function ($record) {
-                    return '<video width="350" height="200" controls>
-                                <source src="'. asset('storage/' . $record->video) .'" type="video/mp4, video/mpeg,">
+                    return '<video width="150" height="100" controls>
+                                <source src="'. Storage::url($record->video) .'" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>';
                 })
