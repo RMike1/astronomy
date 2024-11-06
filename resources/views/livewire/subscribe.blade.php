@@ -32,19 +32,20 @@
             <div class="max-w-[395px] w-full">
                 <input id="email" type="email" wire:model.live.debounce.350ms='email'
                     placeholder="Enter your Email"
-                    class="rounded-lg border border-white/[0.12] bg-white/[0.05] focus:border-purple w-full py-3 px-6 focus:outline-none focus:border-gray-600 focus:ring-gray-600" />
-                <div>
-                    @error('email')
-                        <span class="error text-red-600 ">{{ $message }}</span>
-                    @enderror
-                </div>
+                    class="rounded-lg border border-white/[0.12]  bg-white/[0.05] focus:border-purple w-full py-3 px-6 focus:outline-none focus:border-gray-600 focus:ring-gray-600" />
+
             </div>
             <button type="submit"
-                class="button-border-gradient relative rounded-lg text-white text-sm flex items-center gap-1.5 py-3.5 px-7 shadow-button hover:button-gradient-hover hover:shadow-none">
+                class="button-border-gradient relative rounded-lg text-white text-sm flex items-center gap-1.5 py-3.5  md:px-7 px-4 shadow-button hover:button-gradient-hover hover:shadow-none">
                 <span wire:loading.remove wire:target='subscribing'>Subscribe</span>
-                <span wire:loading wire:target="subscribing">...</span>
+                <span wire:loading wire:target="subscribing">Subscribing...</span>
             </button>
         </div>
+        @error('email')
+            <div class="">
+                <span class="error text-red-500">{{ $message }}</span>
+            </div>
+        @enderror
     </form>
 
 </div>

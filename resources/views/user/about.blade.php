@@ -70,7 +70,7 @@
                 </span>
                 <h1 class="text-white mb-6 text-5xl font-extrabold sm:text-5xl xl:text-heading-1" data-aos="fade-left">
                     <span class="text-slider-items hidden">{{ $about_data->about_hero_title }}</span>
-                    <span class="text-slider text-5xl"></span>
+                    <span class="text-slider text-3xl"></span>
                 </h1>
             </div>
         </div>
