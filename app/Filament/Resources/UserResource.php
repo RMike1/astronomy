@@ -36,9 +36,6 @@ class UserResource extends Resource implements HasShieldPermissions
                     ->password()
                     ->required()
                     ->maxLength(255),
-
-                FileUpload::make('profile_photo_path')->label('Profile Photo')->disk('public')->directory('profile-photo')->maxSize(3096)
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
                 Forms\Components\Select::make('roles')
                     ->relationship('roles', 'name')
                     ->multiple()
