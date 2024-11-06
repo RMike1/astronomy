@@ -19,25 +19,25 @@
             <nav>
                 <ul class="flex lg:items-center flex-col lg:flex-row gap-5 lg:gap-2">
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
-                        <a href="{{route('home')}}"
+                        <a href="{{ route('home') }}"
                             class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient"
                             :class="{ '!text-white nav-gradient': page === 'home' }">Home</a>
                     </li>
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
-                        <a href="{{route('home')}}/#Observatories"
+                        <a href="{{ route('home') }}/#Observatories"
                             class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient">Observatories</a>
                     </li>
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
-                        <a href="{{route('home')}}/#Services"
+                        <a href="{{ route('home') }}/#Services"
                             class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient">Services</a>
                     </li>
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
-                        <a href="{{route('about')}}"
+                        <a href="{{ route('about') }}"
                             class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient">About
                             Us</a>
                     </li>
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
-                        <a href="{{route('home')}}/#Contact"
+                        <a href="{{ route('home') }}/#Contact"
                             class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient">Contact
                             Us</a>
                     </li>
@@ -49,9 +49,9 @@
     </section>
     <section class=" pt-20 lg:pt-22.5 xl:pt-27.5 pb-20 lg:pb-25 xl:pb-30 2xl:pb-[150px]">
         <div class="wow fadeInUp mx-auto w-full max-w-[597px] text-center px-4 sm:px-8 lg:px-0" data-wow-delay="0.1s">
-            <h1 class="mb-5.5 text-heading-2 text-7xl text-white">403</h1>
+            <img src="{{ asset('user/images/errors/403.svg') }}" alt="403" class="mx-auto mb-12.5" />
             <h2 class="mb-5.5 text-heading-3 font-bold text-white">
-                THIS ACTION IS UNAUTHORIZED.
+                UNAUTHORIZED.
             </h2>
             <a href="{{ route('home') }}"
                 class="button-border-gradient relative rounded-lg text-white text-sm inline-flex items-center py-3.5 px-7 shadow-button hover:button-gradient-hover hover:shadow-none">

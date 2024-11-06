@@ -47,7 +47,6 @@
     </x-slot>
     <section class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center"
         style="background-image: url({{ asset('storage/' . $policies->background_image) }});">
-        <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
         <div class="absolute inset-0 bg-black opacity-50"></div>
 
@@ -84,12 +83,8 @@
     <section class="pt-20 lg:pt-25 pb-17.5 lg:pb-22.5 xl:pb-27.5">
         <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
             <div class="max-w-[870px] mx-auto">
-                <h2 class="font-semibold text-white text-[34px] leading-[45px] max-w-[579px] mb-7.5">
-                    Lorem ipsum dolor sit amet consectetur
-                </h2>
-                <div>
+                <div class="custom-editor-content">
                     {!! $policies->description !!}
-                    {{-- {!! str($policies->description)->markdown()->sanitizeHtml() !!} --}}
                 </div>
             </div>
         </div>

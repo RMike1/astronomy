@@ -14,8 +14,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Filament\Panel;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable Implements FilamentUser
 {
+
+
     use HasApiTokens, HasRoles;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -23,6 +25,12 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+
+
+    public function canAccessPanel(Panel $panel): bool{
+            return $this->email==="admin3@gmail.com";
+    }
+
 
     /**
      * The attributes that are mass assignable.

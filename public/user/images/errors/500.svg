@@ -1,0 +1,12 @@
+<svg fill="#ffffff" height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve" stroke="#ffffff">
+  <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="SVGRepo_iconCarrier">
+    <g>
+      <text x="50%" y="70%" fill="white" font-size="26" font-family="monospace" text-anchor="middle">500</text>
+      <path d="M0,0v14v46h60V14V0H0z M2,2h56v10H2V2z M58,58H2V14h56V58z"/>
+      <polygon points="54.293,3.293 52,5.586 49.707,3.293 48.293,4.707 50.586,7 48.293,9.293 49.707,10.707 52,8.414 54.293,10.707 55.707,9.293 53.414,7 55.707,4.707 "/>
+      <path d="M3,11h39V3H3V11z M5,5h35v4H5V5z"/>
+    </g>
+  </g>
+</svg>

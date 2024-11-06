@@ -31,9 +31,12 @@ class Subscribe extends Component
         $subscriber=Subscriber::create($validated);
         session()->flash('success', "Thanks for subscribing! We'll keep you updated with the latest news!");
 
-        $recipient = User::whereHas('roles', function ($query) {
-            $query->where('id', 1);
-        })->first();
+        // User::role('Super Admin')->get()->pluck('id')->toArray();
+
+        $recipient = User::role('super_admin')->first();
+        // $recipient = User::whereHas('roles', function ($query) {
+        //     $query->where('id', 1);
+        // })->first();
 
         Notification::make()
         ->title('New Subscriber')

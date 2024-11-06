@@ -49,7 +49,7 @@
     </section>
     <section class=" pt-20 lg:pt-22.5 xl:pt-27.5 pb-20 lg:pb-25 xl:pb-30 2xl:pb-[150px]">
         <div class="wow fadeInUp mx-auto w-full max-w-[597px] text-center px-4 sm:px-8 lg:px-0" data-wow-delay="0.1s">
-            <img src="{{ asset('user/images/404.svg') }}" alt="404" class="mx-auto mb-12.5" />
+            <img src="{{ asset('user/images/errors/404.svg') }}" alt="404" class="mx-auto mb-12.5" />
             <h2 class="mb-5.5 text-heading-3 font-bold text-white">
                 Oops! Page Not Found.
             </h2>

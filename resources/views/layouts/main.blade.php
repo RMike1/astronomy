@@ -12,36 +12,6 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <link href="{{ asset('user/css/style.css') }}" rel="stylesheet">
-        <style>
-            .video-bg {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-
-            .bg-gradient-to-b {
-                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-            }
-
-            .scroll-fade {
-                opacity: 0;
-                transform: translateY(20px);
-                transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-            }
-
-            .scroll-fade.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            .text-left {
-                text-align: left;
-            }
-        </style>
-
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <!-- Styles -->
