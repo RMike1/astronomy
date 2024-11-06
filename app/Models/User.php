@@ -16,8 +16,6 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-
-
     use HasApiTokens, HasRoles;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -25,12 +23,6 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-
-
-    // public function canAccessPanel(Panel $panel): bool{
-    //         return $this->email==="admin@gmail.com";
-    // }
-
 
     /**
      * The attributes that are mass assignable.
