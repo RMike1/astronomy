@@ -49,7 +49,7 @@ class ServiceResource extends Resource implements HasShieldPermissions
                     Textarea::make('summary_description')->label('Summary Description')->required()->columnSpan(2),
                     RichEditor::make('full_description')->label('Full Description')->columnSpan(2)->required(),
                     Toggle::make('is_active')
-                        ->label('Active'),
+                        ->label('Active ?'),
                 ])->columns(2),
 
             ]);

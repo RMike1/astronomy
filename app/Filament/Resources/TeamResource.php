@@ -38,7 +38,7 @@ class TeamResource extends Resource implements HasShieldPermissions
     {
         return $form
             ->schema([
-                Section::make()->schema([
+                Section::make('Team Member Information')->schema([
                     TextInput::make('first_name')
                         ->label('First Name')
                         ->required(),
@@ -51,12 +51,14 @@ class TeamResource extends Resource implements HasShieldPermissions
                     TextInput::make('position')
                         ->label('Member Position')
                         ->required(),
+                ])->columnSpan(2)->columns(2),
+                Section::make()->schema([
                     FileUpload::make('image')->label('Image')->disk('public')->directory('Team')->required()->maxSize(2048)
                         ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
                     Toggle::make('is_active')
-                        ->label('Active'),
-                ])->columns(2),
-            ]);
+                        ->label('Active ?'),
+                ])->columnSpan(1),
+            ])->columns(3);
     }
 
     public static function table(Table $table): Table
@@ -75,8 +77,8 @@ class TeamResource extends Resource implements HasShieldPermissions
                 TextColumn::make('position')->label('Position')->searchable()->sortable(),
                 ImageColumn::make('image')->limit(50)->label('Photo'),
                 IconColumn::make('is_active')->label('Is Active')
-                ->boolean()
-                ->sortable(),
+                    ->boolean()
+                    ->sortable(),
             ])
             ->filters([
                 //

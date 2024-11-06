@@ -36,18 +36,17 @@ class HeroSectionResource extends Resource implements HasShieldPermissions
     {
         return $form
             ->schema([
-                Section::make()->schema([
-
+                Section::make('Homepage Hero Section')->schema([
                     TextInput::make('title')->label('Title')->required(),
                     TextInput::make('description')->label('Decription')->required(),
-                    ])->columns(1),
+                    ])->columnSpan(2),
                 Section::make()->schema([
                     FileUpload::make('video')->label('Background Video')->disk('public')->directory('Hero-Videos')->maxSize(5096)
                     ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi'])
                     ->required(),
 
-                    ])->columns(2),
-            ]);
+                    ])->columnSpan(1),
+            ])->columns(3);
     }
 
     public static function table(Table $table): Table

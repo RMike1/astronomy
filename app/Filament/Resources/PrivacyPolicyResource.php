@@ -37,55 +37,56 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
     {
         return $form
             ->schema([
-                Section::make()->schema([
+                Section::make('Privacy Policy')->schema([
                     TextInput::make('title')
-                    ->label('Title')
-                    ->required(),
+                        ->label('Title')
+                        ->required(),
                     TextInput::make('sub_title')
                         ->label('Sub Title')
                         ->required(),
-                    FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('privacy-background-images')->required()->maxSize(3048) 
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
-                ])->columns(2),
-                Section::make()->schema([
-                RichEditor::make('description')->label('Description')
-                ->toolbarButtons([
-                    'attachFiles',
-                    'blockquote',
-                    'bold',
-                    'bulletList',
-                    'codeBlock',
-                    'h2',
-                    'h3',
-                    'italic',
-                    'link',
-                    'orderedList',
-                    'redo',
-                    'strike',
-                    'underline',
-                    'undo',
-                ])
-                ->fileAttachmentsDisk('public')
-                ->fileAttachmentsDirectory('privacy-images')
-                ->fileAttachmentsVisibility('public')
-                ->columnSpan(2)->required(),
-            ]),
-            ]);
+                    RichEditor::make('description')->label('Description')
+                        ->toolbarButtons([
+                            'attachFiles',
+                            'blockquote',
+                            'bold',
+                            'bulletList',
+                            'codeBlock',
+                            'h2',
+                            'h3',
+                            'italic',
+                            'link',
+                            'orderedList',
+                            'redo',
+                            'strike',
+                            'underline',
+                            'undo',
+                        ])
+                        ->fileAttachmentsDisk('public')
+                        ->fileAttachmentsDirectory('privacy-images')
+                        ->fileAttachmentsVisibility('public')
+                        ->columnSpan(2)->required(),
+                ])->columnSpan(2)->columns(2),
+                Section::make('Media')->schema([
+                    FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('privacy-background-images')->required()->maxSize(3048)
+                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                ])->columnSpan(1),
+            ])->columns(3);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('title')->label('Title'),
+                TextColumn::make('title')->label('Title')->limit(50),
                 TextColumn::make('sub_title')->label('Sub Title'),
-                ImageColumn::make('background_image')->label('Image'),
                 TextColumn::make('description')
-                ->label('Description')
-                ->html() 
-                ->formatStateUsing(function ($state) {
-                    return \Illuminate\Support\Str::limit(strip_tags($state), 50);
-                }),
+                    ->label('Description')
+                    ->limit(50)
+                    ->html()
+                    ->formatStateUsing(function ($state) {
+                        return \Illuminate\Support\Str::limit(strip_tags($state), 50);
+                    }),
+                ImageColumn::make('background_image')->label('Background Image'),
             ])
             ->filters([
                 //
@@ -127,5 +128,4 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
             'update',
         ];
     }
-
 }

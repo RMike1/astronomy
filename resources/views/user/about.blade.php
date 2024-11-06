@@ -118,8 +118,8 @@
 
     <section>
         <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
-            <div class="relative rounded-3xl z-999">
-                <a href="https://www.youtube.com/watch?v=xcJtL7QggTI" data-fslightbox
+            {{-- <div class="relative rounded-3xl z-999">
+                <a href="#" data-fslightbox
                     class="absolute z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-27.5 h-27.5 rounded-full flex items-center justify-center bg-gradient-to-b from-[#A073EE] to-[#6E25ED] shadow-video">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                         xmlns="http://www.w3.org/2000/svg')}}">
@@ -127,10 +127,10 @@
                             d="M25.1688 16.8077L7.26999 27.1727C5.73764 28.0601 3.75 27.0394 3.75 25.3651V4.63517C3.75 2.96091 5.73764 1.94018 7.26997 2.82754L25.1688 13.1925C26.6104 14.0274 26.6104 15.9729 25.1688 16.8077Z"
                             fill="white" />
                     </svg>
-                </a>
-                <span
-                    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-1 block w-32 h-32 rounded-full backdrop-blur-[5px] bg-white/[0.04]"></span>
-                <img src="{{ asset('user/images/video.png') }}" alt="video" />
+                </a> --}}
+                {{-- <span
+                    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-1 block w-32 h-32 rounded-full backdrop-blur-[5px] bg-white/[0.04]"></span> --}}
+                <img src="{{ Storage::url($about_data->about_image) }}" alt="video" />
             </div>
         </div>
     </section>
@@ -142,12 +142,12 @@
                 <span class="absolute bottom-0 left-0 -z-1"><img src="{{ asset('user/images/grid.svg') }}"
                         alt="grid" /></span>
                 <div class="wow fadeInUp text-center">
-                    <h2 class="text-white mb-4.5 text-2xl font-extrabold sm:text-4xl xl:text-heading-2">
+                    {{-- <h2 class="text-white mb-4.5 text-2xl font-extrabold sm:text-4xl xl:text-heading-2">
                         What are you waiting for?
                     </h2>
                     <p class="max-w-[714px] mx-auto font-medium mb-9">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat aspernatur
-                    </p>
+                    </p> --}}
                     <a href="{{ route('home') }}/#Contact"
                         class="features-button-gradient relative inline-flex items-center gap-1.5 rounded-full py-3 px-6 text-white text-sm ease-in duration-300 hover:shadow-button">
                         Get in Touch!

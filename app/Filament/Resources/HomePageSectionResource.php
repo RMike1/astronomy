@@ -93,10 +93,10 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                     RichEditor::make('full_description')->label('Full Description')->columnSpan(2)->required(),
                 ])->columnSpan(2)->columns(2),
                 Section::make('Media')->collapsible()->schema([
-                    FileUpload::make('background_video')->label('Background Video')->disk('public')->directory('Home-Section-videos')->required()->maxSize(6096)
-                        ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
                     FileUpload::make('image')->label('Image')->disk('public')->directory('Home-Section-images')->required()->maxSize(6096)
                         ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                    FileUpload::make('background_video')->label('Background Video')->disk('public')->directory('Home-Section-videos')->required()->maxSize(6096)
+                        ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
                     Select::make('background_type')
                         ->label('Select Background For Details page')
                         ->options([
@@ -153,11 +153,11 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                     ->toggleable(isToggledHiddenByDefault: true)
             ])
             ->filters([
-                Filter::make('Published Contents')->query(function(Builder $query): Builder {
-                    return $query->where('is_active',true);
+                Filter::make('Published Contents')->query(function (Builder $query): Builder {
+                    return $query->where('is_active', true);
                 }),
-                Filter::make('UnPublished Contents')->query(function(Builder $query): Builder {
-                    return $query->where('is_active',false);
+                Filter::make('UnPublished Contents')->query(function (Builder $query): Builder {
+                    return $query->where('is_active', false);
                 })
             ])
             ->actions([

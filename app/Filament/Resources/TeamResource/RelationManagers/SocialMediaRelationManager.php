@@ -52,12 +52,9 @@ class SocialMediaRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name')
             ->columns([
-                TextColumn::make('platform')->label('Social Media Name')->searchable()->sortable(),
+                TextColumn::make('platform')->label('Platforms')->searchable()->sortable(),
                 TextColumn::make('url')->label('Url')->searchable()->sortable(),
-                Tables\Columns\ToggleColumn::make('is_active'),
-                // IconColumn::make('is_active')->label('Is Active')
-                // ->boolean()
-                // ->sortable(),
+                Tables\Columns\ToggleColumn::make('is_active')->label('Is Active?'),
             ])
             ->filters([
                 //

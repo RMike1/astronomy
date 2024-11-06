@@ -40,26 +40,28 @@ class AboutResource extends Resource implements HasShieldPermissions
     {
         return $form
             ->schema([
-                Section::make()->schema([
+                Section::make('Profile')->schema([
                     TextInput::make('about_hero_title')
-                    ->label('Hero Title')
+                    ->label('Hero Section Title')
                     ->required(),
                     TextInput::make('about_hero_sub_title')
-                    ->label('Hero Sub Title')
+                    ->label('Hero Section Sub Title')
                     ->required(),
                     TextInput::make('about_title')
-                    ->label('Title')
+                    ->label('Main Title')
                     ->required(),
                     TextInput::make('about_sub_title')
-                    ->label('Sub Title')
+                    ->label('Sub Main Title')
                     ->required(),
-                    FileUpload::make('about_hero_video')->label('Background Video')->disk('public')->directory('About-video')->required()->maxSize(6096)
-                    ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
+                    Textarea::make('about_description')->label('Description')->required()->columnSpan(2),
+                ])->columnSpan(2)->columns(2),
+                Section::make('Media')->schema([
                     FileUpload::make('about_image')->label('Image')->disk('public')->directory('About')->required()->maxSize(4048) 
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
-                    Textarea::make('about_description')->label('Description')->required()->columnSpan(2),
-                ])->columns(2),
-            ]);
+                    FileUpload::make('about_hero_video')->label('Background Video')->disk('public')->directory('About-video')->required()->maxSize(6096)
+                    ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
+                ])->columnSpan(1),
+            ])->columns(3);
     }
 
     public static function table(Table $table): Table
