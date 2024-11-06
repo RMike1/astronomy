@@ -16,7 +16,7 @@ class HomePageSectionWidget extends BaseWidget
             ->description('total number of contents')
             ->descriptionIcon('heroicon-m-home-modern',IconPosition::Before)
             ->chart([5,5,7,6,8])
-            ->color('info'),
+            ->color('warning'),
         ];
     }
 }

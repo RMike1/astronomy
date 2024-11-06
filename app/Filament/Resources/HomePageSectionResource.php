@@ -10,11 +10,12 @@ use Illuminate\Support\Str;
 use App\Models\HomePageSection;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Tabs;
-use Filament\Forms\Components\Tabs\Tab;
+use Filament\Tables\Filters\Filter;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -152,7 +153,12 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                     ->toggleable(isToggledHiddenByDefault: true)
             ])
             ->filters([
-                //
+                Filter::make('Published Contents')->query(function(Builder $query): Builder {
+                    return $query->where('is_active',true);
+                }),
+                Filter::make('UnPublished Contents')->query(function(Builder $query): Builder {
+                    return $query->where('is_active',false);
+                })
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

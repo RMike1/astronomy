@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Filament\Actions\Exports\Models\Export;
 use App\Filament\Exports\SubscriberExporter;
 use Filament\Tables\Actions\ExportBulkAction;
+use Filament\Actions\Exports\Enums\ExportFormat;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\SubscriberResource\Pages;
 use App\Filament\Resources\SubscriberResource\RelationManagers;
@@ -56,7 +57,7 @@ class SubscriberResource extends Resource implements HasShieldPermissions
                     ->toggleable(isToggledHiddenByDefault: false),
             ])
             ->filters([
-                //
+                
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(),
@@ -64,7 +65,10 @@ class SubscriberResource extends Resource implements HasShieldPermissions
                 Tables\Actions\RestoreAction::make(),
             ])
             ->headerActions([
-                ExportAction::make()->exporter(SubscriberExporter::class),
+                ExportAction::make()->exporter(SubscriberExporter::class)
+                ->formats([
+                    ExportFormat::Xlsx,
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -72,7 +76,11 @@ class SubscriberResource extends Resource implements HasShieldPermissions
                     Tables\Actions\ForceDeleteBulkAction::make(),
                     Tables\Actions\RestoreBulkAction::make(),
                 ]),
-                ExportBulkAction::make()->exporter(SubscriberExporter::class),
+                ExportBulkAction::make()
+                ->exporter(SubscriberExporter::class)
+                ->formats([
+                    ExportFormat::Xlsx,
+                ]),
             ]);
     }
 
