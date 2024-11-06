@@ -9,10 +9,12 @@ use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use App\Models\HomePageSection;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Tabs\Tab;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -24,8 +26,8 @@ use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\HomePageSectionResource\Pages;
-use App\Filament\Resources\HomePageSectionResource\RelationManagers;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
+use App\Filament\Resources\HomePageSectionResource\RelationManagers;
 
 class HomePageSectionResource extends Resource implements HasShieldPermissions
 {
@@ -43,49 +45,52 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
     {
         return $form
             ->schema([
-                    Section::make()->description('Home Page Contents...')->collapsible()->schema([
-                        TextInput::make('title')->maxLength(150)->minLength(2)
-                            ->label('Title')
-                            ->required()
-                            ->live(onBlur: true)
-                            ->afterStateUpdated(function (string $operation, string $state, $set) {
-                                if ($operation === 'edit') {
-                                    return;
-                                }
-                                $set('slug', Str::slug($state));
-                            }),
-                        TextInput::make('slug')->unique(ignoreRecord: true)->maxLength(150)
-                            ->label('Slug')
-                            ->readOnly(fn($record) => true)
-                            ->required(),
-                        TextInput::make('sub_title')
-                            ->label('Sub Title')
-                            ->required(),
-    
-                        Select::make('text_position')
-                            ->label('Text Position')
-                            ->options([
-                                'right' => 'Right Position',
-                                'left' => 'Left Position',
-                            ])
-                            ->required(),
+                Section::make()->description('Home Page Contents...')->collapsible()->schema([
+                    Tabs::make('Content')->tabs([
+                        Tab::make('Content details')->icon('heroicon-o-home-modern')->schema([
+                            TextInput::make('title')->maxLength(150)->minLength(2)
+                                ->label('Title')
+                                ->required()
+                                ->live(onBlur: true)
+                                ->afterStateUpdated(function (string $operation, string $state, $set) {
+                                    if ($operation === 'edit') {
+                                        return;
+                                    }
+                                    $set('slug', Str::slug($state));
+                                }),
+                            TextInput::make('slug')->unique(ignoreRecord: true)->maxLength(150)
+                                ->label('Slug')
+                                ->readOnly(fn($record) => true)
+                                ->required(),
+                            TextInput::make('sub_title')
+                                ->label('Sub Title')
+                                ->required(),
 
-                            Section::make('Meta')->description('Meta data will be placed here..')->collapsible()->schema([
-                                Forms\Components\Textarea::make('meta_title')->label('Meta Title')
-                                    ->required()
-                                    ->maxLength(255),
-                                Forms\Components\Textarea::make('meta_keyword')->label('Meta Keyword')
-                                    ->required()
-                                    ->maxLength(255),
-                                
-                                Forms\Components\Textarea::make('meta_description')->label('Meta Description')
-                                    ->columnSpan(2)
-                                    ->required(),
-        
-                            ])->columnSpan(2)->columns(2),
-                        Textarea::make('summary_description')->label('Summary Description')->required()->columnSpan(2),
-                        RichEditor::make('full_description')->label('Full Description')->columnSpan(2)->required(),
-                    ])->columnSpan(2)->columns(2),
+                            Select::make('text_position')
+                                ->label('Text Position')
+                                ->options([
+                                    'right' => 'Right Position',
+                                    'left' => 'Left Position',
+                                ])
+                                ->required(),
+                            Textarea::make('summary_description')->label('Summary Description')->required()->columnSpan(2),
+
+                        ])->columnSpan(2)->columns(2),
+                        Tab::make('Meta')->icon('heroicon-o-cog-6-tooth')->schema([
+                            Forms\Components\Textarea::make('meta_title')->label('Meta Title')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\Textarea::make('meta_keyword')->label('Meta Keyword')
+                                ->required()
+                                ->maxLength(255),
+
+                            Forms\Components\Textarea::make('meta_description')->label('Meta Description')
+                                ->columnSpan(2)
+                                ->required(),
+                        ])->columnSpan(2)->columns(2),
+                    ])->columnSpan(2)->columns(2)->persistTabInQueryString(),
+                    RichEditor::make('full_description')->label('Full Description')->columnSpan(2)->required(),
+                ])->columnSpan(2)->columns(2),
                 Section::make('Media')->collapsible()->schema([
                     FileUpload::make('background_video')->label('Background Video')->disk('public')->directory('Home-Section-videos')->required()->maxSize(6096)
                         ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
@@ -125,14 +130,14 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                 TextColumn::make('summary_description')->label('Summary Description')->limit(50)->searchable()->sortable(),
                 ImageColumn::make('image')->label('Background Image')->disk('public'),
                 TextColumn::make('background_video')
-                ->label('Background Video')
-                ->formatStateUsing(function ($record) {
-                    return '<video width="150" height="100" controls>
-                                <source src="'. asset('storage/' . $record->video) .'" type="video/mp4">
+                    ->label('Background Video')
+                    ->formatStateUsing(function ($record) {
+                        return '<video width="150" height="100" controls>
+                                <source src="' . asset('storage/' . $record->video) . '" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>';
-                })
-                ->html(),
+                    })
+                    ->html(),
 
                 IconColumn::make('is_active')->label('Is Active')
                     ->boolean()
