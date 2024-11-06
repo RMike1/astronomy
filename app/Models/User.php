@@ -19,7 +19,6 @@ class User extends Authenticatable
 
 
     use HasApiTokens, HasRoles;
-    // use HasApiTokens, HasRoles, HasPanelShield;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
