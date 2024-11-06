@@ -2,16 +2,21 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Forms;
+use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Subscriber;
+use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Actions\Exports\Exporter;
+use Filament\Tables\Actions\ExportAction;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Actions\Exports\Models\Export;
+use App\Filament\Exports\SubscriberExporter;
+use Filament\Tables\Actions\ExportBulkAction;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\SubscriberResource\Pages;
 use App\Filament\Resources\SubscriberResource\RelationManagers;
-use App\Models\Subscriber;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 
 class SubscriberResource extends Resource implements HasShieldPermissions
@@ -30,8 +35,7 @@ class SubscriberResource extends Resource implements HasShieldPermissions
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-            ]);
+            ->schema([]);
     }
 
     public static function table(Table $table): Table
@@ -39,11 +43,11 @@ class SubscriberResource extends Resource implements HasShieldPermissions
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('counter')
-                ->label('No.')
-                ->getStateUsing(function ($rowLoop, $record) {
-                    return $rowLoop->iteration;
-                })
-                ->sortable(false),
+                    ->label('No.')
+                    ->getStateUsing(function ($rowLoop, $record) {
+                        return $rowLoop->iteration;
+                    })
+                    ->sortable(false),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')->label('Subscribed At')
@@ -59,12 +63,16 @@ class SubscriberResource extends Resource implements HasShieldPermissions
                 Tables\Actions\ForceDeleteAction::make(),
                 Tables\Actions\RestoreAction::make(),
             ])
+            ->headerActions([
+                ExportAction::make()->exporter(SubscriberExporter::class),
+            ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                     Tables\Actions\ForceDeleteBulkAction::make(),
                     Tables\Actions\RestoreBulkAction::make(),
                 ]),
+                ExportBulkAction::make()->exporter(SubscriberExporter::class),
             ]);
     }
 
@@ -102,5 +110,4 @@ class SubscriberResource extends Resource implements HasShieldPermissions
             'force_delete_any',
         ];
     }
-
 }

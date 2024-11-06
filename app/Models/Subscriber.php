@@ -13,5 +13,6 @@ class Subscriber extends Model
 
     protected $fillable=[
         'email',
+        // 'created_at',
     ];
 }
