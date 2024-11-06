@@ -2,9 +2,12 @@
 
 namespace App\Livewire;
 
-use App\Models\Subscriber;
-use Livewire\Attributes\Rule;
+use App\Models\User;
 use Livewire\Component;
+use App\Models\Subscriber;
+use Filament\Forms\Components\Builder;
+use Livewire\Attributes\Rule;
+use Filament\Notifications\Notification;
 
 class Subscribe extends Component
 {
@@ -25,8 +28,17 @@ class Subscribe extends Component
             session()->flash('warning', "You're already subscribed! Stay tuned for the latest updates");
         }
 
-        Subscriber::create($validated);
+        $subscriber=Subscriber::create($validated);
         session()->flash('success', "Thanks for subscribing! We'll keep you updated with the latest news!");
+
+        $recipient = User::whereHas('roles', function ($query) {
+            $query->where('id', 1);
+        })->first();
+
+        Notification::make()
+        ->title('New Subscriber')
+        ->body('User with this email ' . $subscriber->email . ' has subscribed to our app. <a href="' . route('filament.admin.resources.subscribers.index') . '">View Subscribers</a>')
+        ->sendToDatabase($recipient);
         $this->reset();
     }
     public function render()

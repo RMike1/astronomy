@@ -61,12 +61,12 @@ class HomeController extends Controller
     }
     public function terms_of_use()
     {
-        $terms = TermsOfUse::select(['title', 'background_image', 'description'])->latest()->firstOrfail();
+        $terms = TermsOfUse::select(['title', 'background_image', 'description','sub_title'])->latest()->firstOrfail();
         return view('user.terms-of-use', compact('terms'));
     }
     public function privacy_policy()
     {
-        $policies = PrivacyPolicy::select(['title', 'background_image', 'description'])->latest()->firstOrfail();
+        $policies = PrivacyPolicy::select(['title', 'background_image', 'description','sub_title'])->latest()->firstOrfail();
         return view('user.privacy-policy', compact('policies'));
     }
 }
