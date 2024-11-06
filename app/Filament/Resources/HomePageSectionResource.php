@@ -18,7 +18,9 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\HtmlColumn;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
@@ -95,7 +97,7 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                 Section::make('Media')->collapsible()->schema([
                     FileUpload::make('image')->label('Image')->disk('public')->directory('Home-Section-images')->required()->maxSize(6096)
                         ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
-                    FileUpload::make('background_video')->label('Background Video')->disk('public')->directory('Home-Section-videos')->required()->maxSize(6096)
+                    FileUpload::make('background_video')->label('Background Video')->disk('public')->directory('Home-Section-videos')->visibility('public')->required()->maxSize(6096)
                         ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
                     Select::make('background_type')
                         ->label('Select Background For Details page')
@@ -130,15 +132,35 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('summary_description')->label('Summary Description')->limit(50)->searchable()->sortable(),
                 ImageColumn::make('image')->label('Background Image')->disk('public'),
+
+
                 TextColumn::make('background_video')
                     ->label('Background Video')
-                    ->formatStateUsing(function ($record) {
-                        return '<video width="150" height="100" controls>
-                                <source src="' . asset('storage/' . $record->video) . '" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>';
+                //     ->formatStateUsing(function ($record) {
+                //             return '<video width="200" height="200" controls>
+                //                     <source src="'.Storage::url($record->video).'" type="video/mp4">
+                //                     Your browser does not support the video tag.
+                //                 </video>';
+
+                    ->getStateUsing(function ($record) {
+                        return '<video width="200" height="200" controls>
+                                    <source src="'.Storage::url($record->video).'" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>';
                     })
-                    ->html(),
+                    ->html()
+                    ->wrap(),
+
+
+
+                    // HtmlColumn::make('background_video')
+                    // ->label('Video')
+                    // ->getStateUsing(function ($record) {
+                    //     return '<video width="200" height="200" controls>
+                    //                 <source src="' . asset('storage/' . $record->video) . '" type="video/mp4">
+                    //                 Your browser does not support the video tag.
+                    //             </video>';
+                    // }),    
 
                 IconColumn::make('is_active')->label('Is Active')
                     ->boolean()
