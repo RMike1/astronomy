@@ -21,15 +21,17 @@
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
                         <a href="#Home"
                             class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient"
-                            :class="{ '!text-white nav-gradient': page === 'home' }">Home</a>
+                            :class="{ '!text-white nav-gradient': page === 'home'}">Home</a>
                     </li>
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
                         <a href="#Observatories"
-                            class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient">Observatories</a>
+                            class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient"
+                            :class="{ '!text-white nav-gradient': page === 'home' && activeSection === 'Observatories' }">Observatories</a>
                     </li>
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
                         <a href="#Services"
-                            class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient">Services</a>
+                            class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient"
+                            :class="{ '!text-white nav-gradient': page === 'home' && activeSection === 'Services' }">Services</a>
                     </li>
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
                         <a href="{{ route('about') }}"
@@ -38,7 +40,8 @@
                     </li>
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
                         <a href="#Contact"
-                            class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient">Contact
+                            class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient"
+                            :class="{ '!text-white nav-gradient': page === 'home' && activeSection === 'Contact' }">Contact
                             Us</a>
                     </li>
                 </ul>

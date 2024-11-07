@@ -19,7 +19,19 @@
     </head>
 @endif
 
-<body x-data="{ page: 'home', 'loaded': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }">
+<body x-data="{  page: '{{ Route::currentRouteName() }}', activeSection: 'home',  'loaded': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }" x-init="
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            activeSection = entry.target.id;
+        }
+    });
+}, { threshold: 0.6 }); 
+
+document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
+});
+">
 
     @if (isset($header))
         @include('partials.header')
