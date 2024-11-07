@@ -19,8 +19,10 @@ use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\CheckBoxList;
 use App\Filament\Resources\TeamResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\TeamResource\RelationManagers\SocialMediaRelationManager;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
+use App\Filament\Resources\TeamResource\Widgets\TeamStatsWidget;
+use App\Filament\Resources\TeamResource\RelationManagers\SocialMediaRelationManager;
+
 
 class TeamResource extends Resource implements HasShieldPermissions
 {
@@ -103,6 +105,13 @@ class TeamResource extends Resource implements HasShieldPermissions
     {
         return [
             SocialMediaRelationManager::class
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            TeamStatsWidget::class
         ];
     }
 

@@ -17,8 +17,8 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\Textarea;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\HtmlColumn;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
@@ -31,6 +31,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\HomePageSectionResource\Pages;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use App\Filament\Resources\HomePageSectionResource\RelationManagers;
+use App\Filament\Resources\HomePageSectionResource\Widgets\HomePageSectionStatsWidget;
+
 
 class HomePageSectionResource extends Resource implements HasShieldPermissions
 {
@@ -202,6 +204,12 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
     {
         return [
             //
+        ];
+    }
+    public static function getWidgets(): array
+    {
+        return [
+            HomePageSectionStatsWidget::class
         ];
     }
 

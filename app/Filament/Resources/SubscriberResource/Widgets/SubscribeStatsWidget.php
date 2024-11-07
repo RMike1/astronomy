@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Filament\Widgets;
+namespace App\Filament\Resources\SubscriberResource\Widgets;
 
 use App\Models\Subscriber;
 use Filament\Support\Enums\IconPosition;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
-class SubscribeWidget extends BaseWidget
+class SubscribeStatsWidget extends BaseWidget
 {
     protected function getStats(): array
     {

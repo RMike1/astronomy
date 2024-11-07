@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Filament\Widgets;
+namespace App\Filament\Resources\TeamResource\Widgets;
 
 use App\Models\Team;
 use Filament\Support\Enums\IconPosition;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 
-class TeamWidget extends BaseWidget
+class TeamStatsWidget extends BaseWidget
 {
     protected function getStats(): array
     {

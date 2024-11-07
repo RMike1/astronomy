@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\SubscriberResource\Pages;
 use App\Filament\Resources\SubscriberResource\RelationManagers;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
+use App\Filament\Resources\SubscriberResource\Widgets\SubscribeStatsWidget;
 
 class SubscriberResource extends Resource implements HasShieldPermissions
 {
@@ -88,6 +89,13 @@ class SubscriberResource extends Resource implements HasShieldPermissions
     {
         return [
             //
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            SubscribeStatsWidget::class
         ];
     }
 
