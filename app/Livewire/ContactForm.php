@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use App\Models\Contact;
+use Filament\Notifications\Notification;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 
@@ -30,8 +32,20 @@ class ContactForm extends Component
     public function ContactUs(){
 
         $validated=$this->validate();
-        Contact::create($validated);
+        $mailer=Contact::create($validated);
         session()->flash('success', 'Thanks for reaching out,'.$this->name.'!. We appreciate your message and will respond soon.!');
+
+        // $recipients=User::role('super_admin')->get()->pluck('id')->toArray();
+        $recipients=User::role('super_admin')->get();
+
+        foreach($recipients as $recipient){
+
+        Notification::make()
+        ->title('New Mail')
+        ->body('We\'ve received mail from '.$mailer->name)
+        ->sendToDatabase($recipient);
+        }
+
         $this->reset();
     }
 

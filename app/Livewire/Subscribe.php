@@ -31,17 +31,15 @@ class Subscribe extends Component
         $subscriber=Subscriber::create($validated);
         session()->flash('success', "Thanks for subscribing! We'll keep you updated with the latest news!");
 
-        // User::role('Super Admin')->get()->pluck('id')->toArray();
+        // $recipients=User::role('super_admin')->get()->pluck('id')->toArray();
+        $recipients = User::role('super_admin')->get();
 
-        $recipient = User::role('super_admin')->first();
-        // $recipient = User::whereHas('roles', function ($query) {
-        //     $query->where('id', 1);
-        // })->first();
-
-        Notification::make()
-        ->title('New Subscriber')
-        ->body('User with this email ' . $subscriber->email . ' has subscribed to our app. <a href="' . route('filament.admin.resources.subscribers.index') . '">View Subscribers</a>')
-        ->sendToDatabase($recipient);
+        foreach($recipients as $recipient){
+            Notification::make()
+            ->title('New Subscriber')
+            ->body('User with this email ' . $subscriber->email . ' has subscribed to our app. <a href="' . route('filament.admin.resources.subscribers.index') . '">View Subscribers</a>')
+            ->sendToDatabase($recipient);
+        }
         $this->reset();
     }
     public function render()
