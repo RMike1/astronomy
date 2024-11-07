@@ -133,37 +133,26 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                 TextColumn::make('sub_title')->label('Sub Title')->searchable()->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('summary_description')->label('Summary Description')->limit(50)->searchable()->sortable(),
+                TextColumn::make('full_description')
+                    ->label('Description')
+                    ->limit(50)
+                    ->html()
+                    ->formatStateUsing(function ($state) {
+                        return \Illuminate\Support\Str::limit(strip_tags($state), 50);
+                    }),
                 ImageColumn::make('image')->label('Background Image')->disk('public'),
-
 
                 TextColumn::make('background_video')
                     ->label('Background Video')
-                //     ->formatStateUsing(function ($record) {
-                //             return '<video width="200" height="200" controls>
-                //                     <source src="'.Storage::url($record->video).'" type="video/mp4">
-                //                     Your browser does not support the video tag.
-                //                 </video>';
-
-                    ->getStateUsing(function ($record) {
-                        return '<video width="200" height="200" controls>
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->formatStateUsing(function ($record) {
+                            return '<video width="200" height="200" controls>
                                     <source src="'.Storage::url($record->video).'" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>';
                     })
                     ->html()
                     ->wrap(),
-
-
-
-                    // HtmlColumn::make('background_video')
-                    // ->label('Video')
-                    // ->getStateUsing(function ($record) {
-                    //     return '<video width="200" height="200" controls>
-                    //                 <source src="' . asset('storage/' . $record->video) . '" type="video/mp4">
-                    //                 Your browser does not support the video tag.
-                    //             </video>';
-                    // }),    
-
                 IconColumn::make('is_active')->label('Is Active')
                     ->boolean()
                     ->sortable(),

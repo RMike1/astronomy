@@ -14,6 +14,7 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Columns\ToggleColumn;
@@ -95,7 +96,13 @@ class AboutResource extends Resource implements HasShieldPermissions
                 TextColumn::make('about_title')->label('Title'),
                 TextColumn::make('about_sub_title')->label('Sub Title')
                 ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('about_description')->limit(50)->label('Description'),
+                TextColumn::make('about_description')
+                    ->label('Description')
+                    ->limit(50)
+                    ->html()
+                    ->formatStateUsing(function ($state) {
+                        return \Illuminate\Support\Str::limit(strip_tags($state), 50);
+                    }),
                 ImageColumn::make('about_image')->label('Image'),
                 TextColumn::make('about_hero_video')
                 ->label('Background Video')
