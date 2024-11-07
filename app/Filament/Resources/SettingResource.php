@@ -41,8 +41,8 @@ class SettingResource extends Resource implements HasShieldPermissions
                     ->maxLength(255)->columnSpanFull(),
                 Forms\Components\FileUpload::make('logo')->label('Logo')->disk('public')->directory('settings')->required()->maxSize(2096)
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
-                Forms\Components\FileUpload::make('favicon')->label('favicon')->disk('public')->directory('settings')->required()->maxSize(2096)
-                    ->acceptedFileTypes(['image/png', 'image/ico']),
+                Forms\Components\FileUpload::make('favicon')->label('favicon')->disk('public')->directory('settings')->required()->maxSize(2096),
+                    // ->acceptedFileTypes(['image/png', 'image/ico']),
             ])->columns(2)
             ]);
     }

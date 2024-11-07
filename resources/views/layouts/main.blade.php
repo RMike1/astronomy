@@ -2,10 +2,12 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 @if (isset($meta))
-
+    @php
+        $setting = App\Models\Setting::select('logo')->first();
+    @endphp
     <head>
-        <link rel="icon" href="{{ asset('user/favicon.ico') }}">
-        {{$meta}}   
+        <link rel="icon" href="{{ Storage::url($setting->favicon) }}">
+        {{ $meta }}
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,19 +21,17 @@
     </head>
 @endif
 
-<body x-data="{  page: '{{ Route::currentRouteName() }}', activeSection: 'home',  'loaded': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }" x-init="
-const observer = new IntersectionObserver((entries) => {
+<body x-data="{ page: '{{ Route::currentRouteName() }}', activeSection: 'home', 'loaded': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }" x-init="const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             activeSection = entry.target.id;
         }
     });
-}, { threshold: 0.6 }); 
+}, { threshold: 0.6 });
 
 document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
-});
-">
+});">
 
     @if (isset($header))
         @include('partials.header')
@@ -54,7 +54,7 @@ document.querySelectorAll('section').forEach(section => {
         $(document).ready(function() {
             if ($('.text-slider').length) {
                 var sentence = $('.text-slider-items').text();
-    
+
                 var typed = new Typed('.text-slider', {
                     strings: [sentence],
                     typeSpeed: 60,
@@ -65,7 +65,7 @@ document.querySelectorAll('section').forEach(section => {
             }
         });
     </script>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             AOS.init({
@@ -93,13 +93,13 @@ document.querySelectorAll('section').forEach(section => {
         });
     </script>
     <script>
-       document.querySelectorAll('.custom-editor-content a').forEach(link => {
+        document.querySelectorAll('.custom-editor-content a').forEach(link => {
             const img = link.querySelector('img');
             if (img) {
-                link.removeAttribute('href'); 
+                link.removeAttribute('href');
             }
             link.addEventListener('click', (event) => {
-                event.preventDefault(); 
+                event.preventDefault();
             });
         });
     </script>
