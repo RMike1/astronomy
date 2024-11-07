@@ -2,24 +2,28 @@
 
 namespace App\Filament\Widgets;
 
+use Carbon\Carbon;
 use App\Models\Subscriber;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
 use Filament\Widgets\ChartWidget;
+use Filament\Widgets\Concerns\InteractsWithPageFilters;
 
 class SubscribeChartWidget extends ChartWidget
 {
+    use InteractsWithPageFilters;
     protected static ?string $heading = 'Subscribers';
-    // protected int | string | array $columnSpan = 1;
-
 
     protected function getData(): array
     {
 
+        $startDate=$this->filters['startDate'];
+        $endDate=$this->filters['endDate'];
+
         $data = Trend::model(Subscriber::class)
             ->between(
-            start: now()->subMonths(6),
-            end: now(),
+            start: $startDate ? Carbon::parse($startDate) : now()->subMonths(6),
+            end: $endDate ? Carbon::parse($endDate) : now(),
             )
             ->perMonth()
             ->count();
