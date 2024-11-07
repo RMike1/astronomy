@@ -26,11 +26,9 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
-
     // public function canAccessPanel(Panel $panel): bool{
     //         return $this->email==="admin3@gmail.com";
     // }
-
 
     /**
      * The attributes that are mass assignable.
