@@ -47,7 +47,7 @@ class ServiceSectionHeaderResource extends Resource implements HasShieldPermissi
                     ->label('Description')
                     ->required()
                     ->columnSpan(2),
-                    ]),
+                    ])->columns(2),
                 ])->columns(2);
     }
 

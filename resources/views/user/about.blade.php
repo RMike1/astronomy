@@ -28,8 +28,9 @@
                             class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient">Observatories</a>
                     </li>
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
-                        <a href="{{ route('home') }}/#Services"
-                            class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient">Services</a>
+                        <a href="#Services"
+                            class="relative text-white/80 text-sm py-1.5 px-4 border border-transparent hover:text-white hover:nav-gradient"
+                            >Services</a>
                     </li>
                     <li class="nav__menu lg:py-7" :class="{ 'lg:!py-4': stickyMenu }">
                         <a href="{{ route('about') }}"
@@ -80,7 +81,7 @@
     <!----------About us----------->
 
     <section class="overflow-hidden">
-        <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0 py-20 lg:py-25 relative">
+        <div class="max-w-[1170px] mx-auto px-6 sm:px-12 xl:px-16 py-28 lg:py-32 relative">
             <div class="absolute bottom-0 left-0 w-full h-[1px] about-divider-gradient"></div>
             <div class="flex gap-11 flex-wrap justify-between">
                 <div class="wow fadeInLeft m-auto w-full">
@@ -91,7 +92,7 @@
                     <div class="custom-editor-content font-medium mb-6">
                         {!! str($about_data->about_description)->sanitizeHtml() !!}
                     </div>
-
+    
                     <a href="{{ route('home') }}/#Contact"
                         class="features-button-gradient relative inline-flex items-center gap-1.5 rounded-full py-3 px-6 text-white text-sm ease-in duration-300 hover:shadow-button">
                         Get in Touch!
@@ -147,7 +148,7 @@
                         What are you waiting for?
                     </h2>
                     <p class="max-w-[714px] mx-auto font-medium mb-9">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat aspernatur
+                        
                     </p> --}}
                     <a href="{{ route('home') }}/#Contact"
                         class="features-button-gradient relative inline-flex items-center gap-1.5 rounded-full py-3 px-6 text-white text-sm ease-in duration-300 hover:shadow-button">

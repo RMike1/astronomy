@@ -1,9 +1,8 @@
 @foreach ($Homesections as $Homesection)
     <section  id="Observatories" class="relative overflow-hidden pt-12.5 min-h-screen bg-cover bg-center" data-aos="fade-down"
-        style="background-image: url({{ asset('storage/'.$Homesection->image) }});">
-        <!-- Gradient Overlay -->
+        style="background-image: url({{ Storage::url($Homesection->image) }});">
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
-        <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Overlay for better text visibility -->
+        <div class="absolute inset-0 bg-black opacity-50"></div> 
         <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
             <div class="grid sm:grid-cols-12 gap-7.5" data-highlighter>
                 <div class="sm:col-span-12 pt-32">

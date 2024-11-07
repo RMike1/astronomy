@@ -46,25 +46,26 @@ document.querySelectorAll('section').forEach(section => {
     @include('partials.footer')
 
     @livewireScripts
-
     <script src="{{ asset('user/js/jquery-3.5.1.min.js') }}"></script>
-    <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
     <script>
         $(document).ready(function() {
-            var sentence = $('.text-slider-items').text();
-
-            var typed = new Typed('.text-slider', {
-                strings: [sentence],
-                typeSpeed: 60,
-                backSpeed: 0,
-                loop: false,
-                showCursor: true,
-            });
+            if ($('.text-slider').length) {
+                var sentence = $('.text-slider-items').text();
+    
+                var typed = new Typed('.text-slider', {
+                    strings: [sentence],
+                    typeSpeed: 60,
+                    backSpeed: 0,
+                    loop: false,
+                    showCursor: true,
+                });
+            }
         });
     </script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             AOS.init({

@@ -9,4 +9,6 @@ class TeamSectionHeader extends Model
 {
     /** @use HasFactory<\Database\Factories\TeamSectionHeaderFactory> */
     use HasFactory;
+
+    protected $guarded=[];
 }

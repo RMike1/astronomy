@@ -45,7 +45,7 @@ class TeamSectionHeaderResource extends Resource implements HasShieldPermissions
                         ->label('Description')
                         ->required()
                         ->columnSpan(2),
-                ]),
+                ])->columns(2),
             ])->columns(2);
     }
 
@@ -53,9 +53,9 @@ class TeamSectionHeaderResource extends Resource implements HasShieldPermissions
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('sub_title')->limit(20),
-                Tables\Columns\TextColumn::make('description')->limit(70),
+                Tables\Columns\TextColumn::make('title')->limit(30),
+                Tables\Columns\TextColumn::make('sub_title')->limit(10),
+                Tables\Columns\TextColumn::make('description')->limit(50),
             ])
             ->filters([
                 //

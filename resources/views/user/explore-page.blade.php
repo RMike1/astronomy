@@ -38,8 +38,7 @@
     </x-slot>
     @if ($Homesection->background_type === 'image')
         <section class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center"
-            style="background-image: url({{ asset('storage/' . $Homesection->image) }});">
-            <!-- Gradient Overlay -->
+            style="background-image: url({{Storage::url($Homesection->image) }});">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
             <div class="absolute inset-0 bg-black opacity-50"></div>
 
@@ -85,7 +84,7 @@
                 <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
                     <div class="absolute inset-0 top-0 left-0 w-full h-full">
                         <video class="video-bg absolute inset-0 w-full h-full object-cover" autoplay muted loop>
-                            <source src="{{ asset('storage/' . $Homesection->background_video) }}" type="video/mp4">
+                            <source src="{{ Storage::url($Homesection->background_video) }}" type="video/mp4">
                             Your browser does not support HTML5 video.
                         </video>
                     </div>
@@ -105,15 +104,14 @@
                     <h1 class="text-white mb-6 text-5xl font-extrabold sm:text-5xl xl:text-heading-1"
                         data-aos="fade-left">
                         <span class="text-slider-items hidden">{{ $Homesection->title }}</span>
-                        <span class="text-slider text-5xl"></span>
+                        <span class="text-slider text-3xl sm:text-3xl md:text-5xl lg:text-5xl"></span>
                     </h1>
                 </div>
             </div>
         </section>
     @else
         <section class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center"
-            style="background-image: url({{ asset('storage/' . $Homesection->image) }});">
-            <!-- Gradient Overlay -->
+            style="background-image: url({{ Storage::url($Homesection->image) }});">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
             <div class="absolute inset-0 bg-black opacity-50"></div>
 

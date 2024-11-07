@@ -4678,14 +4678,11 @@ body{
 
 .custom-editor-content {
   font-family: monospace,'Plus Jakarta Sans', sans-serif;
-  color: #918ea0; /* Lighter base color */
+  color: #918ea0; 
   line-height: 1.6;
-  margin: 0; /* 1 */
-  /* line-height: inherit;  */
-  
+  margin: 0;
 }
 
-/* Headings */
 .custom-editor-content h1 {
   margin: 1.2rem 0 0.6rem;
   color: #ffffff; 
@@ -4705,10 +4702,6 @@ body{
   color: #ffffff;
   font-weight: 500;
   font-size: 1.75rem;
-
-  /* font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px; */
 }
 
 .custom-editor-content h4 {
@@ -4816,6 +4809,32 @@ body{
   visibility: hidden;
 }
 
+.custom-editor-content pre {
+    background-color: #1e1e1e; 
+    color: #d4d4d4; 
+    padding: 15px; 
+    border-radius: 5px; 
+    font-family: 'Courier New', monospace; 
+    font-size: 14px; 
+    overflow-x: auto;
+    white-space: pre-wrap; 
+    word-wrap: break-word; 
+}
+
+.custom-editor-content code {
+    background-color: #f3f3f3;
+    color: #c7254e;
+    padding: 2px 4px;
+    border-radius: 4px; 
+    font-family: 'Courier New', monospace; 
+    font-size: 90%; 
+}
+
+.custom-editor-content pre code {
+    display: block; 
+    white-space: pre-wrap; 
+    word-wrap: break-word; 
+}
 
 
 .video-bg {
