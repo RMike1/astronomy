@@ -1,6 +1,6 @@
 <x-main-layout>
     <x-slot name="meta">
-        <title>{{ $Homesection->meta_title }} Apollo</title>
+        <title>{{ $Homesection->meta_title }} - Apollo</title>
         <meta name="description" content="{{ $Homesection->meta_description}}">
         <meta name="keywords" content="{{ $Homesection->meta_keyword }}">
     </x-slot>
@@ -209,12 +209,11 @@
     <section class="pt-20 lg:pt-25 pb-17.5 lg:pb-22.5 xl:pb-27.5">
         <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
             <div class="max-w-[870px] mx-auto">
-                <h2 class="font-semibold text-white text-[34px] leading-[45px] max-w-[579px] mb-7.5">
-                    Lorem ipsum dolor sit amet consectetur
-                </h2>
-                <p class="font-medium mb-6">
-                    {!! $Homesection->full_description !!}
-                </p>
+                {{-- <p class="font-medium mb-6">
+                </p> --}}
+                <div class="custom-editor-content font-medium mb-6">
+                    {!! str($Homesection->full_description)->sanitizeHtml() !!}
+                </div>
             </div>
         </div>
     </section>

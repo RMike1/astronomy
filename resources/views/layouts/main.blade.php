@@ -79,6 +79,17 @@
             }
         });
     </script>
+    <script>
+       document.querySelectorAll('.custom-editor-content a').forEach(link => {
+            const img = link.querySelector('img');
+            if (img) {
+                link.removeAttribute('href'); 
+            }
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); 
+            });
+        });
+    </script>
 </body>
 
 </html>

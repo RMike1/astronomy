@@ -84,7 +84,7 @@
         <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
             <div class="max-w-[870px] mx-auto">
                 <div class="custom-editor-content">
-                    {!! $policies->description !!}
+                    {!! str($policies->description)->sanitizeHtml() !!}
                 </div>
             </div>
         </div>

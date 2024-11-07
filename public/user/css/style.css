@@ -4680,28 +4680,35 @@ body{
   font-family: monospace,'Plus Jakarta Sans', sans-serif;
   color: #918ea0; /* Lighter base color */
   line-height: 1.6;
+  margin: 0; /* 1 */
+  /* line-height: inherit;  */
+  
 }
 
 /* Headings */
 .custom-editor-content h1 {
-  font-size: 2rem;
   margin: 1.2rem 0 0.6rem;
+  color: #ffffff; 
+  font-size: 2rem;
   font-weight: 700;
-  color: #ffffff; /* Lighter shade */
 }
 
 .custom-editor-content h2 {
-  font-size: 1.75rem;
   margin: 1rem 0 0.5rem;
-  font-weight: 600;
   color: #ffffff;
+  font-size: 1.75rem;
+  font-weight: 600;
 }
 
 .custom-editor-content h3 {
-  font-size: 1.5rem;
   margin: 0.8rem 0 0.4rem;
-  font-weight: 500;
   color: #ffffff;
+  font-weight: 500;
+  font-size: 1.75rem;
+
+  /* font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px; */
 }
 
 .custom-editor-content h4 {
@@ -4728,23 +4735,30 @@ body{
 /* Paragraphs */
 .custom-editor-content p {
   margin: 0.5rem 0;
-  color: #918ea0; /* Slightly lighter for main text */
+  color: #918ea0; 
   font-family: monospace, 'Plus Jakarta Sans', sans-serif;
 }
 
-/* Lists */
-.custom-editor-content ul,
 .custom-editor-content ol {
+  list-style: decimal;
+  color: #918ea0;
   padding-left: 1.5rem;
   margin: 0.5rem 0;
+
+}
+
+.custom-editor-content ul {
+  list-style: disc;    
   color: #918ea0;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;  
+
 }
 
 .custom-editor-content li {
   margin: 0.3rem 0;
 }
 
-/* Links */
 .custom-editor-content a {
   color: #918ea0;
   text-decoration: none;
@@ -4756,7 +4770,6 @@ body{
   color: #918ea0;
 }
 
-/* Blockquotes */
 .custom-editor-content blockquote {
   border-left: 4px solid #ccc;
   padding-left: 1rem;
@@ -4765,12 +4778,45 @@ body{
   font-style: italic;
 }
 
-/* Images */
 .custom-editor-content img {
   max-width: 100%;
   height: auto;
   margin: 1rem 0;
 }
+
+.custom-editor-content img {
+  pointer-events: auto;
+  border: none;
+  outline: none;
+  max-width: 100%;
+  height: auto;
+}
+
+.custom-editor-content a img {
+  pointer-events: none; 
+  cursor: default;      
+  text-decoration: none;
+}
+
+.custom-editor-content a:hover {
+  cursor: default;      
+  text-decoration: none;
+}
+
+.custom-editor-content figure {
+  display: block; 
+}
+
+.custom-editor-content figure figcaption,
+.custom-editor-content figure span,
+.custom-editor-content figure div {
+  display: none !important; 
+}
+.custom-editor-content img[alt] {
+  visibility: hidden;
+}
+
+
 
 .video-bg {
   width: 100%;

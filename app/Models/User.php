@@ -14,7 +14,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Filament\Panel;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable Implements FilamentUser
+class User extends Authenticatable
 {
 
 
@@ -27,9 +27,9 @@ class User extends Authenticatable Implements FilamentUser
     use TwoFactorAuthenticatable;
 
 
-    public function canAccessPanel(Panel $panel): bool{
-            return $this->email==="admin3@gmail.com";
-    }
+    // public function canAccessPanel(Panel $panel): bool{
+    //         return $this->email==="admin3@gmail.com";
+    // }
 
 
     /**
