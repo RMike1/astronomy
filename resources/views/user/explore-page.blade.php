@@ -1,7 +1,7 @@
 <x-main-layout>
     <x-slot name="meta">
         <title>{{ $Homesection->meta_title }} - Apollo</title>
-        <meta name="description" content="{{ $Homesection->meta_description}}">
+        <meta name="description" content="{{ $Homesection->meta_description }}">
         <meta name="keywords" content="{{ $Homesection->meta_keyword }}">
     </x-slot>
     <x-slot name="header">
@@ -158,7 +158,7 @@
     <section class="overflow-hidden">
         <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0 py-20 lg:py-25 relative">
             <div class="absolute bottom-0 left-0 w-full h-[1px] about-divider-gradient"></div>
-            <div class="flex gap-11 flex-wrap justify-between grid sm:grid-cols-2">
+            <div class="flex gap-11 flex-wrap justify-between sm:grid sm:grid-cols-2">
                 <div class="wow fadeInLeft max-w-[570px] w-full">
                     <span class="hero-subtitle-text font-semibold block mb-5">{{ $Homesection->sub_title }}</span>
                     <h2 class="text-white mb-5 text-2xl font-extrabold sm:text-4xl xl:text-heading-2">
@@ -171,7 +171,7 @@
                         class="features-button-gradient relative inline-flex items-center gap-1.5 rounded-full py-3 px-6 text-white text-sm ease-in duration-300 hover:shadow-button">
                         Learn more!
                         <svg width="14" height="12" viewBox="0 0 14 12" fill="none"
-                            xmlns="http://www.w3.org/2000/svg')}}">
+                            xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M13.3992 5.60002L8.22422 0.350024C7.99922 0.125024 7.64922 0.125024 7.42422 0.350024C7.19922 0.575024 7.19922 0.925025 7.42422 1.15002L11.6242 5.42503H0.999219C0.699219 5.42503 0.449219 5.67502 0.449219 5.97502C0.449219 6.27502 0.699219 6.55003 0.999219 6.55003H11.6742L7.42422 10.875C7.19922 11.1 7.19922 11.45 7.42422 11.675C7.52422 11.775 7.67422 11.825 7.82422 11.825C7.97422 11.825 8.12422 11.775 8.22422 11.65L13.3992 6.40002C13.6242 6.17502 13.6242 5.82502 13.3992 5.60002Z"
                                 fill="white" />
@@ -179,7 +179,20 @@
                     </a>
                 </div>
                 <div class="wow fadeInRight xl:block">
-                    <img src="{{ asset('user/images/video.png') }}" alt="about" />
+                    <img class="rounded-sm" src="{{ Storage::url($Homesection->image) }}" alt="img" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+
+    <section class="pt-20 lg:pt-25 pb-17.5 lg:pb-22.5 xl:pb-27.5">
+        <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
+            <div class="max-w-[870px] mx-auto">
+                <div class="custom-editor-content font-medium mb-6">
+                    {!! str($Homesection->full_description)->sanitizeHtml() !!}
                 </div>
             </div>
         </div>
@@ -198,22 +211,10 @@
                             d="M25.1688 16.8077L7.26999 27.1727C5.73764 28.0601 3.75 27.0394 3.75 25.3651V4.63517C3.75 2.96091 5.73764 1.94018 7.26997 2.82754L25.1688 13.1925C26.6104 14.0274 26.6104 15.9729 25.1688 16.8077Z"
                             fill="white" />
                     </svg>
-                </a>
-                <span
+                </a> --}}
+                {{-- <span
                     class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-1 block w-32 h-32 rounded-full backdrop-blur-[5px] bg-white/[0.04]"></span> --}}
-                <img class="rounded-xl" src="{{ Storage::url($Homesection->image) }}" alt="video" />
-            </div>
-        </div>
-    </section>
-
-    <section class="pt-20 lg:pt-25 pb-17.5 lg:pb-22.5 xl:pb-27.5">
-        <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
-            <div class="max-w-[870px] mx-auto">
-                {{-- <p class="font-medium mb-6">
-                </p> --}}
-                <div class="custom-editor-content font-medium mb-6">
-                    {!! str($Homesection->full_description)->sanitizeHtml() !!}
-                </div>
+                <img class="rounded-xl" src="{{ Storage::url($Homesection->image) }}" alt="img" />
             </div>
         </div>
     </section>

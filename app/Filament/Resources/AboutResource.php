@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\AboutResource\Pages;
@@ -53,7 +54,27 @@ class AboutResource extends Resource implements HasShieldPermissions
                     TextInput::make('about_sub_title')
                     ->label('Sub Main Title')
                     ->required(),
-                    Textarea::make('about_description')->label('Description')->required()->columnSpan(2),
+                    RichEditor::make('about_description')->label('Description')
+                    ->toolbarButtons([
+                        'attachFiles',
+                        'blockquote',
+                        'bold',
+                        'bulletList',
+                        'codeBlock',
+                        'h2',
+                        'h3',
+                        'italic',
+                        'link',
+                        'orderedList',
+                        'redo',
+                        'strike',
+                        'underline',
+                        'undo',
+                    ])
+                    ->fileAttachmentsDisk('public')
+                    ->fileAttachmentsDirectory('about-description')
+                    ->fileAttachmentsVisibility('public')
+                    ->columnSpan(2)->required(),
                 ])->columnSpan(2)->columns(2),
                 Section::make('Media')->schema([
                     FileUpload::make('about_image')->label('Image')->disk('public')->directory('About')->required()->maxSize(4048) 

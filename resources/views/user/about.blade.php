@@ -88,9 +88,10 @@
                     <h2 class="text-white mb-5 text-2xl font-extrabold sm:text-4xl xl:text-heading-2">
                         {{ $about_data->about_title }}
                     </h2>
-                    <p class="mb-9 font-medium">
-                        {{ $about_data->about_description }}
-                    </p>
+                    <div class="custom-editor-content font-medium mb-6">
+                        {!! str($about_data->about_description)->sanitizeHtml() !!}
+                    </div>
+
                     <a href="{{ route('home') }}/#Contact"
                         class="features-button-gradient relative inline-flex items-center gap-1.5 rounded-full py-3 px-6 text-white text-sm ease-in duration-300 hover:shadow-button">
                         Get in Touch!
