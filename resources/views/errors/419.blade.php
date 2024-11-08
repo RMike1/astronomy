@@ -1,17 +1,18 @@
 <x-main-layout>
     <x-slot name="meta">
         @php
-            $meta_data = App\Models\Setting::select([
-                'meta_keyword',
-                'meta_title',
-                'meta_description',
-                'logo',
-                'favicon',
-            ])->first();
+        $meta_data = App\Models\Setting::select([
+            'meta_keyword',
+            'meta_title',
+            'meta_description',
+            'company_name',
+            'logo',
+            'favicon',
+        ])->first();
         @endphp
-        <title>{{ config('app.name', 'Astronomy') }}</title>
-        <meta name="description" content="{{ $meta_data->meta_description }}">
-        <meta name="keywords" content="{{ $meta_data->meta_keyword }}">
+        <title>419 - {{$meta_data->company_name}}</title>
+        <meta name="description" content="{{ $meta_data->meta_description ?? '' }}">
+        <meta name="keywords" content="{{ $meta_data->meta_keyword ?? '' }}">
     </x-slot>
     <x-slot name="header">
         <div class="w-full lg:w-3/4 h-0 lg:h-auto invisible lg:visible lg:flex items-center justify-end"

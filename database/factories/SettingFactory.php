@@ -20,6 +20,7 @@ class SettingFactory extends Factory
             'meta_keyword'=>fake()->sentence(),
             'meta_title'=>fake()->sentence(),
             'meta_description'=>fake()->paragraph(3),
+            'company_name'=>fake()->name(),
             'logo'=>fake()->imageUrl(),
             'favicon'=>fake()->imageUrl(),
         ];

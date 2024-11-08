@@ -14,15 +14,19 @@
     <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0 relative pt-17.5">
         <div class="w-full h-[1px] footer-divider-gradient absolute top-0 left-0"></div>
         <div class="flex flex-wrap justify-between">
+            
             <div class="mb-10 max-w-[571px] w-full">
+                    @php
+                        $setting=App\Models\Setting::select('logo')->first();
+                    @endphp
                 <a class="mb-8.5 inline-block" href="{{route('home')}}">
-                    <h1 class="text-2xl font-bold">APOLLO</h2>
+                    <img src="{{$setting ? Storage::url($setting->logo) : ' '}}" alt="Logo" />
                 </a>
                 @php
                     $companyInfo = App\Models\About::select('about_summary_description')->first();
                 @endphp
                 <p class="mb-12 xl:w-4/5">
-                    {{$companyInfo->about_summary_description}}
+                    {{ $companyInfo ? $companyInfo->about_summary_description : ' '}}
                 </p>
                 <div class="flex items-center gap-5">
                     @php

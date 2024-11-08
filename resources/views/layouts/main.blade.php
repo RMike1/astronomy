@@ -6,7 +6,7 @@
         $setting = App\Models\Setting::select('logo')->first();
     @endphp
     <head>
-        <link rel="icon" href="{{ Storage::url($setting->favicon) }}">
+        <link rel="icon" href="{{ $setting ? Storage::url($setting->favicon) : ' '}}">
         {{ $meta }}
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />

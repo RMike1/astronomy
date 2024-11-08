@@ -7,8 +7,7 @@
                         $setting=App\Models\Setting::select('logo')->first();
                     @endphp
                     <a href="{{ route('home') }}">
-                        {{-- <h1 class="text-2xl font-bold">APOLLO</h1> --}}
-                        <img src="{{Storage::url($setting->logo)}}" alt="Logo" />
+                        <img src="{{$setting ? Storage::url($setting->logo) : ' '}}" alt="Logo" />
                     </a>
 
                     <button class="lg:hidden block" @click="navigationOpen = !navigationOpen">

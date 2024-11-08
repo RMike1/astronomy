@@ -5,11 +5,12 @@
                 'meta_keyword',
                 'meta_title',
                 'meta_description',
+                'company_name',
                 'logo',
                 'favicon',
             ])->first();
         @endphp
-        <title>{{ config('app.name', 'Astronomy') }}</title>
+        <title>{{ $meta_data->company_name }}</title>
         <meta name="description" content="{{ $meta_data->meta_description }}">
         <meta name="keywords" content="{{ $meta_data->meta_keyword }}">
     </x-slot>
