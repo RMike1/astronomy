@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Laravel\Fortify\Features;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 
@@ -20,3 +21,6 @@ Route::get('/privacy-policy',[HomeController::class,'privacy_policy'])->name('pr
 
 
 
+Route::get('/login', function () {
+    throw new NotFoundHttpException();
+});
