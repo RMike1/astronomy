@@ -55,9 +55,9 @@ class UserResource extends Resource implements HasShieldPermissions
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                ImageColumn::make('profile_photo_path')
-                    ->label('Profile Photo')
-                    ->disk('public'),
+                // ImageColumn::make('profile_photo_path')
+                //     ->label('Profile Photo')
+                //     ->disk('public'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

@@ -6,7 +6,9 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
+use Filament\Navigation\MenuItem;
 use Filament\Support\Colors\Color;
+use Illuminate\Support\Facades\Auth;
 use Filament\Http\Middleware\Authenticate;
 use App\Filament\Widgets\DashboardStatsWidget;
 use Illuminate\Session\Middleware\StartSession;
@@ -19,6 +21,8 @@ use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
+use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -27,10 +31,10 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('/admin')
+            ->path('/admin-dashboard')  
             ->login()
             ->colors([
-                'primary' => Color::Gray,
+                'primary' => Color::Indigo,
             ])
             ->databaseNotifications()
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
@@ -56,23 +60,30 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
+
+            ->userMenuItems([
+                'profile' => MenuItem::make()
+                    ->label(fn() => Auth::user()->name)
+                    ->url(fn (): string => EditProfilePage::getUrl())
+                    ->icon('heroicon-m-user-circle')
+            ])
+
             ->plugins([
                 FilamentShieldPlugin::make(),
-                // ->gridColumns([
-                //     'default' => 1,
-                //     'sm' => 2,
-                //     'lg' => 2
-                // ])
-                // ->sectionColumnSpan(1)
-                // ->checkboxListColumns([
-                //     'default' => 1,
-                //     'sm' => 2,
-                //     'lg' => 3,
-                // ])
-                // ->resourceCheckboxListColumns([
-                //     'default' => 1,
-                //     'sm' => 2,
-                // ]),
+
+                FilamentEditProfilePlugin::make()
+                    // ->slug('my-profile')
+                    ->setTitle('Profile')
+                    ->setNavigationLabel('Profile')
+                    ->setNavigationGroup('User Profile')
+                    ->setIcon('heroicon-o-user')
+                    ->setSort(40)
+                    ->shouldRegisterNavigation()
+                    // ->shouldShowAvatarForm(
+                    //     value: true,
+                    //     directory: 'avatars', // image will be stored in 'storage/app/public/avatars
+                    //     rules: 'mimes:jpeg,png|max:1024' //only accept jpeg and png files with a maximum size of 1MB
+                    // )
             ]);
     }
 }
