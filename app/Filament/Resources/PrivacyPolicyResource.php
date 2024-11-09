@@ -12,6 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Section;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
@@ -66,9 +68,20 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
                         ->fileAttachmentsVisibility('public')
                         ->columnSpan(2)->required(),
                 ])->columnSpan(2)->columns(2),
-                Section::make('Media')->schema([
-                    FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('privacy-background-images')->required()->maxSize(3048)
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                Group::make()->schema([
+                    Section::make('Media')->schema([
+                        FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('policy')->required()->maxSize(3048)
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                    ])->columnSpan(1),
+                    Section::make('Meta Data')->schema([
+                        TextInput::make('meta_title')->label('Meta Title ( Page Name )')
+                        ->maxLength(255)
+                        ->required(),
+                    Textarea::make('meta_description')->label('Meta Description')
+                        ->maxLength(255)
+                        ->required()
+                        ->columnSpanFull(),
+                    ])->columnSpan(1),
                 ])->columnSpan(1),
             ])->columns(3);
     }
@@ -86,6 +99,10 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
                     ->formatStateUsing(function ($state) {
                         return \Illuminate\Support\Str::limit(strip_tags($state), 50);
                     }),
+                TextColumn::make('meta_title')->label('Meta Title')->limit(50)
+                    ->searchable(),
+                TextColumn::make('meta_description')->label('Meta Description')->limit(50)
+                        ->searchable(),
                 ImageColumn::make('background_image')->label('Background Image'),
             ])
             ->filters([

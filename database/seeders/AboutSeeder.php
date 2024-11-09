@@ -23,9 +23,8 @@ class AboutSeeder extends Seeder
             'about_sub_title'=>'About us',
             'about_summary_description'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquas',
             'about_description'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquas lor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquas',
-            'meta_title'=>'Lorem ipsum',
-            'meta_keyword'=>'title lorem ipsum',
-            'meta_description'=>'description lorem ipsum'
+            'logo'=>'user/images/bc/logo.png',
+            'favicon'=>'user/images/bc/image.ico',
         ]);
     }
 }

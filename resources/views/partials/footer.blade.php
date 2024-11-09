@@ -17,16 +17,13 @@
             
             <div class="mb-10 max-w-[571px] w-full">
                     @php
-                        $setting=App\Models\Setting::select('logo')->first();
+                        $company_profile=App\Models\About::select(['logo','about_summary_description'])->first();
                     @endphp
                 <a class="mb-8.5 inline-block" href="{{route('home')}}">
-                    <img src="{{$setting ? Storage::url($setting->logo) : ' '}}" alt="Logo" />
+                    <img src="{{$company_profile ? Storage::url($company_profile->logo) : ' '}}" alt="Logo" />
                 </a>
-                @php
-                    $companyInfo = App\Models\About::select('about_summary_description')->first();
-                @endphp
                 <p class="mb-12 xl:w-4/5">
-                    {{ $companyInfo ? $companyInfo->about_summary_description : ' '}}
+                    {{ $company_profile ? $company_profile->about_summary_description : ' '}}
                 </p>
                 <div class="flex items-center gap-5">
                     @php

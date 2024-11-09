@@ -2,23 +2,25 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\TermsOfUseResource\Pages;
-use App\Filament\Resources\TermsOfUseResource\RelationManagers;
-use App\Models\TermsOfUse;
-use Faker\Provider\Lorem;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
+use Faker\Provider\Lorem;
+use App\Models\TermsOfUse;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Section;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\TermsOfUseResource\Pages;
+use App\Filament\Resources\TermsOfUseResource\RelationManagers;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 
 
@@ -66,10 +68,25 @@ class TermsOfUseResource extends Resource implements HasShieldPermissions
                         ->fileAttachmentsVisibility('public')
                         ->columnSpan(2)->required(),
                 ])->columnSpan(2)->columns(2),
-                Section::make('Media')->schema([
-                    FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('Terms')->required()->maxSize(3048)
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+
+                Group::make()->schema([
+                    Section::make('Media')->schema([
+                        FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('Terms')->required()->maxSize(3048)
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                    ])->columnSpan(1),
+                    Section::make('Meta Data')->schema([
+                        TextInput::make('meta_title')->label('Meta Title ( Page Name )')
+                        ->maxLength(255)
+                        ->required(),
+                    Textarea::make('meta_description')->label('Meta Description')
+                        ->maxLength(255)
+                        ->required()
+                        ->columnSpanFull(),
+                    ])->columnSpan(1),
+                   
+
                 ])->columnSpan(1),
+
             ])->columns(3);
     }
 
@@ -85,6 +102,10 @@ class TermsOfUseResource extends Resource implements HasShieldPermissions
                     ->formatStateUsing(function ($state) {
                         return \Illuminate\Support\Str::limit(strip_tags($state), 50);
                     }),
+                TextColumn::make('meta_title')->label('Meta Title')->limit(50)
+                ->searchable(),
+                TextColumn::make('meta_description')->label('Meta Description')->limit(50)
+                    ->searchable(),
                 ImageColumn::make('background_image')->label('Background Image'),
             ])
             ->filters([

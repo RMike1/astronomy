@@ -17,12 +17,10 @@ class SettingFactory extends Factory
     public function definition(): array
     {
         return [
-            'meta_keyword'=>fake()->sentence(),
-            'meta_title'=>fake()->sentence(),
-            'meta_description'=>fake()->paragraph(3),
             'company_name'=>fake()->name(),
-            'logo'=>fake()->imageUrl(),
-            'favicon'=>fake()->imageUrl(),
-        ];
+            'meta_title'=>fake()->name(),
+            'meta_keyword'=>fake()->sentence(),
+            'meta_description'=>fake()->paragraph(3),
+        ]; 
     }
 }

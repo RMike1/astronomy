@@ -38,10 +38,13 @@ class HeroSectionResource extends Resource implements HasShieldPermissions
             ->schema([
                 Section::make('Homepage Hero Section')->schema([
                     TextInput::make('title')->label('Title')->required(),
-                    TextInput::make('description')->label('Decription')->required(),
-                    ])->columnSpan(2),
+                    TextInput::make('sub_title')->label('Sub Title')->required(),
+                    TextInput::make('description')->label('Decription')
+                    ->columnSpan(2)
+                    ->required(),
+                    ])->columnSpan(2)->columns(2),
                 Section::make()->schema([
-                    FileUpload::make('video')->label('Background Video')->disk('public')->directory('Hero-Videos')->maxSize(5096)
+                    FileUpload::make('video')->label('Background Video')->disk('public')->directory('Hero-Videos')->maxSize(6096)
                     ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi'])
                     ->required(),
 
@@ -54,6 +57,7 @@ class HeroSectionResource extends Resource implements HasShieldPermissions
         return $table
             ->columns([
                 TextColumn::make('title'),
+                TextColumn::make('sub_title'),
                 TextColumn::make('video')
                 ->label('Background Video')
                 ->formatStateUsing(function ($record) {

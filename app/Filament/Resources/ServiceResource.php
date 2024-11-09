@@ -47,7 +47,29 @@ class ServiceResource extends Resource implements HasShieldPermissions
                         ->label('Slug')
                         ->required(),
                     Textarea::make('summary_description')->label('Summary Description')->required()->columnSpan(2),
-                    RichEditor::make('full_description')->label('Full Description')->columnSpan(2)->required(),
+
+
+                    RichEditor::make('full_description')->label('Full Description')
+                    ->toolbarButtons([
+                        'attachFiles',
+                        'blockquote',
+                        'bold',
+                        'bulletList',
+                        'codeBlock',
+                        'h2',
+                        'h3',
+                        'italic',
+                        'link',
+                        'orderedList',
+                        'redo',
+                        'strike',
+                        'underline',
+                        'undo',
+                    ])
+                    ->fileAttachmentsDisk('public')
+                    ->fileAttachmentsDirectory('services-images')
+                    ->fileAttachmentsVisibility('public')
+                    ->columnSpan(2)->required(),
                     Toggle::make('is_active')
                         ->label('Active ?'),
                 ])->columns(2),

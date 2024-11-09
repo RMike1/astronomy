@@ -2,17 +2,19 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SettingResource\Pages;
-use App\Filament\Resources\SettingResource\RelationManagers;
-use App\Models\Setting;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Setting;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\SettingResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\SettingResource\RelationManagers;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 
 class SettingResource extends Resource implements HasShieldPermissions
@@ -33,17 +35,13 @@ class SettingResource extends Resource implements HasShieldPermissions
         return $form
             ->schema([
                 Section::make()->schema([
-                Forms\Components\Textarea::make('meta_keyword')->label('Meta Keyword')
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('meta_title')->label('Meta Title')
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('meta_description')->label('Meta Description')
-                    ->maxLength(255)->columnSpanFull(),
-                Forms\Components\FileUpload::make('logo')->label('Logo')->disk('public')->directory('settings')->required()->maxSize(2096)
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
-                Forms\Components\FileUpload::make('favicon')->label('favicon')->disk('public')->directory('settings')->required()->maxSize(2096),
-                    // ->acceptedFileTypes(['image/png', 'image/ico']),
-            ])->columns(2)
+                    TextInput::make('meta_title')->label('Meta Title ( Company Name )')
+                        ->required()
+                        ->maxLength(255),
+                    Textarea::make('meta_description')->label('Meta Description')
+                        ->required()
+                        ->maxLength(255),
+                ])->columns(1)
             ]);
     }
 
@@ -51,16 +49,10 @@ class SettingResource extends Resource implements HasShieldPermissions
     {
         return $table
             ->columns([
-                    Tables\Columns\TextColumn::make('meta_keyword')->limit(50)
-                        ->searchable(),
-                    Tables\Columns\TextColumn::make('meta_title')->limit(50)
-                        ->searchable(),
-                    Tables\Columns\TextColumn::make('meta_description')->limit(50)
-                        ->searchable(),
-                    Tables\Columns\ImageColumn::make('logo')
-                        ->searchable(),
-                    Tables\Columns\ImageColumn::make('favicon')
-                        ->searchable(),
+                Tables\Columns\TextColumn::make('meta_title')->label('Meta Title')->limit(50)
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('meta_description')->label('Meta Description')->limit(50)
+                    ->searchable(),
             ])
             ->filters([
                 //
@@ -71,8 +63,7 @@ class SettingResource extends Resource implements HasShieldPermissions
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                ]),
+                Tables\Actions\BulkActionGroup::make([]),
             ]);
     }
 
@@ -101,5 +92,4 @@ class SettingResource extends Resource implements HasShieldPermissions
             'update',
         ];
     }
-
 }

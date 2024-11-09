@@ -4,10 +4,10 @@
             <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0 lg:flex items-center justify-between relative">
                 <div class="w-full lg:w-1/4 flex items-center justify-between">
                     @php
-                        $setting=App\Models\Setting::select('logo')->first();
+                        $company_profile=App\Models\About::select('logo')->first();
                     @endphp
                     <a href="{{ route('home') }}">
-                        <img src="{{$setting ? Storage::url($setting->logo) : ' '}}" alt="Logo" />
+                        <img src="{{$company_profile ? Storage::url($company_profile->logo) : ' '}}" alt="Logo" />
                     </a>
 
                     <button class="lg:hidden block" @click="navigationOpen = !navigationOpen">

@@ -1,8 +1,7 @@
 <x-main-layout>
     <x-slot name="meta">
-        <title>{{ $Homesection->meta_title }} - Apollo</title>
+        <title> {{ $Homesection->meta_title }} - {{ $meta_data->meta_title }}</title>
         <meta name="description" content="{{ $Homesection->meta_description }}">
-        <meta name="keywords" content="{{ $Homesection->meta_keyword }}">
     </x-slot>
     <x-slot name="header">
         <div class="w-full lg:w-3/4 h-0 lg:h-auto invisible lg:visible lg:flex items-center justify-end"

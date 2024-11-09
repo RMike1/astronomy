@@ -17,6 +17,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Group;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\AboutResource\Pages;
@@ -55,6 +56,9 @@ class AboutResource extends Resource implements HasShieldPermissions
                     TextInput::make('about_sub_title')
                     ->label('Sub Main Title')
                     ->required(),
+                    Textarea::make('about_summary_description')
+                    ->label('Summary Description')
+                    ->columnSpan(2)->required(),
                     RichEditor::make('about_description')->label('Description')
                     ->toolbarButtons([
                         'attachFiles',
@@ -77,12 +81,23 @@ class AboutResource extends Resource implements HasShieldPermissions
                     ->fileAttachmentsVisibility('public')
                     ->columnSpan(2)->required(),
                 ])->columnSpan(2)->columns(2),
-                Section::make('Media')->schema([
-                    FileUpload::make('about_image')->label('Image')->disk('public')->directory('About')->required()->maxSize(4048) 
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
-                    FileUpload::make('about_hero_video')->label('Background Video')->disk('public')->directory('About-video')->required()->maxSize(6096)
-                    ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
+
+                Group::make()->schema([
+                    Section::make('Company\'s Logo & Favicon')->schema([
+                        Forms\Components\FileUpload::make('logo')->label('Logo')->disk('public')->directory('settings')->required()->maxSize(2096)
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                        Forms\Components\FileUpload::make('favicon')->label('favicon')->disk('public')->directory('settings')->required()->maxSize(2096),
+                            // ->acceptedFileTypes(['image/png', 'image/ico']),
+                        ])->columnSpan(1),
+                        Section::make('Media')->schema([
+                            FileUpload::make('about_image')->label('Image')->disk('public')->directory('About')->required()->maxSize(4048) 
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                            FileUpload::make('about_hero_video')->label('Background Video')->disk('public')->directory('About-video')->required()->maxSize(6096)
+                            ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
+                        ])->columnSpan(1),
                 ])->columnSpan(1),
+
+              
             ])->columns(3);
     }
 
@@ -103,8 +118,14 @@ class AboutResource extends Resource implements HasShieldPermissions
                     ->formatStateUsing(function ($state) {
                         return \Illuminate\Support\Str::limit(strip_tags($state), 50);
                     }),
-                ImageColumn::make('about_image')->label('Image'),
+                Tables\Columns\ImageColumn::make('logo')
+                    ->searchable(),
+                Tables\Columns\ImageColumn::make('favicon')
+                    ->searchable(),
+                ImageColumn::make('about_image')->label('Image')
+                ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('about_hero_video')
+                ->toggleable(isToggledHiddenByDefault: true)
                 ->label('Background Video')
                 ->formatStateUsing(function ($record) {
                     return '<video width="150" height="100" controls>

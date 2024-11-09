@@ -13,17 +13,16 @@ return new class extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
-            $table->string('about_hero_title');
-            $table->string('about_hero_sub_title');
-            $table->string('about_hero_video');
-            $table->string('about_image');
-            $table->string('about_title');
-            $table->string('about_sub_title');
-            $table->longText('about_summary_description');
-            $table->longText('about_description');
-            $table->string('meta_title')->nullable();
-            $table->string('meta_keyword')->nullable();
-            $table->longText('meta_description')->nullable();
+            $table->string('about_hero_title')->nullable();
+            $table->string('about_hero_sub_title')->nullable();
+            $table->string('about_hero_video')->nullable();
+            $table->string('about_image')->nullable();
+            $table->string('about_title')->nullable();
+            $table->string('about_sub_title')->nullable();
+            $table->longText('about_summary_description')->nullable();
+            $table->longText('about_description')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('favicon')->nullable();
             $table->timestamps();
         });
     }

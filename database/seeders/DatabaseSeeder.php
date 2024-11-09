@@ -28,14 +28,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(1)->create();
         
-        User::factory()->create([
-                'name' => 'Admin',
-                'email' => 'admin@gmail.com',
-                'password' => '12345678',
-            ]);
-            
+            User::factory()->create([
+                    'name' => 'Admin',
+                    'email' => 'admin@gmail.com',
+                    'password' => '12345678',
+                ]);
             $this->call(HeroSectionSeeder::class);
             $this->call(HomePageSectionSeeder::class);
             $this->call(AboutSeeder::class);
@@ -48,6 +46,8 @@ class DatabaseSeeder extends Seeder
             TeamSectionHeader::factory(1)->create();
             TermsOfUse::factory(1)->create();
             PrivacyPolicy::factory(1)->create();
-            Setting::factory(1)->create();
+            Setting::factory()->create([
+                'meta_title' => 'Apollo',
+            ]);
     }
 }

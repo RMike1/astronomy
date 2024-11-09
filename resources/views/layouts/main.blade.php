@@ -3,12 +3,14 @@
 
 @if (isset($meta))
     @php
-        $setting = App\Models\Setting::select('logo')->first();
+        $setting = App\Models\About::select('favicon')->first();
     @endphp
     <head>
         <link rel="icon" href="{{ $setting ? Storage::url($setting->favicon) : ' '}}">
         {{ $meta }}
         <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow"/>
+        <link rel="canonical" href="{{request()->url()}}" rel="stylesheet">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
