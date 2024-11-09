@@ -23,6 +23,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
+use Joaopaulolndev\FilamentGeneralSettings\FilamentGeneralSettingsPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -78,12 +79,15 @@ class AdminPanelProvider extends PanelProvider
                     ->setNavigationGroup('User Profile')
                     ->setIcon('heroicon-o-user')
                     ->setSort(40)
-                    ->shouldRegisterNavigation()
-                    // ->shouldShowAvatarForm(
-                    //     value: true,
-                    //     directory: 'avatars', // image will be stored in 'storage/app/public/avatars
-                    //     rules: 'mimes:jpeg,png|max:1024' //only accept jpeg and png files with a maximum size of 1MB
-                    // )
+                    ->shouldRegisterNavigation(),
+                    
+                    FilamentGeneralSettingsPlugin::make()
+                    // ->canAccess(fn() => Auth::user()->id === 1)
+                    ->setSort(3)
+                    ->setIcon('heroicon-o-cog')
+                    ->setNavigationGroup('Settings')
+                    ->setTitle('General Settings')
+                    ->setNavigationLabel('General Settings'),
             ]);
     }
 }
