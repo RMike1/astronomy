@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CompanySocialMediaResource\Pages;
 use App\Filament\Resources\CompanySocialMediaResource\RelationManagers;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
+use Filament\Tables\Columns\Layout\Stack;
 class CompanySocialMediaResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = CompanySocialMedia::class;
@@ -39,6 +40,8 @@ class CompanySocialMediaResource extends Resource implements HasShieldPermission
                     ->label('Editing Platform:')
                     ->content(fn ($record) => ucfirst($record->platform->name) ?? 'New Platform'),
                     Forms\Components\TextInput::make('url')
+                        ->url()
+                        ->suffixIcon('heroicon-m-globe-alt')
                         ->maxLength(255),
                     Forms\Components\Toggle::make('is_active')
                         ->required(),
@@ -50,19 +53,28 @@ class CompanySocialMediaResource extends Resource implements HasShieldPermission
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('platform')->label('Platforms')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('url')->label('Url')
-                    ->searchable(),
+
+                Stack::make([
+                    
+                    Tables\Columns\TextColumn::make('platform')->label('Platforms')
+                        ->searchable(),
+                    Tables\Columns\TextColumn::make('url')->label('Url')
+                        ->searchable(),
+                    
+                    Tables\Columns\ToggleColumn::make('is_active')->label('Is Active?'),
+                ]),
                 
-                Tables\Columns\ToggleColumn::make('is_active')->label('Is Active?'),
-            ])
+                ])
+                ->contentGrid([
+                    'md' => 2,
+                    'xl' => 3,
+                ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make()
-                ->slideOver(),
+                Tables\Actions\EditAction::make(),
+                // ->slideOver(),
             ])
             ->paginated(false)
             ->bulkActions([
@@ -84,7 +96,7 @@ class CompanySocialMediaResource extends Resource implements HasShieldPermission
         return [
             'index' => Pages\ListCompanySocialMedia::route('/'),
             'create' => Pages\CreateCompanySocialMedia::route('/create'),
-            'edit' => Pages\EditCompanySocialMedia::route('/{record}/edit'),
+            // 'edit' => Pages\EditCompanySocialMedia::route('/{record}/edit'),
         ];
     }
 

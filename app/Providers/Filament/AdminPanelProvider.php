@@ -4,11 +4,13 @@ namespace App\Providers\Filament;
 
 use Filament\Pages;
 use Filament\Panel;
+use App\Models\About;
 use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Navigation\MenuItem;
 use Filament\Support\Colors\Color;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Filament\Http\Middleware\Authenticate;
 use App\Filament\Widgets\DashboardStatsWidget;
 use Illuminate\Session\Middleware\StartSession;
@@ -68,6 +70,11 @@ class AdminPanelProvider extends PanelProvider
                     ->url(fn (): string => EditProfilePage::getUrl())
                     ->icon('heroicon-m-user-circle')
             ])
+
+            ->brandLogo(fn () => Storage::url(About::select('logo')->first()->logo))
+
+
+            ->favicon(fn () => Storage::url(About::select('favicon')->first()->favicon))
 
             ->plugins([
                 FilamentShieldPlugin::make(),

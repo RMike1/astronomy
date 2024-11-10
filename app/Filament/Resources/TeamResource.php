@@ -14,6 +14,9 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Support\Enums\FontWeight;
+use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Columns\Layout\Stack;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\CheckBoxList;
@@ -49,6 +52,8 @@ class TeamResource extends Resource implements HasShieldPermissions
                         ->required(),
                     TextInput::make('email')
                         ->label('Email')
+                        ->email()
+                        ->suffixIcon('heroicon-m-envelope')
                         ->required(),
                     TextInput::make('position')
                         ->label('Member Position')
@@ -69,20 +74,34 @@ class TeamResource extends Resource implements HasShieldPermissions
     {
         return $table
             ->columns([
+
+
                 TextColumn::make('counter')
                     ->label('No.')
                     ->getStateUsing(function ($rowLoop, $record) {
                         return $rowLoop->iteration;
                     })
                     ->sortable(false),
-                TextColumn::make('first_name')->label('First Name')->searchable()->sortable(),
-                TextColumn::make('last_name')->label('Last Name')->searchable()->sortable(),
-                TextColumn::make('email')->label('Email')->searchable()->sortable(),
-                TextColumn::make('position')->label('Position')->searchable()->sortable(),
-                ImageColumn::make('image')->limit(50)->label('Photo'),
+                ImageColumn::make('image')->limit(50)->label('Photo')
+                    ->circular(),
+
+                TextColumn::make('first_name')->label('First Name')->searchable()->sortable()
+                    ->weight(FontWeight::Bold),
+                TextColumn::make('last_name')->label('Last Name')->searchable()->sortable()
+                    ->weight(FontWeight::Bold),
+
                 IconColumn::make('is_active')->label('Is Active')
                     ->boolean()
                     ->sortable(),
+
+                TextColumn::make('position')->label('Position')->searchable()->sortable(),
+
+                TextColumn::make('email')->label('Email')->searchable()->sortable()
+                    ->icon('heroicon-m-envelope'),
+
+
+
+
             ])
             ->filters([
                 //

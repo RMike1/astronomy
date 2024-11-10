@@ -126,8 +126,8 @@ class ServiceResource extends Resource implements HasShieldPermissions
         return [
             'index' => Pages\ListServices::route('/'),
             'create' => Pages\CreateService::route('/create'),
-            'edit' => Pages\EditService::route('/{record}/edit'),
-            'view' => Pages\ViewService::route('/{record}'),
+            // 'edit' => Pages\EditService::route('/{record}/edit'),
+            // 'view' => Pages\ViewService::route('/{record}'),
         ];
     }
     public static function getEloquentQuery(): Builder

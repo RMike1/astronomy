@@ -62,7 +62,8 @@ class ContactSectionHeaderResource extends Resource implements HasShieldPermissi
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                ->slideOver(),
             ])
             ->paginated(false)
             ->bulkActions([

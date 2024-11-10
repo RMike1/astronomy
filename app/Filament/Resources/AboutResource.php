@@ -45,10 +45,10 @@ class AboutResource extends Resource implements HasShieldPermissions
             ->schema([
                 Section::make('Profile')->schema([
                     TextInput::make('about_hero_title')
-                    ->label('Hero Section Title')
+                    ->label('Banner Section Title')
                     ->required(),
                     TextInput::make('about_hero_sub_title')
-                    ->label('Hero Section Sub Title')
+                    ->label('Banner Section Sub-Title')
                     ->required(),
                     TextInput::make('about_title')
                     ->label('Main Title')
@@ -111,8 +111,8 @@ class AboutResource extends Resource implements HasShieldPermissions
     {
         return $table
             ->columns([
-                TextColumn::make('about_hero_title')->label('Hero Title'),
-                TextColumn::make('about_hero_sub_title')->label('Hero Sub Title')
+                TextColumn::make('about_hero_title')->label('Banner Section Title'),
+                TextColumn::make('about_hero_sub_title')->label('Banner Section Sub-Title')
                 ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('about_title')->label('Title'),
                 TextColumn::make('about_sub_title')->label('Sub Title')

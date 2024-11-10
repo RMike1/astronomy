@@ -47,7 +47,7 @@ class ServiceSectionHeaderResource extends Resource implements HasShieldPermissi
                     ->label('Description')
                     ->required()
                     ->columnSpan(2),
-                    ])->columns(2),
+                    ]),
                 ])->columns(2);
     }
 
@@ -63,7 +63,8 @@ class ServiceSectionHeaderResource extends Resource implements HasShieldPermissi
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                ->slideOver(),
             ])
             ->paginated(false)
             ->bulkActions([
@@ -84,8 +85,8 @@ class ServiceSectionHeaderResource extends Resource implements HasShieldPermissi
     {
         return [
             'index' => Pages\ListServiceSectionHeaders::route('/'),
-            'view' => Pages\ViewServiceSectionHeader::route('/{record}'),
-            'edit' => Pages\EditServiceSectionHeader::route('/{record}/edit'),
+            // 'view' => Pages\ViewServiceSectionHeader::route('/{record}'),
+            // 'edit' => Pages\EditServiceSectionHeader::route('/{record}/edit'),
         ];
     }
 

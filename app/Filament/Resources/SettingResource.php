@@ -38,6 +38,10 @@ class SettingResource extends Resource implements HasShieldPermissions
                     TextInput::make('meta_title')->label('Meta Title ( Company Name )')
                         ->required()
                         ->maxLength(255),
+                    Textarea::make('meta_keyword')->label('Meta Keyword')
+                        ->required()
+                        ->helperText('Enter the meta keywords separated by commas. This will help improve SEO.')
+                        ->maxLength(255),
                     Textarea::make('meta_description')->label('Meta Description')
                         ->required()
                         ->maxLength(255),
@@ -50,6 +54,8 @@ class SettingResource extends Resource implements HasShieldPermissions
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('meta_title')->label('Meta Title')->limit(50)
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('meta_keyword')->label('Meta Keyword')->limit(50)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('meta_description')->label('Meta Description')->limit(50)
                     ->searchable(),
