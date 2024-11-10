@@ -87,6 +87,7 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                                 ->maxLength(255),
                             Forms\Components\Textarea::make('meta_keyword')->label('Meta Keyword')
                                 ->required()
+                                ->helperText('Enter the meta keywords separated by commas (,)')
                                 ->maxLength(255),
 
                             Forms\Components\Textarea::make('meta_description')->label('Meta Description')
@@ -155,16 +156,19 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                     })
                     ->html()
                     ->wrap(),
-                IconColumn::make('is_active')->label('Is Active')
-                    ->boolean()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('meta_keyword')
+                // IconColumn::make('is_active')->label('Is Active')
+                //     ->boolean()
+                //     ->sortable(),
+
+                ToggleColumn::make('is_active')->label('Active ?'),
+
+                TextColumn::make('meta_keyword')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('meta_title')
+                TextColumn::make('meta_title')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('meta_description')
+                TextColumn::make('meta_description')
                     ->toggleable(isToggledHiddenByDefault: true)
             ])
             ->filters([

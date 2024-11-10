@@ -40,7 +40,7 @@ class SettingResource extends Resource implements HasShieldPermissions
                         ->maxLength(255),
                     Textarea::make('meta_keyword')->label('Meta Keyword')
                         ->required()
-                        ->helperText('Enter the meta keywords separated by commas.')
+                        ->helperText('Enter the meta keywords separated by commas (,)')
                         ->maxLength(255),
                     Textarea::make('meta_description')->label('Meta Description')
                         ->required()
