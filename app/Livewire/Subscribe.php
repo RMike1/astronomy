@@ -5,9 +5,11 @@ namespace App\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use App\Models\Subscriber;
-use Filament\Forms\Components\Builder;
 use Livewire\Attributes\Rule;
-use Filament\Notifications\Notification;
+use Filament\Forms\Components\Builder;
+// use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\AdminSubscribeNotification;
 
 class Subscribe extends Component
 {
@@ -34,11 +36,27 @@ class Subscribe extends Component
         // $recipients=User::role('super_admin')->get()->pluck('id')->toArray();
         $recipients = User::role('super_admin')->get();
 
+        
+        $link=route('filament.admin.resources.subscribers.index');
+        $messageAdmin='User with this email ' . $subscriber->email . ' has subscribed to our app';
+
         foreach($recipients as $recipient){
-            Notification::make()
-            ->title('New Subscriber')
-            ->body('User with this email ' . $subscriber->email . ' has subscribed to our app. <a href="' . route('filament.admin.resources.subscribers.index') . '">View Subscribers</a>')
-            ->sendToDatabase($recipient);
+
+
+            //============Admin dashboard Notification==============
+
+            // Notification::make()
+            // ->title('New Subscriber')
+            // ->body('User with this email ' . $subscriber->email . ' has subscribed to our app. <a href="' . route('filament.admin.resources.subscribers.index') . '">View Subscribers</a>')
+            // ->sendToDatabase($recipient);
+
+
+            //============Admin email Notification==============
+
+            
+            Notification::send($recipient, new AdminSubscribeNotification($messageAdmin,$link));
+
+
         }
         $this->reset();
     }
