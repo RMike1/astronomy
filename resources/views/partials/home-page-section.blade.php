@@ -1,5 +1,5 @@
 @foreach ($Homesections as $Homesection)
-    <section  id="Observatories" class="relative overflow-hidden pt-12.5 min-h-screen bg-cover bg-center" data-aos="fade-down"
+    <section  id="Observatories" class="relative overflow-hidden pt-12.5 min-h-screen bg-cover bg-center section-block" data-aos="fade-up"
         style="background-image: url({{ Storage::url($Homesection->image) }});">
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
         <div class="absolute inset-0 bg-black opacity-50"></div> 
@@ -7,7 +7,7 @@
             <div class="grid sm:grid-cols-12 gap-7.5" data-highlighter>
                 <div class="sm:col-span-12 pt-32">
                     <div class="relative">
-                        <div class="relative overflow-hidden p-10 xl:p-15" data-aos="fade-up">
+                        <div class="relative overflow-hidden p-10 xl:p-15" data-aos="zoom-out">
                             <div class="flex {{$Homesection->text_position==='left' ? 'justify-between' : 'justify-end'}} items-center relative z-20">
                                 <div class="max-w-[477px] w-full">
                                     <span
