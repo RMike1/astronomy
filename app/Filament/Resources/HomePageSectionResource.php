@@ -104,7 +104,7 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                     FileUpload::make('background_video')->label('Background Video')->disk('public')->directory('Home-Section-videos')->visibility('public')->required()->maxSize(6096)
                         ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
                     Select::make('background_type')
-                        ->label('Select Background For Details page')
+                        ->label('Choose Background For Details page')
                         ->options([
                             'video' => 'Video',
                             'image' => 'Image',
