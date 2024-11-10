@@ -6,10 +6,11 @@ use App\Models\User;
 use Livewire\Component;
 use App\Models\Subscriber;
 use Livewire\Attributes\Rule;
+use Illuminate\Support\Facades\Log;
 use Filament\Forms\Components\Builder;
-
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\AdminSubscribeNotification;
+use App\Notifications\WelcomeUserSubscribeNotification;
 
 class Subscribe extends Component
 {
@@ -39,16 +40,15 @@ class Subscribe extends Component
         
         $link=route('filament.admin.resources.subscribers.index');
         $messageAdmin='User with this email ' . $subscriber->email . ' has subscribed to our app';
-
+        $welcome_message='Thank you for subscribing, we\'ll keep you updated with our latests!!';
         foreach($recipients as $recipient){
-
-        //============Admin email Notification==============
-
-            
             Notification::send($recipient, new AdminSubscribeNotification($messageAdmin,$link));
-
-
         }
+        
+        Notification::send($recipient, new WelcomeUserSubscribeNotification($welcome_message));
+
+        Log::info($welcome_message);
+
         $this->reset();
     }
     public function render()
