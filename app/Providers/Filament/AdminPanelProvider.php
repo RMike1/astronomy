@@ -35,7 +35,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('/admin-dashboard')  
             ->login()
             ->colors([
-                'primary' => Color::Indigo,
+                'primary' => Color::hex('#a69d6d'),
             ])
             ->databaseNotifications()
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
@@ -81,13 +81,13 @@ class AdminPanelProvider extends PanelProvider
                     ->setSort(40)
                     ->shouldRegisterNavigation(),
                     
-                    FilamentGeneralSettingsPlugin::make()
+                    // FilamentGeneralSettingsPlugin::make()
                     // ->canAccess(fn() => Auth::user()->id === 1)
-                    ->setSort(3)
-                    ->setIcon('heroicon-o-cog')
-                    ->setNavigationGroup('Settings')
-                    ->setTitle('General Settings')
-                    ->setNavigationLabel('General Settings'),
+                    // ->setSort(3)
+                    // ->setIcon('heroicon-o-cog')
+                    // ->setNavigationGroup('Settings')
+                    // ->setTitle('General Settings')
+                    // ->setNavigationLabel('General Settings'),
             ]);
     }
 }

@@ -45,7 +45,7 @@ class TeamSectionHeaderResource extends Resource implements HasShieldPermissions
                         ->label('Description')
                         ->required()
                         ->columnSpan(2),
-                ])->columns(2),
+                ]),
             ])->columns(2);
     }
 
@@ -84,7 +84,7 @@ class TeamSectionHeaderResource extends Resource implements HasShieldPermissions
         return [
             'index' => Pages\ListTeamSectionHeaders::route('/'),
             'create' => Pages\CreateTeamSectionHeader::route('/create'),
-            'edit' => Pages\EditTeamSectionHeader::route('/{record}/edit'),
+            // 'edit' => Pages\EditTeamSectionHeader::route('/{record}/edit'),
         ];
     }
 

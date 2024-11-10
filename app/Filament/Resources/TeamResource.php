@@ -56,7 +56,9 @@ class TeamResource extends Resource implements HasShieldPermissions
                 ])->columnSpan(2)->columns(2),
                 Section::make()->schema([
                     FileUpload::make('image')->label('Image')->disk('public')->directory('Team')->required()->maxSize(2048)
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif'])
+                        ->image()
+                        ->imageEditor(),
                     Toggle::make('is_active')
                         ->label('Active ?'),
                 ])->columnSpan(1),

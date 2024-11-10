@@ -81,7 +81,7 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                             Textarea::make('summary_description')->label('Summary Description')->required()->columnSpan(2),
 
                         ])->columnSpan(2)->columns(2),
-                        Tab::make('Meta')->icon('heroicon-o-cog-6-tooth')->schema([
+                        Tab::make('Meta Data')->icon('heroicon-o-cog-6-tooth')->schema([
                             Forms\Components\Textarea::make('meta_title')->label('Meta Title')
                                 ->required()
                                 ->maxLength(255),
@@ -98,7 +98,9 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                 ])->columnSpan(2)->columns(2),
                 Section::make('Media')->collapsible()->schema([
                     FileUpload::make('image')->label('Image')->disk('public')->directory('Home-Section-images')->required()->maxSize(6096)
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif'])
+                        ->image()
+                        ->imageEditor(),
                     FileUpload::make('background_video')->label('Background Video')->disk('public')->directory('Home-Section-videos')->visibility('public')->required()->maxSize(6096)
                         ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
                     Select::make('background_type')

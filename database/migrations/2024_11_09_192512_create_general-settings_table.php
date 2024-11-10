@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('support_email')->nullable();
             $table->string('support_phone')->nullable();
             $table->string('google_analytics_id')->nullable();
-            $table->string('posthog_html_snippet')->nullable();
+            $table->longText('posthog_html_snippet')->nullable();
             $table->string('seo_title')->nullable();
             $table->string('seo_keywords')->nullable();
             $table->json('seo_metadata')->nullable();

@@ -40,6 +40,8 @@ class SocialMediaRelationManager extends RelationManager
                 TextInput::make('url')
                 ->label('Platform Url')
                 ->required()
+                ->url()
+                ->suffixIcon('heroicon-m-globe-alt')
                 ->maxLength(255),
                 Toggle::make('is_active')
                 ->label('is Active ??')

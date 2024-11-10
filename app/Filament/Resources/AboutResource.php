@@ -85,13 +85,19 @@ class AboutResource extends Resource implements HasShieldPermissions
                 Group::make()->schema([
                     Section::make('Company\'s Logo & Favicon')->schema([
                         Forms\Components\FileUpload::make('logo')->label('Logo')->disk('public')->directory('settings')->required()->maxSize(2096)
-                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
-                        Forms\Components\FileUpload::make('favicon')->label('favicon')->disk('public')->directory('settings')->required()->maxSize(2096),
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif'])
+                            ->image()
+                            ->imageEditor(),
+                        Forms\Components\FileUpload::make('favicon')->label('favicon')->disk('public')->directory('settings')->required()->maxSize(2096)
+                            ->image()
+                            ->imageEditor(),
                             // ->acceptedFileTypes(['image/png', 'image/ico']),
                         ])->columnSpan(1),
                         Section::make('Media')->schema([
                             FileUpload::make('about_image')->label('Image')->disk('public')->directory('About')->required()->maxSize(4048) 
-                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif'])
+                            ->image()
+                            ->imageEditor(),
                             FileUpload::make('about_hero_video')->label('Background Video')->disk('public')->directory('About-video')->required()->maxSize(6096)
                             ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
                         ])->columnSpan(1),
@@ -141,7 +147,8 @@ class AboutResource extends Resource implements HasShieldPermissions
             ->paginated(false)
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                // ->slideOver(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

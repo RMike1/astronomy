@@ -33,18 +33,18 @@ class ContactSectionHeaderResource extends Resource implements HasShieldPermissi
     public static function form(Form $form): Form
     {
         return $form
-        ->schema([
-            Section::make()->schema([
-                TextInput::make('title')
-                ->label('Title')
-                ->required(),
-                TextInput::make('sub_title')
-                ->label('Sub Title')
-                ->required(),
-                Textarea::make('description')
-                ->label('Description')
-                ->required()
-                ->columnSpan(2),
+            ->schema([
+                Section::make()->schema([
+                    TextInput::make('title')
+                        ->label('Title')
+                        ->required(),
+                    TextInput::make('sub_title')
+                        ->label('Sub Title')
+                        ->required(),
+                    Textarea::make('description')
+                        ->label('Description')
+                        ->required()
+                        ->columnSpan(2),
                 ]),
             ])->columns(2);
     }
@@ -54,6 +54,7 @@ class ContactSectionHeaderResource extends Resource implements HasShieldPermissi
         return $table
             ->columns([
                 TextColumn::make('title')->label('Title'),
+                TextColumn::make('sub_title')->limit(10),
                 TextColumn::make('description')->label('Description')->limit(70),
             ])
             ->filters([
@@ -63,6 +64,7 @@ class ContactSectionHeaderResource extends Resource implements HasShieldPermissi
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
+            ->paginated(false)
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     // Tables\Actions\DeleteBulkAction::make(),
@@ -82,7 +84,7 @@ class ContactSectionHeaderResource extends Resource implements HasShieldPermissi
         return [
             'index' => Pages\ListContactSectionHeaders::route('/'),
             'create' => Pages\ViewContactSectionHeader::route('/{record}'),
-            'edit' => Pages\EditContactSectionHeader::route('/{record}/edit'),
+            // 'edit' => Pages\EditContactSectionHeader::route('/{record}/edit'),
         ];
     }
 

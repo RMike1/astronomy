@@ -35,6 +35,7 @@ class UserResource extends Resource implements HasShieldPermissions
                     ->maxLength(255),
                 Forms\Components\TextInput::make('password')
                     ->password()
+                    ->revealable()
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                     ->dehydrated(fn ($state) => filled($state))
                     ->required(fn (string $context): bool => $context === 'create')

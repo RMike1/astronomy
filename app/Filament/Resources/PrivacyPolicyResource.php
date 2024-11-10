@@ -71,16 +71,18 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
                 Group::make()->schema([
                     Section::make('Media')->schema([
                         FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('policy')->required()->maxSize(3048)
-                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif'])
+                            ->image()
+                            ->imageEditor(),
                     ])->columnSpan(1),
                     Section::make('Meta Data')->schema([
                         TextInput::make('meta_title')->label('Meta Title ( Page Name )')
-                        ->maxLength(255)
-                        ->required(),
-                    Textarea::make('meta_description')->label('Meta Description')
-                        ->maxLength(255)
-                        ->required()
-                        ->columnSpanFull(),
+                            ->maxLength(255)
+                            ->required(),
+                        Textarea::make('meta_description')->label('Meta Description')
+                            ->maxLength(255)
+                            ->required()
+                            ->columnSpanFull(),
                     ])->columnSpan(1),
                 ])->columnSpan(1),
             ])->columns(3);
@@ -102,7 +104,7 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
                 TextColumn::make('meta_title')->label('Meta Title')->limit(50)
                     ->searchable(),
                 TextColumn::make('meta_description')->label('Meta Description')->limit(50)
-                        ->searchable(),
+                    ->searchable(),
                 ImageColumn::make('background_image')->label('Background Image'),
             ])
             ->filters([
