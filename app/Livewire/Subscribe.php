@@ -42,16 +42,7 @@ class Subscribe extends Component
 
         foreach($recipients as $recipient){
 
-
-            //============Admin dashboard Notification==============
-
-            // Notification::make()
-            // ->title('New Subscriber')
-            // ->body('User with this email ' . $subscriber->email . ' has subscribed to our app. <a href="' . route('filament.admin.resources.subscribers.index') . '">View Subscribers</a>')
-            // ->sendToDatabase($recipient);
-
-
-            //============Admin email Notification==============
+        //============Admin email Notification==============
 
             
             Notification::send($recipient, new AdminSubscribeNotification($messageAdmin,$link));

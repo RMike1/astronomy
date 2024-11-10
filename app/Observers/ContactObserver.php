@@ -18,7 +18,7 @@ class ContactObserver
         foreach($recipients as $recipient){
 
             Notification::make()
-            ->title('New Subscriber')
+            ->title('New Mail')
             ->body('User with this email ' . $contact->email . ' has emailed us')
             ->sendToDatabase($recipient);
 
