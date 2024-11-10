@@ -1,6 +1,7 @@
 <x-main-layout>
     <x-slot name="meta">
         <title>403 - {{$meta_data->meta_title}}</title>
+        <meta name="keyword" content="{{ $meta_data->meta_keyword }}">
         <meta name="description" content="{{ $meta_data->meta_description ?? '' }}">
     </x-slot>
     <x-slot name="header">
