@@ -10,6 +10,9 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 Route::get('/user/api-tokens', function () {
     abort(404);  
 });
+Route::get('/login', function () {
+    return redirect(route('filament.admin.auth.login'));  
+})->name('login');
 
 // =============Home Controller==================
 
