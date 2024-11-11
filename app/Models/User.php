@@ -3,20 +3,21 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Panel;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Storage;
+use Filament\Models\Contracts\HasAvatar;
 use Illuminate\Notifications\Notifiable;
-use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 use Filament\Models\Contracts\FilamentUser;
 use Laravel\Fortify\TwoFactorAuthenticatable;
-use Filament\Models\Contracts\HasAvatar;
-use Illuminate\Support\Facades\Storage;
+use BezhanSalleh\FilamentShield\Support\Utils;
+use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Filament\Panel;
-use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements HasAvatar
+class User extends Authenticatable implements HasAvatar, FilamentUser
 {
 
 
@@ -28,9 +29,10 @@ class User extends Authenticatable implements HasAvatar
     use Notifiable;
     use TwoFactorAuthenticatable;
 
-    // public function canAccessPanel(Panel $panel): bool{
-    //         return $this->email==="admin3@gmail.com";
-    // }
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $this->hasRole(Utils::getSuperAdminName()) || $this->is_active === true;
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -42,6 +44,7 @@ class User extends Authenticatable implements HasAvatar
         'email',
         'password',
         'avatar_url',
+        'is_active',
     ];
 
     /**
@@ -75,6 +78,7 @@ class User extends Authenticatable implements HasAvatar
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_active' => 'boolean',
         ];
     }
 

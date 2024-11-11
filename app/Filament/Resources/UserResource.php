@@ -9,9 +9,12 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Hash;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\UserResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -47,6 +50,9 @@ class UserResource extends Resource implements HasShieldPermissions
                         ->multiple()
                         ->preload()
                         ->searchable(),
+
+                    Toggle::make('is_active')
+                        ->label('Is Active ?'),
                 ])->columns(2),
 
             ]);
@@ -60,6 +66,9 @@ class UserResource extends Resource implements HasShieldPermissions
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
+                    
+                IconColumn::make('is_active')->boolean()->label('Active ?'),
+                
                 // ImageColumn::make('profile_photo_path')
                 //     ->label('Profile Photo')
                 //     ->disk('public'),
