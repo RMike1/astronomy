@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('background_image')->nullable();
             $table->longText('description')->nullable();
             $table->string('meta_title')->nullable();
+            $table->longText('meta_keyword')->nullable();
             $table->longText('meta_description')->nullable();
             $table->timestamps();
         });

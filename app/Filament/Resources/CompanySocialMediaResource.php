@@ -95,7 +95,7 @@ class CompanySocialMediaResource extends Resource implements HasShieldPermission
     {
         return [
             'index' => Pages\ListCompanySocialMedia::route('/'),
-            'create' => Pages\CreateCompanySocialMedia::route('/create'),
+            // 'create' => Pages\CreateCompanySocialMedia::route('/create'),
             // 'edit' => Pages\EditCompanySocialMedia::route('/{record}/edit'),
         ];
     }

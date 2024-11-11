@@ -168,7 +168,7 @@ class AboutResource extends Resource implements HasShieldPermissions
     {
         return [
             'index' => Pages\ListAbouts::route('/'),
-            'create' => Pages\CreateAbout::route('/create'),
+            // 'create' => Pages\CreateAbout::route('/create'),
             'edit' => Pages\EditAbout::route('/{record}/edit'),
             'view' => Pages\ViewAbout::route('/{record}'),
         ];

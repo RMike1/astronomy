@@ -93,7 +93,8 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
         return $table
             ->columns([
                 TextColumn::make('title')->label('Title')->limit(50),
-                TextColumn::make('sub_title')->label('Sub Title'),
+                TextColumn::make('sub_title')->label('Sub Title')
+                ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('description')
                     ->label('Description')
                     ->limit(50)
@@ -102,8 +103,17 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
                         return \Illuminate\Support\Str::limit(strip_tags($state), 50);
                     }),
                 TextColumn::make('meta_title')->label('Meta Title')->limit(50)
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
+                TextColumn::make('meta_keyword')->label('Meta Keywords')->limit(50)
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->searchable(),
+                Textarea::make('meta_keyword')->label('Meta Keyword')
+                    ->required()
+                    ->helperText('Enter the meta keywords separated by commas (,)')
+                    ->maxLength(255),
                 TextColumn::make('meta_description')->label('Meta Description')->limit(50)
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
                 ImageColumn::make('background_image')->label('Background Image'),
             ])
@@ -133,7 +143,7 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
     {
         return [
             'index' => Pages\ListPrivacyPolicies::route('/'),
-            'create' => Pages\CreatePrivacyPolicy::route('/create'),
+            // 'create' => Pages\CreatePrivacyPolicy::route('/create'),
             'view' => Pages\ViewPrivacyPolicy::route('/{record}'),
             'edit' => Pages\EditPrivacyPolicy::route('/{record}/edit'),
         ];

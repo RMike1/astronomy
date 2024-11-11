@@ -22,6 +22,7 @@ class PrivacyPolicyFactory extends Factory
             'background_image'=>fake()->url(),
             'description'=>fake()->paragraph(6),
             'meta_title'=>fake()->name(),
+            'meta_keyword'=>fake()->name(),
             'meta_description'=>fake()->paragraph(2),
         ];
     }

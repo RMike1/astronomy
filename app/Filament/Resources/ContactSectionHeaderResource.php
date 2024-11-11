@@ -84,7 +84,7 @@ class ContactSectionHeaderResource extends Resource implements HasShieldPermissi
     {
         return [
             'index' => Pages\ListContactSectionHeaders::route('/'),
-            'create' => Pages\ViewContactSectionHeader::route('/{record}'),
+            // 'create' => Pages\ViewContactSectionHeader::route('/{record}'),
             // 'edit' => Pages\EditContactSectionHeader::route('/{record}/edit'),
         ];
     }

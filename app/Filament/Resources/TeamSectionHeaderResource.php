@@ -83,7 +83,7 @@ class TeamSectionHeaderResource extends Resource implements HasShieldPermissions
     {
         return [
             'index' => Pages\ListTeamSectionHeaders::route('/'),
-            'create' => Pages\CreateTeamSectionHeader::route('/create'),
+            // 'create' => Pages\CreateTeamSectionHeader::route('/create'),
             // 'edit' => Pages\EditTeamSectionHeader::route('/{record}/edit'),
         ];
     }

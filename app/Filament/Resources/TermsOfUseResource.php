@@ -80,6 +80,10 @@ class TermsOfUseResource extends Resource implements HasShieldPermissions
                         TextInput::make('meta_title')->label('Meta Title ( Page Name )')
                         ->maxLength(255)
                         ->required(),
+                    Textarea::make('meta_keyword')->label('Meta Keyword')
+                        ->required()
+                        ->helperText('Enter the meta keywords separated by commas (,)')
+                        ->maxLength(255),
                     Textarea::make('meta_description')->label('Meta Description')
                         ->maxLength(255)
                         ->required()
@@ -97,7 +101,8 @@ class TermsOfUseResource extends Resource implements HasShieldPermissions
         return $table
             ->columns([
                 TextColumn::make('title')->label('Title'),
-                TextColumn::make('sub_title')->label('Sub Title'),
+                TextColumn::make('sub_title')->label('Sub Title')
+                ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('description')
                     ->label('Description')
                     ->html()
@@ -105,8 +110,13 @@ class TermsOfUseResource extends Resource implements HasShieldPermissions
                         return \Illuminate\Support\Str::limit(strip_tags($state), 50);
                     }),
                 TextColumn::make('meta_title')->label('Meta Title')->limit(50)
+                ->toggleable(isToggledHiddenByDefault: true)
                 ->searchable(),
+                TextColumn::make('meta_keyword')->label('Meta Keywords')->limit(50)
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->searchable(),
                 TextColumn::make('meta_description')->label('Meta Description')->limit(50)
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
                 ImageColumn::make('background_image')->label('Background Image'),
             ])
@@ -134,7 +144,7 @@ class TermsOfUseResource extends Resource implements HasShieldPermissions
     {
         return [
             'index' => Pages\ListTermsOfUses::route('/'),
-            'create' => Pages\CreateTermsOfUse::route('/create'),
+            // 'create' => Pages\CreateTermsOfUse::route('/create'),
             'edit' => Pages\EditTermsOfUse::route('/{record}/edit'),
             'view' => Pages\ViewTermsOfUse::route('/{record}'),
         ];
