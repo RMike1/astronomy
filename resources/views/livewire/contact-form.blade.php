@@ -63,7 +63,7 @@
                     <label for="message" class="text-white mb-2.5 block font-medium">
                         Message
                     </label>
-                    <textarea wire:model.live.debounce.350ms='message' placeholder="Type your message" rows="6"
+                    <textarea wire:model.live.debounce.350ms='message' placeholder="your message.." rows="6"
                         class="rounded-lg border border-white/[0.12] bg-white/[0.05] focus:border-purple w-full py-5 px-6 focus:outline-none focus:border-gray-600 focus:ring-gray-600"></textarea>
                     <div>
                         @error('message')

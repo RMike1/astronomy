@@ -1,4 +1,4 @@
-<section class="pt-17.5 sm:pt-22.5 xl:pt-27.5 pb-11">
+<section id="Contact" class="pt-17.5 sm:pt-22.5 xl:pt-27.5 pb-11">
     <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
         <div class="flex flex-wrap items-center justify-between gap-10">
             <div class="max-w-[352px] w-full">
