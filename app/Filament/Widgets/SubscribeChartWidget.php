@@ -8,10 +8,11 @@ use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
 use Filament\Widgets\ChartWidget;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
+use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 
 class SubscribeChartWidget extends ChartWidget
 {
-    use InteractsWithPageFilters;
+    use InteractsWithPageFilters, HasWidgetShield;
     protected static ?string $heading = 'Subscribers';
 
     protected function getData(): array

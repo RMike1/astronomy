@@ -9,9 +9,13 @@ use Filament\Support\Enums\IconPosition;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
+use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 
 class DashboardStatsWidget extends BaseWidget
 {
+
+    use HasWidgetShield;
+
     use InteractsWithPageFilters;
     protected function getStats(): array
     {
