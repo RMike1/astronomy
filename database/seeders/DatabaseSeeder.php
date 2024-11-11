@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
                     'name' => 'Admin',
                     'email' => 'admin@gmail.com',
                     'password' => '12345678',
-                    'is_active' => 1,
+                    'is_active' => true,
                 ]);
             $this->call(HeroSectionSeeder::class);
             $this->call(HomePageSectionSeeder::class);
