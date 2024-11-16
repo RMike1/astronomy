@@ -37,7 +37,7 @@
         </div>
     </x-slot>
     <section class="relative overflow-hidden z-10 pt-12.5 min-h-screen bg-cover bg-center"
-        style="background-image: url({{ asset('storage/' . $policies->background_image) }});">
+        style="background-image: url({{ Storage::disk('images')->url($policies->background_image) }});">
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
         <div class="absolute inset-0 bg-black opacity-50"></div>
 

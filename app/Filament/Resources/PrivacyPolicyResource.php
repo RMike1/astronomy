@@ -107,10 +107,6 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
                 TextColumn::make('meta_keyword')->label('Meta Keywords')->limit(50)
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
-                Textarea::make('meta_keyword')->label('Meta Keyword')
-                    ->required()
-                    ->helperText('Enter the meta keywords separated by commas (,)')
-                    ->maxLength(255),
                 TextColumn::make('meta_description')->label('Meta Description')->limit(50)
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),

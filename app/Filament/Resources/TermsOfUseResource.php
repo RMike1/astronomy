@@ -63,15 +63,14 @@ class TermsOfUseResource extends Resource implements HasShieldPermissions
                             'underline',
                             'undo',
                         ])
-                        ->fileAttachmentsDisk('public')
-                        ->fileAttachmentsDirectory('terms-images')
+                        ->fileAttachmentsDisk('images')
                         ->fileAttachmentsVisibility('public')
                         ->columnSpan(2)->required(),
                 ])->columnSpan(2)->columns(2),
 
                 Group::make()->schema([
                     Section::make('Media')->schema([
-                        FileUpload::make('background_image')->label('Background Image')->disk('images')->directory('Terms')->required()->maxSize(3048)
+                        FileUpload::make('background_image')->label('Background Image')->disk('images')->required()->maxSize(3048)
                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif'])
                             ->image()
                             ->imageEditor(),
@@ -80,10 +79,6 @@ class TermsOfUseResource extends Resource implements HasShieldPermissions
                         TextInput::make('meta_title')->label('Meta Title ( Page Name )')
                         ->maxLength(255)
                         ->required(),
-                    Textarea::make('meta_keyword')->label('Meta Keyword')
-                        ->required()
-                        ->helperText('Enter the meta keywords separated by commas (,)')
-                        ->maxLength(255),
                     Textarea::make('meta_description')->label('Meta Description')
                         ->maxLength(255)
                         ->required()
