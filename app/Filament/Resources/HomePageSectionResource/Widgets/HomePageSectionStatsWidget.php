@@ -15,7 +15,7 @@ class HomePageSectionStatsWidget extends BaseWidget
             Stat::make('Home Page Contents', HomePageSection::count())
             ->description('total number of contents')
             ->descriptionIcon('heroicon-m-home-modern',IconPosition::Before)
-            ->chart([5,5,7,6,8])
+            ->chart([0,0,0,0,0])
             ->color('warning'),
         ];
     }

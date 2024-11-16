@@ -15,7 +15,7 @@ class SubscribeStatsWidget extends BaseWidget
             Stat::make('Subscribers', Subscriber::count())
             ->description('total number of subscribers')
             ->descriptionIcon('heroicon-o-queue-list',IconPosition::Before)
-            ->chart([1,4,2,8,6])
+            ->chart([0,0,0,0,0])
             ->color('warning')
         ];
     }

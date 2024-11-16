@@ -30,7 +30,7 @@ class DashboardStatsWidget extends BaseWidget
             ->count())
             ->description('total number of contents')
             ->descriptionIcon('heroicon-m-home-modern',IconPosition::Before)
-            ->chart([5,5,7,6,8])
+            ->chart([0,0,0,0,0])
             ->color('warning'),
             Stat::make('Subscribers', Subscriber::when($startDate, fn($query)
             =>$query->whereDate('created_at','>',$startDate))
@@ -38,7 +38,7 @@ class DashboardStatsWidget extends BaseWidget
             ->count())
             ->description('total number of subscribers')
             ->descriptionIcon('heroicon-o-queue-list',IconPosition::Before)
-            ->chart([1,4,2,8,6])
+            ->chart([0,0,0,0,0])
             ->color('warning'),
             Stat::make('Team Members', Team::when($startDate, fn($query)
             =>$query->whereDate('created_at','>',$startDate))
@@ -46,7 +46,7 @@ class DashboardStatsWidget extends BaseWidget
             ->count())
             ->description('total number of team members')
             ->descriptionIcon('heroicon-m-user-group',IconPosition::Before)
-            ->chart([3,4,6,1,6])
+            ->chart([0,0,0,0,0])
             ->color('success')
         ];
     }
