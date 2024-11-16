@@ -24,7 +24,7 @@ class ServiceSectionHeaderResource extends Resource implements HasShieldPermissi
     protected static ?string $model = ServiceSectionHeader::class;
 
     protected static ?string $slug = 'service-header';
-    protected static ?string $navigationLabel = 'Service Header';
+    protected static ?string $navigationLabel = 'Service Section Header';
     protected static ?string $modelLabel = 'Service Section Header';
     protected static ?string $navigationGroup = 'Home Page';
     protected static ?string $navigationParentItem = 'Service Section';
@@ -56,6 +56,7 @@ class ServiceSectionHeaderResource extends Resource implements HasShieldPermissi
         return $table
             ->columns([
                 TextColumn::make('title')->label('Title'),
+                TextColumn::make('sub_title')->label('Sub Title')->limit(20),
                 TextColumn::make('description')->label('Description')->limit(70),
             ])
             ->filters([

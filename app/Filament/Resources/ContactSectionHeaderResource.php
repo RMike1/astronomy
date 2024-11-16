@@ -26,7 +26,7 @@ class ContactSectionHeaderResource extends Resource implements HasShieldPermissi
     protected static ?string $navigationLabel = 'Contact Section Header';
     protected static ?string $modelLabel = 'Contact Section Header';
     protected static ?string $navigationGroup = 'Home Page';
-    protected static ?string $pluralLabel = 'Contact Header ';
+    protected static ?string $pluralLabel = 'Contact Section Header ';
     protected static ?int $navigationSort = 10;
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-bottom-center';
 
