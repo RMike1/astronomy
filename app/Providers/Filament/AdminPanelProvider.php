@@ -71,10 +71,10 @@ class AdminPanelProvider extends PanelProvider
                     ->icon('heroicon-m-user-circle')
             ])
 
-            ->brandLogo(fn () => Storage::url(About::select('logo')->first()->logo))
+            ->brandLogo(fn () => Storage::disk('images')->url(About::select('logo')->first()->logo))
 
 
-            ->favicon(fn () => Storage::url(About::select('favicon')->first()->favicon))
+            ->favicon(fn () => Storage::disk('images')->url(About::select('favicon')->first()->favicon))
 
             ->plugins([
                 FilamentShieldPlugin::make(),

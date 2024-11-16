@@ -20,7 +20,7 @@
                         $company_profile=App\Models\About::select(['logo','about_summary_description'])->first();
                     @endphp
                 <a class="mb-8.5 inline-block" href="{{route('home')}}">
-                    <img src="{{$company_profile ? Storage::url($company_profile->logo) : ' '}}" alt="Logo" />
+                    <img src="{{$company_profile ? Storage::disk('images')->url($company_profile->logo) : ' '}}" alt="Logo" />
                 </a>
                 <p class="mb-12 xl:w-4/5">
                     {{ $company_profile ? $company_profile->about_summary_description : ' '}}

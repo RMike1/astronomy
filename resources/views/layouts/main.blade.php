@@ -6,7 +6,7 @@
         $setting = App\Models\About::select('favicon')->first();
     @endphp
     <head>
-        <link rel="icon" href="{{ $setting ? Storage::url($setting->favicon) : ' '}}">
+        <link rel="icon" href="{{ $setting ? Storage::disk('images')->url($setting->favicon) : ' '}}">
         {{ $meta }}
         <meta charset="UTF-8" />
         <meta name="robots" content="index, follow"/>

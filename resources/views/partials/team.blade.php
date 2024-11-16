@@ -19,7 +19,7 @@
                 <div class="wow fadeInUp group text-center">
                     <div
                         class="team-img-gradient group-hover:before:gradient-9 max-w-40 mx-auto w-full h-40 rounded-full relative mb-5 overflow-hidden">
-                        <img src="{{ Storage::url($team_member->image) }}" alt="{{ $team_member->first_name }}"
+                        <img src="{{ Storage::disk('images')->url($team_member->image) }}" alt="{{ $team_member->first_name }}"
                             class="w-full h-full object-cover" />
                     </div>
                     <h4 class="text-white font-semibold text-heading-6 mb-2">

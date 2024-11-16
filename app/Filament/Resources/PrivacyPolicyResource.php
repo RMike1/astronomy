@@ -63,14 +63,13 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
                             'underline',
                             'undo',
                         ])
-                        ->fileAttachmentsDisk('public')
-                        ->fileAttachmentsDirectory('privacy-images')
+                        ->fileAttachmentsDisk('images')
                         ->fileAttachmentsVisibility('public')
                         ->columnSpan(2)->required(),
                 ])->columnSpan(2)->columns(2),
                 Group::make()->schema([
                     Section::make('Media')->schema([
-                        FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('policy')->required()->maxSize(3048)
+                        FileUpload::make('background_image')->label('Background Image')->disk('images')->required()->maxSize(3048)
                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif'])
                             ->image()
                             ->imageEditor(),
@@ -115,7 +114,7 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
                 TextColumn::make('meta_description')->label('Meta Description')->limit(50)
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
-                ImageColumn::make('background_image')->label('Background Image'),
+                ImageColumn::make('background_image')->label('Background Image')->disk('images'),
             ])
             ->filters([
                 //

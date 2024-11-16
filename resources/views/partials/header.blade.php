@@ -7,7 +7,7 @@
                         $company_profile=App\Models\About::select('logo')->first();
                     @endphp
                     <a href="{{ route('home') }}">
-                        <img src="{{$company_profile ? Storage::url($company_profile->logo) : ' '}}" alt="Logo" />
+                        <img src="{{$company_profile ? Storage::disk('images')->url($company_profile->logo) : ' '}}" alt="Logo" />
                     </a>
 
                     <button class="lg:hidden block" @click="navigationOpen = !navigationOpen">

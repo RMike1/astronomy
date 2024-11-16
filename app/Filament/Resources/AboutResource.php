@@ -76,29 +76,28 @@ class AboutResource extends Resource implements HasShieldPermissions
                         'underline',
                         'undo',
                     ])
-                    ->fileAttachmentsDisk('public')
-                    ->fileAttachmentsDirectory('about-description')
+                    ->fileAttachmentsDisk('images')
                     ->fileAttachmentsVisibility('public')
                     ->columnSpan(2)->required(),
                 ])->columnSpan(2)->columns(2),
 
                 Group::make()->schema([
                     Section::make('Company\'s Logo & Favicon')->schema([
-                        Forms\Components\FileUpload::make('logo')->label('Logo')->disk('public')->directory('settings')->required()->maxSize(2096)
+                        Forms\Components\FileUpload::make('logo')->label('Logo')->disk('images')->directory('icons')->required()->maxSize(2096)
                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif'])
                             ->image()
                             ->imageEditor(),
-                        Forms\Components\FileUpload::make('favicon')->label('favicon')->disk('public')->directory('settings')->required()->maxSize(2096)
+                        Forms\Components\FileUpload::make('favicon')->label('favicon')->disk('images')->directory('icons')->required()->maxSize(2096)
                             ->image()
                             ->imageEditor(),
                             // ->acceptedFileTypes(['image/png', 'image/ico']),
                         ])->columnSpan(1),
                         Section::make('Media')->schema([
-                            FileUpload::make('about_image')->label('Image')->disk('public')->directory('About')->required()->maxSize(4048) 
+                            FileUpload::make('about_image')->label('Image')->disk('images')->required()->maxSize(4048) 
                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif'])
                             ->image()
                             ->imageEditor(),
-                            FileUpload::make('about_hero_video')->label('Background Video')->disk('public')->directory('About-video')->required()->maxSize(6096)
+                            FileUpload::make('about_hero_video')->label('Background Video')->disk('images')->required()->maxSize(6096)
                             ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
                         ])->columnSpan(1),
                 ])->columnSpan(1),
@@ -124,18 +123,18 @@ class AboutResource extends Resource implements HasShieldPermissions
                     ->formatStateUsing(function ($state) {
                         return \Illuminate\Support\Str::limit(strip_tags($state), 50);
                     }),
-                Tables\Columns\ImageColumn::make('logo')
+                Tables\Columns\ImageColumn::make('logo')->disk('images')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('favicon')
+                Tables\Columns\ImageColumn::make('favicon')->disk('images')
                     ->searchable(),
-                ImageColumn::make('about_image')->label('Image')
+                ImageColumn::make('about_image')->label('Image')->disk('images')
                 ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('about_hero_video')
                 ->toggleable(isToggledHiddenByDefault: true)
                 ->label('Background Video')
                 ->formatStateUsing(function ($record) {
                     return '<video width="150" height="100" controls>
-                                <source src="'. Storage::url($record->video) .'" type="video/mp4">
+                                <source src="'. Storage::disk('images')->url($record->video) .'" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>';
                 })

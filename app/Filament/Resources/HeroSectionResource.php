@@ -45,7 +45,7 @@ class HeroSectionResource extends Resource implements HasShieldPermissions
                         ->required(),
                 ])->columnSpan(2),
                 Section::make()->schema([
-                    FileUpload::make('video')->label('Background Video')->disk('public')->directory('Hero-Videos')->maxSize(6096)
+                    FileUpload::make('video')->label('Background Video')->disk('images')->maxSize(6096)
                         ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi'])
                         ->required(),
 
@@ -63,7 +63,7 @@ class HeroSectionResource extends Resource implements HasShieldPermissions
                     ->label('Background Video')
                     ->formatStateUsing(function ($record) {
                         return '<video width="150" height="100" controls>
-                                <source src="' . Storage::url($record->video) . '" type="video/mp4">
+                                <source src="' . Storage::disk('images')->url($record->video) . '" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>';
                     })
@@ -77,8 +77,8 @@ class HeroSectionResource extends Resource implements HasShieldPermissions
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
+                Tables\Actions\EditAction::make(),
             ])
             ->paginated(false)
             ->bulkActions([

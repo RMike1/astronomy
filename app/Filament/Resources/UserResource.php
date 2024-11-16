@@ -71,7 +71,7 @@ class UserResource extends Resource implements HasShieldPermissions
                 
                 // ImageColumn::make('profile_photo_path')
                 //     ->label('Profile Photo')
-                //     ->disk('public'),
+                //     ->disk('images'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->date()
                     ->sortable()

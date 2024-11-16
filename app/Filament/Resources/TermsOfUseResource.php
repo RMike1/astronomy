@@ -71,7 +71,7 @@ class TermsOfUseResource extends Resource implements HasShieldPermissions
 
                 Group::make()->schema([
                     Section::make('Media')->schema([
-                        FileUpload::make('background_image')->label('Background Image')->disk('public')->directory('Terms')->required()->maxSize(3048)
+                        FileUpload::make('background_image')->label('Background Image')->disk('images')->directory('Terms')->required()->maxSize(3048)
                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif'])
                             ->image()
                             ->imageEditor(),

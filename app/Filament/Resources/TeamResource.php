@@ -10,14 +10,16 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
+use Filament\Support\Enums\FontWeight;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
-use Filament\Support\Enums\FontWeight;
+use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\Layout\Stack;
-use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\CheckBoxList;
 use App\Filament\Resources\TeamResource\Pages;
@@ -60,7 +62,7 @@ class TeamResource extends Resource implements HasShieldPermissions
                         ->required(),
                 ])->columnSpan(2)->columns(2),
                 Section::make()->schema([
-                    FileUpload::make('image')->label('Image')->disk('public')->directory('Team')->required()->maxSize(2048)
+                    FileUpload::make('image')->label('Image')->disk('images')->directory('team')->required()->maxSize(2048)
                         ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif'])
                         ->image()
                         ->imageEditor(),
@@ -82,7 +84,7 @@ class TeamResource extends Resource implements HasShieldPermissions
                         return $rowLoop->iteration;
                     })
                     ->sortable(false),
-                ImageColumn::make('image')->limit(50)->label('Photo')
+                ImageColumn::make('image')->limit(50)->label('Photo')->disk('images')
                     ->circular(),
 
                 TextColumn::make('first_name')->label('First Name')->searchable()->sortable()
@@ -90,9 +92,8 @@ class TeamResource extends Resource implements HasShieldPermissions
                 TextColumn::make('last_name')->label('Last Name')->searchable()->sortable()
                     ->weight(FontWeight::Bold),
 
-                IconColumn::make('is_active')->label('Is Active')
-                    ->boolean()
-                    ->sortable(),
+                ToggleColumn::make('is_active')->label('Active ?'),
+
 
                 TextColumn::make('position')->label('Position')->searchable()->sortable(),
 

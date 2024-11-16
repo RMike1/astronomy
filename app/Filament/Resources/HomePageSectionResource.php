@@ -95,14 +95,35 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                                 ->required(),
                         ])->columnSpan(2)->columns(2),
                     ])->columnSpan(2)->columns(2)->persistTabInQueryString(),
-                    RichEditor::make('full_description')->label('Full Description')->columnSpan(2)->required(),
+
+
+                    RichEditor::make('full_description')->label('Full Description')
+                    ->toolbarButtons([
+                        'attachFiles',
+                        'blockquote',
+                        'bold',
+                        'bulletList',
+                        'codeBlock',
+                        'h2',
+                        'h3',
+                        'italic',
+                        'link',
+                        'orderedList',
+                        'redo',
+                        'strike',
+                        'underline',
+                        'undo',
+                    ])
+                    ->fileAttachmentsDisk('images')
+                    ->fileAttachmentsVisibility('public')
+                    ->columnSpan(2)->required(),
                 ])->columnSpan(2)->columns(2),
                 Section::make('Media')->collapsible()->schema([
-                    FileUpload::make('image')->label('Image')->disk('public')->directory('Home-Section-images')->required()->maxSize(6096)
+                    FileUpload::make('image')->label('Image')->disk('images')->required()->maxSize(6096)
                         ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif'])
                         ->image()
                         ->imageEditor(),
-                    FileUpload::make('background_video')->label('Background Video')->disk('public')->directory('Home-Section-videos')->visibility('public')->required()->maxSize(6096)
+                    FileUpload::make('background_video')->label('Background Video')->disk('images')->visibility('public')->required()->maxSize(6096)
                         ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/avi']),
                     Select::make('background_type')
                         ->label('Choose Background For Details page')
@@ -143,14 +164,14 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                     ->formatStateUsing(function ($state) {
                         return \Illuminate\Support\Str::limit(strip_tags($state), 50);
                     }),
-                ImageColumn::make('image')->label('Background Image')->disk('public'),
+                ImageColumn::make('image')->label('Background Image')->disk('images'),
 
                 TextColumn::make('background_video')
                     ->label('Background Video')
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->formatStateUsing(function ($record) {
                             return '<video width="200" height="200" controls>
-                                    <source src="'.Storage::url($record->video).'" type="video/mp4">
+                                    <source src="'.Storage::disk('images')->url($record->video).'" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>';
                     })

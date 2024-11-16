@@ -44,7 +44,7 @@
             <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
                 <div class="absolute inset-0 top-0 left-0 w-full h-full">
                     <video class="video-bg absolute inset-0 w-full h-full object-cover" autoplay muted loop>
-                        <source src="{{ asset('storage/' . $about_data->about_hero_video) }}" type="video/mp4">
+                        <source src="{{Storage::disk('images')->url($about_data->about_hero_video) }}" type="video/mp4">
                         Your browser does not support HTML5 video.
                     </video>
                 </div>
@@ -123,7 +123,7 @@
                 </a> --}}
                 {{-- <span
                     class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-1 block w-32 h-32 rounded-full backdrop-blur-[5px] bg-white/[0.04]"></span> --}}
-                <img src="{{ Storage::url($about_data->about_image) }}" alt="video" />
+                <img src="{{ Storage::disk('images')->url($about_data->about_image) }}" alt="video" />
             </div>
         </div>
     </section>

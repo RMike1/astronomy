@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\SocialMedia;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Team extends Model
 {
@@ -17,4 +18,16 @@ class Team extends Model
     public function social_media(){
         return $this->hasMany(SocialMedia::class);
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updating(function ($model) {
+            if ($model->isDirty('image') && ($model->getOriginal('image') !== null)) {
+                Storage::disk('images')->delete($model->getOriginal('image'));
+            }
+        });
+    }
+
 }

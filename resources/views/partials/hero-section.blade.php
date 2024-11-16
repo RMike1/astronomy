@@ -5,7 +5,7 @@
             <div class="absolute inset-0 top-0 left-0 w-full h-full">
                 <video id="Background-Video" class="video-bg absolute inset-0 w-full h-full object-cover" autoplay muted
                     loop>
-                    <source src="{{ Storage::url($herosection->video) }}" type="video/mp4">
+                    <source src="{{ Storage::disk('images')->url($herosection->video) }}" type="video/mp4">
                     Your browser does not support HTML5 video.
                 </video>
             </div>
