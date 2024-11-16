@@ -35,6 +35,7 @@ class SocialMediaRelationManager extends RelationManager
             ->schema([
                 Select::make('platform')
                 ->label('Platform Name')
+                ->native(false)
                 ->options(SocialMediaType::class)
                 ->disabled(fn ($record) => !is_null($record)),
                 TextInput::make('url')
@@ -44,7 +45,7 @@ class SocialMediaRelationManager extends RelationManager
                 ->suffixIcon('heroicon-m-globe-alt')
                 ->maxLength(255),
                 Toggle::make('is_active')
-                ->label('is Active ??')
+                ->label('Active?')
                 ->required(),
             ]);
     }
@@ -56,7 +57,7 @@ class SocialMediaRelationManager extends RelationManager
             ->columns([
                 TextColumn::make('platform')->label('Platforms')->searchable()->sortable(),
                 TextColumn::make('url')->label('Url')->searchable()->sortable(),
-                Tables\Columns\ToggleColumn::make('is_active')->label('Is Active?'),
+                Tables\Columns\ToggleColumn::make('is_active')->label('Active?'),
             ])
             ->filters([
                 //
