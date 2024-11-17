@@ -27,7 +27,7 @@ class SettingResource extends Resource implements HasShieldPermissions
     protected static ?string $navigationLabel = 'S.E.O Management';
     protected static ?string $modelLabel = 'Meta Tags';
     protected static ?string $pluralLabel = 'SEO Configurations';
-    protected static ?int $navigationSort = 25;
+    protected static ?int $navigationSort = 80;
     protected static ?string $navigationGroup = 'Settings';
 
     public static function form(Form $form): Form

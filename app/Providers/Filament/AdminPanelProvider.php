@@ -90,7 +90,7 @@ class AdminPanelProvider extends PanelProvider
                     
                     FilamentGeneralSettingsPlugin::make()
                     // ->canAccess(fn() => Auth::user()->id === 1)
-                    ->setSort(3)
+                    ->setSort(190)
                     ->setIcon('heroicon-o-cog')
                     ->setNavigationGroup('Settings')
                     ->setTitle('General Settings')

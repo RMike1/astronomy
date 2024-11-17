@@ -32,7 +32,7 @@ class TermsOfUseResource extends Resource implements HasShieldPermissions
     protected static ?string $navigationLabel = 'Terms of use';
     protected static ?string $modelLabel = 'Terms of use';
     protected static ?string $pluralLabel = 'Terms of use';
-    protected static ?int $navigationSort = 30;
+    protected static ?int $navigationSort = 25;
     protected static ?string $navigationGroup = 'Terms & Policy';
 
     public static function form(Form $form): Form

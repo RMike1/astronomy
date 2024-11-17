@@ -25,7 +25,7 @@ class CompanySocialMediaResource extends Resource implements HasShieldPermission
     protected static ?string $navigationLabel = 'Social Media Platforms';
     protected static ?string $modelLabel = 'Social Media Platforms';
     protected static ?string $pluralLabel = 'Social Media Platforms';
-    protected static ?int $navigationSort = 25;
+    protected static ?int $navigationSort = 26;
     protected static ?string $navigationGroup = 'Settings';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
