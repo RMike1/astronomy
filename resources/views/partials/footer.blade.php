@@ -43,7 +43,7 @@
                     @endforelse
                 </div>
                 <p class="font-medium mt-5.5">
-                    Apollo © {{now()->year}} , All rights reserved.
+                    <span class="font-semibold">Gnosis Space</span> © {{now()->year}} , All rights reserved.
                 </p>
             </div>
             <div class="max-w-[571px] w-full">

@@ -88,13 +88,13 @@ class AdminPanelProvider extends PanelProvider
                     ->setSort(40)
                     ->shouldRegisterNavigation(),
                     
-                    // FilamentGeneralSettingsPlugin::make()
+                    FilamentGeneralSettingsPlugin::make()
                     // ->canAccess(fn() => Auth::user()->id === 1)
-                    // ->setSort(3)
-                    // ->setIcon('heroicon-o-cog')
-                    // ->setNavigationGroup('Settings')
-                    // ->setTitle('General Settings')
-                    // ->setNavigationLabel('General Settings'),
+                    ->setSort(3)
+                    ->setIcon('heroicon-o-cog')
+                    ->setNavigationGroup('Settings')
+                    ->setTitle('General Settings')
+                    ->setNavigationLabel('General Settings'),
             ]);
     }
 }
