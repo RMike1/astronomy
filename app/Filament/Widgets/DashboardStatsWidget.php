@@ -9,6 +9,7 @@ use Filament\Support\Enums\IconPosition;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
+use Filament\Support\Colors\Color;
 use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 
 class DashboardStatsWidget extends BaseWidget
@@ -30,24 +31,21 @@ class DashboardStatsWidget extends BaseWidget
             ->count())
             ->description('total number of contents')
             ->descriptionIcon('heroicon-m-home-modern',IconPosition::Before)
-            ->chart([0,0,0,0,0])
-            ->color('warning'),
+            ->chart([0,0,0,0,0]),
             Stat::make('Subscribers', Subscriber::when($startDate, fn($query)
             =>$query->whereDate('created_at','>',$startDate))
             ->when($endDate, fn($query)=>$query->whereDate('created_at','<',$endDate))
             ->count())
             ->description('total number of subscribers')
             ->descriptionIcon('heroicon-o-queue-list',IconPosition::Before)
-            ->chart([0,0,0,0,0])
-            ->color('warning'),
+            ->chart([0,0,0,0,0]),
             Stat::make('Team Members', Team::when($startDate, fn($query)
             =>$query->whereDate('created_at','>',$startDate))
             ->when($endDate, fn($query)=>$query->whereDate('created_at','<',$endDate))
             ->count())
             ->description('total number of team members')
             ->descriptionIcon('heroicon-m-user-group',IconPosition::Before)
-            ->chart([0,0,0,0,0])
-            ->color('success')
+            ->chart([0,0,0,0,0]),
         ];
     }
 }

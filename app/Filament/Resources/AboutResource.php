@@ -82,7 +82,7 @@ class AboutResource extends Resource implements HasShieldPermissions
                 ])->columnSpan(2)->columns(2),
 
                 Group::make()->schema([
-                    Section::make('Company\'s Logo & Favicon')->schema([
+                    Section::make('Logo & Favicon')->schema([
                         Forms\Components\FileUpload::make('logo')->label('Logo')->disk('images')->directory('icons')->required()->maxSize(2096)
                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif'])
                             ->image()
