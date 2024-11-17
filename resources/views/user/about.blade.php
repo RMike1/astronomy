@@ -99,15 +99,10 @@
         </div>
     </section>
 
-    <!----------Team Members----------->
 
     @include('partials.team')
 
-    <!----------Services----------->
-
     @include('partials.services')
-
-    <!----------Video----------->
 
     <section>
         <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
@@ -155,8 +150,6 @@
             </div>
         </div>
     </section>
-
-    <!----------Subscribe form----------->
 
     @include('partials.subscribe-form')
 

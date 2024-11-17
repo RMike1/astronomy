@@ -34,7 +34,6 @@
                         </span>
                     </button>
                 </div>
-                <!-- Navbar Menu Section -->
                {{$header}}
             </div>
         </header>

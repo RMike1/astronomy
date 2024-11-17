@@ -52,22 +52,14 @@
         </div>
     </x-slot>
 
-    <!--Hero Section-->
 
     @include('partials.hero-section')
 
-    <!-- second section images -->
     @include('partials.home-page-section')
-
-    <!--Services Section-->
 
     @include('partials.services')
 
-    <!--Contact Section-->
-
     @include('partials.contact')
-
-    <!--Subscr.. Section-->
 
     @include('partials.subscribe-form')
 

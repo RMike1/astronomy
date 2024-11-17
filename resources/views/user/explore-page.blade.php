@@ -196,8 +196,6 @@
         </div>
     </section>
 
-    <!----------About us----------->
-
     <section>
         <div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
             <div class="relative rounded-3xl z-999">
@@ -216,8 +214,6 @@
             </div>
         </div>
     </section>
-
-    <!----------Subscribe form----------->
 
     @include('partials.subscribe-form')
 
