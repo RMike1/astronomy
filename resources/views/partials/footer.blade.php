@@ -17,13 +17,14 @@
             
             <div class="mb-10 max-w-[571px] w-full">
                     @php
-                        $company_profile=App\Models\About::select(['logo','about_summary_description'])->first();
+                        $company_profile=App\Models\About::select('logo')->first();
+                        $general_setting=App\Models\GeneralSetting::select(['site_name','site_description'])->first();
                     @endphp
                 <a class="mb-8.5 inline-block" href="{{route('home')}}">
                     <img src="{{$company_profile ? Storage::disk('images')->url($company_profile->logo) : ' '}}" alt="Logo" />
                 </a>
                 <p class="mb-12 xl:w-4/5">
-                    {{ $company_profile ? $company_profile->about_summary_description : ' '}}
+                    {{ $general_setting ? $general_setting->site_description : ' '}}
                 </p>
                 <div class="flex items-center gap-5">
                     @php
@@ -43,7 +44,7 @@
                     @endforelse
                 </div>
                 <p class="font-medium mt-5.5">
-                    <span class="font-semibold">Gnosis Space</span> © {{now()->year}} , All rights reserved.
+                    <span class="font-semibold">{{$general_setting->site_name}}</span> © {{now()->year}} , All rights reserved.
                 </p>
             </div>
             <div class="max-w-[571px] w-full">

@@ -1,6 +1,6 @@
 <x-main-layout>
     <x-slot name="meta">
-        <title>{{ $terms->meta_title }} - {{ $meta_data->meta_title }}</title>
+        <title>{{ $terms->meta_title }} - {{$general_setting->site_name}}</title>
         <meta name="keyword" content="{{ $meta_data->meta_keyword }}">
         <meta name="description" content="{{ $terms->meta_description }}">
     </x-slot>

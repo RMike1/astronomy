@@ -56,9 +56,6 @@ class AboutResource extends Resource implements HasShieldPermissions
                     TextInput::make('about_sub_title')
                     ->label('Sub Main Title')
                     ->required(),
-                    Textarea::make('about_summary_description')
-                    ->label('Summary Description')
-                    ->columnSpan(2)->required(),
                     RichEditor::make('about_description')->label('Description')
                     ->toolbarButtons([
                         'attachFiles',
