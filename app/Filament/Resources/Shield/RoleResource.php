@@ -10,6 +10,7 @@ use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\Component;
 use BezhanSalleh\FilamentShield\Support\Utils;
@@ -53,7 +54,7 @@ class RoleResource extends Resource implements HasShieldPermissions
                                     ->label(__('filament-shield::filament-shield.field.name'))
                                     ->unique(ignoreRecord: true)
                                     ->required()
-                                    ->readOnly(fn()=>User::role('super_admin'))
+                                    ->readOnly(fn ($record) => $record && auth()->user()?->hasRole('super_admin'))
                                     ->maxLength(255),
 
                                 Forms\Components\TextInput::make('guard_name')
