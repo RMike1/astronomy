@@ -1,7 +1,7 @@
 <x-main-layout>
     <x-slot name="meta">
-        <title>419 - {{$general_setting->site_name}}</title>
-        <meta name="keyword" content="{{ $meta_data->meta_keyword }}">
+        <title>419 - {{$general_setting->site_name ?? ' '}}</title>
+        <meta name="keyword" content="{{ $meta_data->meta_keyword ?? ' '}}">
         <meta name="description" content="{{ $meta_data->meta_description ?? '' }}">
     </x-slot>
     <x-slot name="header">

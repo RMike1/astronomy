@@ -1,8 +1,8 @@
 <x-main-layout>
     <x-slot name="meta">
-        <title>404 - {{$general_setting->site_name}}</title>
-        <meta name="keyword" content="{{ $meta_data->meta_keyword }}">
-        <meta name="description" content="{{ $meta_data->meta_description ?? '' }}">
+        <title>404 - {{$general_setting->site_name ?? ' '}}</title>
+        <meta name="keyword" content="{{ $meta_data->meta_keyword ?? ' '}}">
+        <meta name="description" content="{{ $meta_data->meta_description ?? ' ' }}">
     </x-slot>
     <x-slot name="header">
         <div class="w-full lg:w-3/4 h-0 lg:h-auto invisible lg:visible lg:flex items-center justify-end"

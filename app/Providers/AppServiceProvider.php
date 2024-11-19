@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         
         $general_setting=GeneralSetting::select(['site_name','site_description'])->first();
         view()->share('general_setting',$general_setting);
+        
         $meta_data = Setting::select(['meta_title','meta_keyword','meta_description','meta_image','more_seo_metadata','social_media_seo_meta_data'])->first();
         $moreSeoMetadata = $meta_data->more_seo_metadata ?? [];
         $socialMediaSeoMetaData = $meta_data->social_media_seo_meta_data ?? [];
