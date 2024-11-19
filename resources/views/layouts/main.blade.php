@@ -5,27 +5,18 @@
 
     @php
         $setting = App\Models\About::select('favicon')->first();
-        $general_settings=App\Models\GeneralSetting::select('seo_metadata')->first();
-        $seoMetadata = is_string($general_settings->seo_metadata) 
-                   ? json_decode($general_settings->seo_metadata, true) 
-                   : $general_settings->seo_metadata;
     @endphp
 
     <head>
         <link rel="icon" href="{{ $setting ? Storage::disk('images')->url($setting->favicon) : ' ' }}">
-        {{ $meta }}
         <meta charset="UTF-8" />
-        <meta name="robots" content="index, follow" />
-        <meta name="googlebot" content="noindex, nofollow">
-        <link rel="canonical" href="{{ request()->url() }}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        @if(!empty($seoMetadata))
-            @foreach($seoMetadata as $name => $content)
-<meta name="{{ $name }}" content="{{ $content }}" />[]
-            @endforeach
-        @endif
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="noindex, nofollow">
+        <link rel="canonical" href="{{ request()->url() }}">
+        {{ $meta }}
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <link href="{{ asset('user/css/style.css') }}" rel="stylesheet">
         <!-- Scripts -->
@@ -35,7 +26,8 @@
     </head>
 @endif
 
-<body x-data="{ page: '{{ Route::currentRouteName() }}', activeSection: 'home', 'loaded': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }" x-init="const observer = new IntersectionObserver((entries) => {entries.forEach(entry => {if (entry.isIntersecting) {activeSection = entry.target.id;}});}, { threshold: 0.6 });document.querySelectorAll('section').forEach(section => {observer.observe(section);});">
+<body x-data="{ page: '{{ Route::currentRouteName() }}', activeSection: 'home', 'loaded': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }" x-init="const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { activeSection = entry.target.id; } }); }, { threshold: 0.6 });
+document.querySelectorAll('section').forEach(section => { observer.observe(section); });">
     @if (isset($header))
         @include('partials.header')
     @endif

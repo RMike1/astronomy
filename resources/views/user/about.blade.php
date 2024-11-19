@@ -3,6 +3,24 @@
         <title>About Us - {{$general_setting->site_name}}</title>
         <meta name="keyword" content="{{ $meta_data->meta_keyword }}">
         <meta name="description" content="{{ $meta_data->meta_description }}">
+        @if (!empty($moreSeoMetadata))
+        @foreach ($moreSeoMetadata as $meta)
+<meta name="{{ htmlspecialchars($meta['data']['key']) }}"content="{{ htmlspecialchars($meta['data']['value']) }}" />
+        @endforeach
+    @endif
+    @if(!empty($socialMediaSeoMetaData))
+        @foreach ($socialMediaSeoMetaData as $social_meta)
+            @if ($social_meta['type'] === 'other_social_media_seo_metadata')
+<meta property="{{ htmlspecialchars($social_meta['data']['key']) }}" content="{{ htmlspecialchars($social_meta['data']['value']) }}" />
+            @elseif ($social_meta['type'] === 'twitter_seo_metadata')
+<meta name="{{ htmlspecialchars($social_meta['data']['key']) }}" content="{{ htmlspecialchars($social_meta['data']['value']) }}" />
+            @endif
+        @endforeach
+    @endif
+    @if ($meta_data->meta_image)
+<meta property="og:image" content="{{ Storage::disk('images')->url($meta_data->meta_image) ?? '' }}" />
+<meta name="twitter:image" content="{{ Storage::disk('images')->url($meta_data->meta_image) ?? '' }}" />
+    @endif
     </x-slot>
     <x-slot name="header">
         <div class="w-full lg:w-3/4 h-0 lg:h-auto invisible lg:visible lg:flex items-center justify-end"
@@ -53,23 +71,20 @@
 
         <div class="mx-auto max-w-[900px] px-4 sm:px-8 xl:px-0 py-32 relative z-1 flex flex-col justify-start h-full">
             <div class="text-left wow fadeInRight">
-                <span data-aos="fade-left" data-aos-duration="1000"
+                <span
                     class="hero-subtitle-gradient hover:hero-subtitle-hover relative mb-5 font-medium text-sm inline-flex items-center gap-4 py-2 px-4.5 rounded-full">
                     <img src="{{ asset('user/images/icon-title.svg') }}" alt="icon">
                     <span class="hero-subtitle-text text-white">
                         {{ $about_data->about_hero_sub_title }}
                     </span>
                 </span>
-                <h1 class="text-white mb-6 text-5xl font-extrabold sm:text-5xl xl:text-heading-1" data-aos="fade-left">
+                <h1 class="text-white mb-6 text-5xl font-extrabold sm:text-5xl xl:text-heading-1">
                     <span class="text-slider-items hidden">{{ $about_data->about_hero_title }}</span>
-                    <span class="text-slider text-3xl"></span>
+                    <span class="text-slider text-3xl" data-aos="fade-left" data-aos-duration="500"></span>
                 </h1>
             </div>
         </div>
     </section>
-
-
-    <!----------About us----------->
 
     <section class="overflow-hidden">
         <div class="max-w-[1170px] mx-auto px-6 sm:px-12 xl:px-16 py-28 lg:py-32 relative">

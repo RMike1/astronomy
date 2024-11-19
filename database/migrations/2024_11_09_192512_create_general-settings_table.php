@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('email_from_address')->nullable();
             $table->string('email_from_name')->nullable();
             $table->json('social_network')->nullable();
-            $table->json('more_configs')->nullable();
             $table->timestamps();
         });
     }

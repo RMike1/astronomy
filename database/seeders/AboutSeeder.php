@@ -21,7 +21,6 @@ class AboutSeeder extends Seeder
             'about_image'=>'user/images/bc/image6.jpg',
             'about_title'=>'Lorem Ipsumm Truw deiir',
             'about_sub_title'=>'About us',
-            'about_summary_description'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquas',
             'about_description'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquas lor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquas',
             'logo'=>'user/images/bc/logo.png',
             'favicon'=>'user/images/bc/image.ico',

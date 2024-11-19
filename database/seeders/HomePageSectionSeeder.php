@@ -28,6 +28,7 @@ class HomePageSectionSeeder extends Seeder
             'background_type' => 'image',
             'meta_title'=>'Lorem ipsum',
             'meta_keyword'=>'title lorem ipsum',
+            'meta_image' => 'user/images/bc/image3.jpg',
             'meta_description'=>'description lorem ipsum'
         ],
             [
@@ -43,6 +44,7 @@ class HomePageSectionSeeder extends Seeder
                 'background_type' => 'video',
                 'meta_title'=>'Lorem ipsum',
                 'meta_keyword'=>'title lorem ipsum',
+                'meta_image' => 'user/images/bc/image3.jpg',
                 'meta_description'=>'description lorem ipsum'
             ],
             [
@@ -58,6 +60,7 @@ class HomePageSectionSeeder extends Seeder
                 'background_type' => 'image',
                 'meta_title'=>'Lorem ipsum',
                 'meta_keyword'=>'title lorem ipsum',
+                'meta_image' => 'user/images/bc/image3.jpg',
                 'meta_description'=>'description lorem ipsum'
             ],
             [
@@ -73,6 +76,7 @@ class HomePageSectionSeeder extends Seeder
                 'background_type' => 'video',
                 'meta_title'=>'Lorem ipsum',
                 'meta_keyword'=>'title lorem ipsum',
+                'meta_image' => 'user/images/bc/image3.jpg',
                 'meta_description'=>'description lorem ipsum'
             ],
             [
@@ -88,6 +92,7 @@ class HomePageSectionSeeder extends Seeder
                 'background_type' => 'image',
                 'meta_title'=>'Lorem ipsum',
                 'meta_keyword'=>'title lorem ipsum',
+                'meta_image' => 'user/images/bc/image3.jpg',
                 'meta_description'=>'description lorem ipsum'
             ],
             ]

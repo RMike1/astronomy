@@ -17,9 +17,9 @@ class SettingFactory extends Factory
     public function definition(): array
     {
         return [
-            'company_name'=>fake()->name(),
             'meta_title'=>fake()->name(),
             'meta_keyword'=>fake()->sentence(),
+            'meta_image'=>fake()->imageUrl(),
             'meta_description'=>fake()->paragraph(3),
         ]; 
     }

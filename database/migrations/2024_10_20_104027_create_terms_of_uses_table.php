@@ -18,8 +18,11 @@ return new class extends Migration
             $table->string('background_image')->nullable();
             $table->longText('description')->nullable();
             $table->string('meta_title')->nullable();
-            $table->longText('meta_keyword')->nullable();
+            $table->mediumText('meta_keyword')->nullable();
             $table->longText('meta_description')->nullable();
+            $table->string('meta_image')->nullable();
+            $table->json('more_seo_metadata')->nullable();
+            $table->json('social_media_seo_meta_data')->nullable();
             $table->timestamps();
         });
     }

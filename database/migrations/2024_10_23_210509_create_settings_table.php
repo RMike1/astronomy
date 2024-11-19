@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('company_name')->nullable();
+            
             $table->string('meta_title')->nullable();
             $table->mediumText('meta_keyword')->nullable();
             $table->longText('meta_description')->nullable();
+            $table->string('meta_image')->nullable();
+            $table->json('more_seo_metadata')->nullable();
+            $table->json('social_media_seo_meta_data')->nullable();
             $table->timestamps();
         });
     }

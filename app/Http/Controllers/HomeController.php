@@ -56,17 +56,23 @@ class HomeController extends Controller
         $Service_section_header = ServiceSectionHeader::select(['title', 'sub_title','description'])->first();
         $Services = Service::where('is_active', true)->select(['title', 'slug', 'is_active', 'summary_description'])->latest()->take(10)->get();
         $team_members = Team::all();
-        $Homesection = HomePageSection::select(['title', 'sub_title', 'slug', 'image', 'is_active', 'text_position', 'summary_description', 'full_description', 'background_type', 'background_video','meta_title','meta_keyword','meta_description'])->where('slug', $slug)->firstOrfail();
-        return view('user.explore-page', compact('about_data', 'Service_section_header', 'Services', 'team_members', 'Homesection'));
+        $Homesection = HomePageSection::select(['title', 'sub_title', 'slug', 'image', 'is_active', 'text_position', 'summary_description', 'full_description', 'background_type', 'background_video','meta_title','meta_keyword','meta_description','meta_image','more_seo_metadata','social_media_seo_meta_data'])->where('slug', $slug)->firstOrfail();
+        $moreSeoMetadata = $Homesection->more_seo_metadata ?? [];
+        $socialMediaSeoMetaData = $Homesection->social_media_seo_meta_data ?? [];
+        return view('user.explore-page', compact('about_data', 'Service_section_header', 'Services', 'team_members', 'Homesection','moreSeoMetadata','socialMediaSeoMetaData'));
     }
     public function terms_of_use()
     {
-        $terms = TermsOfUse::select(['title', 'background_image', 'description','sub_title','meta_description','meta_title'])->latest()->firstOrfail();
-        return view('user.terms-of-use', compact('terms'));
+        $terms = TermsOfUse::select(['title', 'background_image', 'description','sub_title','meta_title','meta_keyword','meta_description','meta_image','more_seo_metadata','social_media_seo_meta_data'])->latest()->firstOrfail();
+        $moreSeoMetadata = $terms->more_seo_metadata ?? [];
+        $socialMediaSeoMetaData = $terms->social_media_seo_meta_data ?? [];
+        return view('user.terms-of-use', compact('terms','moreSeoMetadata','socialMediaSeoMetaData'));
     }
     public function privacy_policy()
     {
-        $policies = PrivacyPolicy::select(['title', 'background_image', 'description','sub_title','meta_description','meta_title'])->latest()->firstOrfail();
-        return view('user.privacy-policy', compact('policies'));
+        $policies = PrivacyPolicy::select(['title', 'background_image', 'description','sub_title','meta_title','meta_keyword','meta_description','meta_image','more_seo_metadata','social_media_seo_meta_data'])->latest()->firstOrfail();
+        $moreSeoMetadata = $policies->more_seo_metadata ?? [];
+        $socialMediaSeoMetaData = $policies->social_media_seo_meta_data ?? [];
+        return view('user.privacy-policy', compact('policies','moreSeoMetadata','socialMediaSeoMetaData'));
     }
 }

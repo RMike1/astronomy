@@ -31,12 +31,5 @@ class SendUpdates extends Command
      */
     public function handle()
     {
-        $subscribers=Subscriber::all();
-        $latestContent=HomePageSection::latest('id')->first();
-        $link=route('explore',$latestContent->slug);
-        foreach($subscribers as $subscriber){
-            Notification::send($subscriber, new SendUpdatesNotification($link));
-            Log::info('updates sent successfully!');
-        }
     }
 }

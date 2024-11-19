@@ -22,4 +22,9 @@ class PrivacyPolicy extends Model
             }
         });
     }
+
+    protected $casts=[
+        'more_seo_metadata'=>'array',
+        'social_media_seo_meta_data'=>'array',
+    ];
 }

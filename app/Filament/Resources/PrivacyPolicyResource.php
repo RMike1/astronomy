@@ -78,10 +78,68 @@ class PrivacyPolicyResource extends Resource implements HasShieldPermissions
                         TextInput::make('meta_title')->label('Meta Title ( Page Name )')
                             ->maxLength(255)
                             ->required(),
+                        Textarea::make('meta_keyword')->label('Meta Keyword')
+                            ->required()
+                            ->helperText('Enter the meta keywords separated by commas (,)')
+                            ->maxLength(255),
+                        FileUpload::make('meta_image')->label('Image')->disk('images')->required()->maxSize(6096)
+                            ->acceptedFileTypes(['image/jpeg', 'image/png'])
+                            ->image()
+                            ->helperText('Defines the image shown in the social media card when content is shared.')
+                            ->imageEditor(),
                         Textarea::make('meta_description')->label('Meta Description')
                             ->maxLength(255)
                             ->required()
                             ->columnSpanFull(),
+                            Forms\Components\Builder::make('more_seo_metadata')
+                            ->label('more')
+                            ->blocks([
+                                Forms\Components\Builder\Block::make('meta_data')
+                                    ->label('meta data')
+                                    ->schema([
+                                        TextInput::make('key')
+                                            ->label('key')
+                                            ->required()
+                                            ->maxLength(100),
+                                        Textarea::make('value')
+                                            ->label('value')
+                                            ->maxLength(200)
+                                            ->required(),
+                                    ]),
+                            ])->columns(2)
+                            ->blockNumbers(false),
+                            Section::make()->schema([
+                            Forms\Components\Builder::make('social_media_seo_meta_data')
+                                    ->label('Social Media Seo Meta Data')
+                                    ->blocks([
+                                    Forms\Components\Builder\Block::make('twitter_seo_metadata')
+                                        ->label('Twitter Seo Metadata')
+                                            ->schema([
+                                                TextInput::make('key')
+                                                    ->label('key')
+                                                    ->maxLength(100)
+                                                    ->required(),
+                                                Textarea::make('value')
+                                                    ->label('value')
+                                                    ->maxLength(200)
+                                                    ->required(),
+                                            ]),
+            
+                                    Forms\Components\Builder\Block::make('other_social_media_seo_metadata')
+                                            ->label('Other Platforms Seo Metadata')
+                                            ->schema([
+                                                TextInput::make('key')
+                                                    ->label('key')
+                                                    ->maxLength(100)
+                                                    ->required(),
+                                                Textarea::make('value')
+                                                    ->label('value')
+                                                    ->maxLength(200)
+                                                    ->required(),
+                                            ]),
+                                    ])->blockNumbers(false),
+            
+                            ])->columns(1),
                     ])->columnSpan(1),
                 ])->columnSpan(1),
             ])->columns(3);

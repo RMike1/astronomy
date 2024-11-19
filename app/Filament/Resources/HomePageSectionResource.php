@@ -27,11 +27,14 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
+// use Filament\Forms\Components\Builder;
+// use Filament\Forms\Components\Builder\Block;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\HomePageSectionResource\Pages;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use App\Filament\Resources\HomePageSectionResource\RelationManagers;
 use App\Filament\Resources\HomePageSectionResource\Widgets\HomePageSectionStatsWidget;
+// use Filament\Forms\Components\Builder as PageBuilder;
 
 
 class HomePageSectionResource extends Resource implements HasShieldPermissions
@@ -81,18 +84,76 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                             Textarea::make('summary_description')->label('Summary Description')->required()->columnSpan(2),
 
                         ])->columnSpan(2)->columns(2),
-                        Tab::make('Meta Data')->icon('heroicon-o-cog-6-tooth')->schema([
-                            Forms\Components\Textarea::make('meta_title')->label('Meta Title')
+                        Tab::make('Seo Meta Data')->icon('heroicon-o-cog-6-tooth')->schema([
+                            Forms\Components\Textinput::make('meta_title')->label('Meta Title')
                                 ->required()
                                 ->maxLength(255),
+                            FileUpload::make('meta_image')->label('Image')->disk('images')->required()->maxSize(6096)
+                                ->acceptedFileTypes(['image/jpeg', 'image/png'])
+                                ->image()
+                                ->helperText('Defines the image shown in the social media card when content is shared.')
+                                ->imageEditor(),
                             Forms\Components\Textarea::make('meta_keyword')->label('Meta Keyword')
                                 ->required()
                                 ->helperText('Enter the meta keywords separated by commas (,)')
+                                ->columnSpan(2)
                                 ->maxLength(255),
+                           
 
                             Forms\Components\Textarea::make('meta_description')->label('Meta Description')
                                 ->columnSpan(2)
                                 ->required(),
+                            Forms\Components\Builder::make('more_seo_metadata')
+                            ->label('more')
+                            ->blocks([
+                            Forms\Components\Builder\Block::make('meta_data')
+                                    ->label('meta data')
+                                    ->schema([
+                                        TextInput::make('key')
+                                            ->label('key')
+                                            ->required()
+                                            ->maxLength(100),
+                                        Textarea::make('value')
+                                            ->label('value')
+                                            ->maxLength(200)
+                                            ->required(),
+                                    ]),
+                            ])->columns(2)
+                            ->columnSpan(2)
+                            ->blockNumbers(false),
+                            Section::make()->schema([
+                                Forms\Components\Builder::make('social_media_seo_meta_data')
+                                    ->label('Social Media Seo Meta Data')
+                                    ->blocks([
+                                        Forms\Components\Builder\Block::make('twitter_seo_metadata')
+                                        ->label('Twitter Seo Metadata')
+                                            ->schema([
+                                                TextInput::make('key')
+                                                    ->label('key')
+                                                    ->maxLength(100)
+                                                    ->required(),
+                                                Textarea::make('value')
+                                                    ->label('value')
+                                                    ->maxLength(200)
+                                                    ->required(),
+                                            ]),
+            
+                                    Forms\Components\Builder\Block::make('other_social_media_seo_metadata')
+                                            ->label('Other Platforms Seo Metadata')
+                                            ->schema([
+                                                TextInput::make('key')
+                                                    ->label('key')
+                                                    ->maxLength(100)
+                                                    ->required(),
+                                                Textarea::make('value')
+                                                    ->label('value')
+                                                    ->maxLength(200)
+                                                    ->required(),
+                                            ]),
+                                    ])->blockNumbers(false),
+            
+                            ])->columns(1),
+                                
                         ])->columnSpan(2)->columns(2),
                     ])->columnSpan(2)->columns(2)->persistTabInQueryString(),
 
@@ -162,7 +223,7 @@ class HomePageSectionResource extends Resource implements HasShieldPermissions
                     ->limit(50)
                     ->html()
                     ->formatStateUsing(function ($state) {
-                        return \Illuminate\Support\Str::limit(strip_tags($state), 50);
+                        return Str::limit(strip_tags($state), 50);
                     }),
                 ImageColumn::make('image')->label('Background Image')->disk('images'),
 

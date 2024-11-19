@@ -24,6 +24,7 @@ class TermsOfUseFactory extends Factory
             'meta_title'=>fake()->name(),
             'meta_keyword'=>fake()->name(),
             'meta_description'=>fake()->paragraph(2),
+            'meta_image'=>fake()->imageUrl(),
         ];
     }
 }

@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('about_image')->nullable();
             $table->string('about_title')->nullable();
             $table->string('about_sub_title')->nullable();
-            $table->longText('about_summary_description')->nullable();
             $table->longText('about_description')->nullable();
             $table->string('logo')->nullable();
             $table->string('favicon')->nullable();
