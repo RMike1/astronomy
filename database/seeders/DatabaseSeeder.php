@@ -18,6 +18,7 @@ use Database\Seeders\AboutSeeder;
 use Database\Seeders\TeamSeeder;
 use Database\Seeders\SocialMediaSeeder;
 use Database\Seeders\CompanySocialMediaSeeder;
+use Database\Seeders\GeneralSettingSeeder;
 
 
 
@@ -41,6 +42,7 @@ class DatabaseSeeder extends Seeder
             $this->call(TeamSeeder::class);
             $this->call(SocialMediaSeeder::class);
             $this->call(CompanySocialMediaSeeder::class);
+            $this->call(GeneralSettingSeeder::class);
             Service::factory(7)->create();
             ServiceSectionHeader::factory(1)->create();
             ContactSectionHeader::factory(1)->create();
