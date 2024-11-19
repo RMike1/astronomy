@@ -54,7 +54,7 @@ class RoleResource extends Resource implements HasShieldPermissions
                                     ->label(__('filament-shield::filament-shield.field.name'))
                                     ->unique(ignoreRecord: true)
                                     ->required()
-                                    ->readOnly(fn ($record) => $record && auth()->user()?->hasRole('super_admin'))
+                                    ->readOnly(fn ($record) => !is_null($record))
                                     ->maxLength(255),
 
                                 Forms\Components\TextInput::make('guard_name')
