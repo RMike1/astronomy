@@ -1,8 +1,8 @@
 <?php
 
-namespace BezhanSalleh\FilamentShield\Resources\RoleResource\Pages;
+namespace App\Filament\Resources\Shield\RoleResource\Pages;
 
-use BezhanSalleh\FilamentShield\Resources\RoleResource;
+use App\Filament\Resources\Shield\RoleResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
 

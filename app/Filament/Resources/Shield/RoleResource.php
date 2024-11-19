@@ -1,29 +1,32 @@
 <?php
 
-namespace BezhanSalleh\FilamentShield\Resources;
+namespace App\Filament\Resources\Shield;
 
-use Filament\Forms;
-use App\Models\User;
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Illuminate\Support\Str;
-use Filament\Resources\Resource;
-use Illuminate\Support\HtmlString;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Forms\Components\Component;
-use BezhanSalleh\FilamentShield\Support\Utils;
-use Illuminate\Contracts\Database\Eloquent\Builder;
-use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
-use BezhanSalleh\FilamentShield\Facades\FilamentShield;
-use BezhanSalleh\FilamentShield\Forms\ShieldSelectAllToggle;
-use BezhanSalleh\FilamentShield\Resources\RoleResource\Pages;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
+use BezhanSalleh\FilamentShield\Facades\FilamentShield;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
+use BezhanSalleh\FilamentShield\Forms\ShieldSelectAllToggle;
+use App\Filament\Resources\Shield\RoleResource\Pages;
+use BezhanSalleh\FilamentShield\Support\Utils;
+use Filament\Forms;
+use Filament\Forms\Components\Component;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
 
 class RoleResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $recordTitleAttribute = 'name';
+
+    // protected static ?string $navigationLabel = 'Roles and Per';
+    // protected static ?string $modelLabel = 'Roles and Per';
+    // protected static ?string $pluralLabel = 'Roles and Per';
+    // protected static ?int $navigationSort = 20;
+    // protected static ?string $navigationGroup = 'About Page';
 
     public static function getPermissionPrefixes(): array
     {
@@ -49,14 +52,12 @@ class RoleResource extends Resource implements HasShieldPermissions
                                     ->label(__('filament-shield::filament-shield.field.name'))
                                     ->unique(ignoreRecord: true)
                                     ->required()
-                                    ->readOnly(fn()=>User::role('super_admin'))
                                     ->maxLength(255),
 
                                 Forms\Components\TextInput::make('guard_name')
                                     ->label(__('filament-shield::filament-shield.field.guard_name'))
                                     ->default(Utils::getFilamentAuthGuard())
                                     ->nullable()
-                                    ->readOnly()
                                     ->maxLength(255),
 
                                 ShieldSelectAllToggle::make('select_all')
@@ -94,9 +95,9 @@ class RoleResource extends Resource implements HasShieldPermissions
                     ->formatStateUsing(fn ($state): string => Str::headline($state))
                     ->colors(['primary'])
                     ->searchable(),
-                // Tables\Columns\TextColumn::make('guard_name')
-                //     ->badge()
-                //     ->label(__('filament-shield::filament-shield.column.guard_name')),
+                Tables\Columns\TextColumn::make('guard_name')
+                    ->badge()
+                    ->label(__('filament-shield::filament-shield.column.guard_name')),
                 Tables\Columns\TextColumn::make('permissions_count')
                     ->badge()
                     ->label(__('filament-shield::filament-shield.column.permissions'))
