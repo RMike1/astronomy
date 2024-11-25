@@ -11,7 +11,7 @@ Route::get('/user/api-tokens', function () {
     abort(404);  
 });
 
-Route::get('/login', function () {
+Route::get('/sign-in', function () {
     return redirect(route('filament.admin.auth.login'));  
 })->name('login');
 

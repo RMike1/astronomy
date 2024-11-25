@@ -34,8 +34,9 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('/admin-dashboard')  
+            ->path('/admin-portal')  
             ->login()
+            ->loginRouteSlug('/sign-in')
             ->colors([
                 'primary' => Color::hex('#a69d6d'),
             ])
