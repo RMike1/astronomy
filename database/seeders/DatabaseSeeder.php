@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
             TermsOfUse::factory(1)->create();
             PrivacyPolicy::factory(1)->create();
             Setting::factory()->create([
-                'meta_title' => 'Apollo',
+                'meta_title' => 'Gnosis',
             ]);
     }
 }

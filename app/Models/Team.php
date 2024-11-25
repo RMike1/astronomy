@@ -28,6 +28,16 @@ class Team extends Model
                 Storage::disk('images')->delete($model->getOriginal('image'));
             }
         });
+
+        static::deleting(function ($model) {
+            if ($model->isForceDeleting()) {
+                if ($model->image) {
+                    Storage::disk('images')->delete($model->image);
+                }
+            }
+        });
+
+
     }
 
 }

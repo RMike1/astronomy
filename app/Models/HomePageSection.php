@@ -33,6 +33,25 @@ class HomePageSection extends Model
                 Storage::disk('images')->delete($model->getOriginal('background_video'));
             }
         });
+
+        static::deleting(function ($model) {
+          
+
+            static::deleting(function ($model) {
+                if ($model->isForceDeleting()) {
+                    if ($model->full_description) {
+                        Storage::disk('images')->delete($model->full_description);
+                    }
+                    if ($model->image) {
+                        Storage::disk('images')->delete($model->image);
+                    }
+                    if ($model->background_video) {
+                        Storage::disk('images')->delete($model->background_video);
+                    }
+                }
+            });
+
+        });
     }
 
     protected $casts=[
