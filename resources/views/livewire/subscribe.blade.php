@@ -30,7 +30,7 @@
     <form wire:submit.prevent="subscribing">
         <div class="flex items-center gap-4">
             <div class="max-w-[395px] w-full">
-                <input id="email" type="email" wire:model.live.debounce.350ms='email'
+                <input id="email" type="email" wire:model.blur='email'
                     placeholder="Enter your Email"
                     class="rounded-lg border border-white/[0.12]  bg-white/[0.05] focus:border-purple w-full py-3 px-6 focus:outline-none focus:border-gray-600 focus:ring-gray-600" />
 

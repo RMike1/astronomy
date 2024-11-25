@@ -34,7 +34,7 @@
                     <label for="name" class="text-white mb-2.5 block font-medium">
                         Name
                     </label>
-                    <input type="text" wire:model.live.debounce.350ms='name' placeholder="Enter your Name"
+                    <input type="text" wire:model.blur='name' placeholder="Enter your Name"
                         class="rounded-lg border-white/[0.12] bg-white/[0.05] focus:border-purple focus:outline-none focus:border-gray-600 focus:ring-gray-600 w-full py-3 px-6" />
 
                     <div>
@@ -49,7 +49,7 @@
                     <label for="email" class="text-white mb-2.5 block font-medium">
                         Email
                     </label>
-                    <input type="email" wire:model.live.debounce.350ms='email' placeholder="Enter your Email"
+                    <input type="email" wire:model.blur='email' placeholder="Enter your Email"
                         class="rounded-lg border border-white/[0.12] bg-white/[0.05] focus:border-purple w-full py-3 px-6 focus:outline-none focus:border-gray-600 focus:ring-gray-600" />
                     <div>
                         @error('email')
@@ -63,7 +63,7 @@
                     <label for="message" class="text-white mb-2.5 block font-medium">
                         Message
                     </label>
-                    <textarea wire:model.live.debounce.350ms='message' placeholder="your message.." rows="6"
+                    <textarea wire:model.blur='message' placeholder="your message.." rows="6"
                         class="rounded-lg border border-white/[0.12] bg-white/[0.05] focus:border-purple w-full py-5 px-6 focus:outline-none focus:border-gray-600 focus:ring-gray-600"></textarea>
                     <div>
                         @error('message')
