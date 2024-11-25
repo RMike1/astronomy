@@ -88,7 +88,7 @@ class AdminPanelProvider extends PanelProvider
                     ->setNavigationLabel('Profile')
                     ->setNavigationGroup('User Profile')
                     ->setIcon('heroicon-o-user')
-                    ->setSort(40)
+                    ->setSort(180)
                     ->shouldRegisterNavigation(),
                     
                     FilamentGeneralSettingsPlugin::make()
