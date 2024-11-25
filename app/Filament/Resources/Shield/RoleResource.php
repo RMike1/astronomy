@@ -81,7 +81,7 @@ class RoleResource extends Resource implements HasShieldPermissions
                     ->contained()
                     ->tabs([
                         static::getTabFormComponentForResources(),
-                        static::getTabFormComponentForPage(),
+                        // static::getTabFormComponentForPage(),
                         static::getTabFormComponentForWidget(),
                         static::getTabFormComponentForCustomPermissions(),
                     ])
@@ -275,16 +275,16 @@ class RoleResource extends Resource implements HasShieldPermissions
         }
     }
 
-    public static function getPageOptions(): array
-    {
-        return collect(FilamentShield::getPages())
-            ->flatMap(fn ($page) => [
-                $page['permission'] => static::shield()->hasLocalizedPermissionLabels()
-                    ? FilamentShield::getLocalizedPageLabel($page['class'])
-                    : $page['permission'],
-            ])
-            ->toArray();
-    }
+    // public static function getPageOptions(): array
+    // {
+    //     return collect(FilamentShield::getPages())
+    //         ->flatMap(fn ($page) => [
+    //             $page['permission'] => static::shield()->hasLocalizedPermissionLabels()
+    //                 ? FilamentShield::getLocalizedPageLabel($page['class'])
+    //                 : $page['permission'],
+    //         ])
+    //         ->toArray();
+    // }
 
     public static function getWidgetOptions(): array
     {
@@ -328,19 +328,19 @@ class RoleResource extends Resource implements HasShieldPermissions
         return static::getCheckboxListFormComponent($entity['resource'], $permissionsArray, false);
     }
 
-    public static function getTabFormComponentForPage(): Component
-    {
-        $options = static::getPageOptions();
-        $count = count($options);
+    // public static function getTabFormComponentForPage(): Component
+    // {
+    //     $options = static::getPageOptions();
+    //     $count = count($options);
 
-        return Forms\Components\Tabs\Tab::make('pages')
-            ->label(__('filament-shield::filament-shield.pages'))
-            ->visible(fn (): bool => (bool) Utils::isPageEntityEnabled() && $count > 0)
-            ->badge($count)
-            ->schema([
-                static::getCheckboxListFormComponent('pages_tab', $options),
-            ]);
-    }
+    //     return Forms\Components\Tabs\Tab::make('pages')
+    //         ->label(__('filament-shield::filament-shield.pages'))
+    //         ->visible(fn (): bool => (bool) Utils::isPageEntityEnabled() && $count > 0)
+    //         ->badge($count)
+    //         ->schema([
+    //             static::getCheckboxListFormComponent('pages_tab', $options),
+    //         ]);
+    // }
 
     public static function getTabFormComponentForWidget(): Component
     {

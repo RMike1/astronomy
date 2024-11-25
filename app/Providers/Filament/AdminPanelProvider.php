@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use Filament\Pages;
 use Filament\Panel;
 use App\Models\About;
+use App\Models\User;
 use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Navigation\MenuItem;
@@ -18,6 +19,7 @@ use Illuminate\Cookie\Middleware\EncryptCookies;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
+use BezhanSalleh\FilamentShield\Support\Utils;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -90,7 +92,7 @@ class AdminPanelProvider extends PanelProvider
                     ->shouldRegisterNavigation(),
                     
                     FilamentGeneralSettingsPlugin::make()
-                    // ->canAccess(fn() => Auth::user()->id === 1)
+                    ->canAccess(fn() => Auth::User()->hasRole(Utils::getSuperAdminName()))
                     ->setSort(190)
                     ->setIcon('heroicon-o-cog')
                     ->setNavigationGroup('Settings')
