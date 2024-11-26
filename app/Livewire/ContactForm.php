@@ -41,8 +41,8 @@ class ContactForm extends Component
 
         $recipients = User::role('super_admin')->get();
 
-        $messageAdmin = "Mail from " . $mailer->name." : ". $mailer->message."";
-        $welcome_message='Thank you for reaching out,' . $this->name . '!. We appreciate your message and will respond soon.!';
+        $messageAdmin = "From " . $mailer->name." : ". $mailer->message."";
+        $welcome_message='Thank you for contacting us,' . $this->name . '!. We value your message and will get back to you shortly';
 
         foreach ($recipients as $recipient) {
             Notification::send($recipient, new AdminContactNotification($messageAdmin));
