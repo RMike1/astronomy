@@ -18,7 +18,7 @@ class HomePageSectionObserver
         foreach($recipients as $recipient){
             Notification::make()
             ->title('New Content created')
-            ->body('View created content. <u> <a href="' . route('filament.admin.resources.home-section.view',$homePageSection->id) . '">here</a></u>')
+            ->body('Check content. <u> <a href="' . route('filament.admin.resources.home-section.view',$homePageSection->id) . '">here</a></u>')
             ->sendToDatabase($recipient);
 
         }
@@ -33,7 +33,7 @@ class HomePageSectionObserver
         foreach($recipients as $recipient){
             Notification::make()
             ->title('Content updated')
-            ->body('View updated content. <u> <a href="' . route('filament.admin.resources.home-section.view',$homePageSection->id) . '">here</a></u>')
+            ->body('View content. <u> <a href="' . route('filament.admin.resources.home-section.view',$homePageSection->id) . '">here</a></u>')
             ->sendToDatabase($recipient);
         }
     }
