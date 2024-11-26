@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Setting;
 use App\Models\GeneralSetting;
 use App\Http\Responses\LogoutResponse;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
 use Filament\Http\Responses\Auth\Contracts\LogoutResponse as LogoutResponseContract;
@@ -24,17 +25,26 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        
-        $general_setting=GeneralSetting::select(['site_name','site_description'])->first();
-        view()->share('general_setting',$general_setting);
-        
-        $meta_data = Setting::select(['meta_title','meta_keyword','meta_description','meta_image','more_seo_metadata','social_media_seo_meta_data'])->first();
+
+        $mail = GeneralSetting::first();
+        Config::set('mail.mailers.smtp.host', $mail->email_settings['smtp_host']);
+        Config::set('mail.mailers.smtp.port', $mail->email_settings['smtp_port']);
+        Config::set('mail.mailers.smtp.username', $mail->email_settings['smtp_username']);
+        Config::set('mail.mailers.smtp.password', $mail->email_settings['smtp_password']);
+        Config::set('mail.mailers.smtp.encryption', $mail->email_settings['smtp_encryption']);
+        Config::set('mail.from.address', $mail->email_from_address);
+        Config::set('mail.from.name', $mail->email_from_name);
+
+        $general_setting = GeneralSetting::select(['site_name', 'site_description'])->first();
+        view()->share('general_setting', $general_setting);
+
+        $meta_data = Setting::select(['meta_title', 'meta_keyword', 'meta_description', 'meta_image', 'more_seo_metadata', 'social_media_seo_meta_data'])->first();
         $moreSeoMetadata = $meta_data->more_seo_metadata ?? [];
         $socialMediaSeoMetaData = $meta_data->social_media_seo_meta_data ?? [];
         view()->share([
-            'meta_data'=>$meta_data,
-            'moreSeoMetadata'=>$moreSeoMetadata,
-            'socialMediaSeoMetaData'=>$socialMediaSeoMetaData,
+            'meta_data' => $meta_data,
+            'moreSeoMetadata' => $moreSeoMetadata,
+            'socialMediaSeoMetaData' => $socialMediaSeoMetaData,
         ]);
     }
 }

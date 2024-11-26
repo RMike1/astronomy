@@ -34,7 +34,6 @@ class SendUpdatesNotification extends Notification implements ShouldQueue
     {
         return (new MailMessage)
                     ->subject('here is our latest updates')
-                    ->from('apollo@gmail.com','Apollo')
                     ->view('emails.send-updates',[
                         'link'=>$this->link
                     ]);

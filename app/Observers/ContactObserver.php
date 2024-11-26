@@ -19,7 +19,7 @@ class ContactObserver
 
             Notification::make()
             ->title('New Mail')
-            ->body($contact->name . ' has emailed us' . 'with this email'. $contact->email)
+            ->body($contact->name . ' has emailed us with this email'. $contact->email)
             ->sendToDatabase($recipient);
 
         }

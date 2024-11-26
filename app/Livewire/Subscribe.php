@@ -34,7 +34,6 @@ class Subscribe extends Component
         $subscriber=Subscriber::create($validated);
         session()->flash('success', "Thanks for subscribing! We'll keep you updated with the latest news!");
 
-        // $recipients=User::role('super_admin')->get()->pluck('id')->toArray();
         $recipients = User::role('super_admin')->get();
 
         
@@ -44,10 +43,8 @@ class Subscribe extends Component
         foreach($recipients as $recipient){
             Notification::send($recipient, new AdminSubscribeNotification($messageAdmin,$link));
         }
-        
-        Notification::send($recipient, new WelcomeUserSubscribeNotification($welcome_message));
 
-        Log::info($welcome_message);
+        $subscriber->notify(new WelcomeUserSubscribeNotification($welcome_message));
 
         $this->reset();
     }

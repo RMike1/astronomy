@@ -33,7 +33,6 @@ class AdminContactNotification extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->from('apollo.app@gmail.com', 'Apollo')
             ->subject('New Mail')
             ->view('emails.contact', [
                 'message_admin' => $this->messageAdmin,

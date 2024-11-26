@@ -21,7 +21,6 @@ class SubscriberObserver
             ->title('New Subscriber')
             ->body('User with this email ' . $subscriber->email . ' has subscribed to our app. <a href="' . route('filament.admin.resources.subscribers.index') . '">View Subscribers</a>')
             ->sendToDatabase($recipient);
-
         }
     }
 

@@ -33,8 +33,8 @@ class WelcomeUserSubscribeNotification extends Notification implements ShouldQue
      */
     public function toMail(object $notifiable): MailMessage
     {
+
         return (new MailMessage)
-            ->from('apollo.app@gmail.com', 'Apollo')
             ->subject('You\'re in!')
             ->view('emails.user-welcome-subscribe',[
                 'welcome_message'=>$this->welcome_message,

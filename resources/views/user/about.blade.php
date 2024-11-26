@@ -133,7 +133,7 @@
                 </a> --}}
                 {{-- <span
                     class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-1 block w-32 h-32 rounded-full backdrop-blur-[5px] bg-white/[0.04]"></span> --}}
-                <img src="{{ Storage::disk('images')->url($about_data->about_image) }}" alt="video" />
+                <img src="{{ Storage::disk('images')->url($about_data->about_image) }}" alt="{{ $about_data->about_title }}" />
             </div>
         </div>
     </section>

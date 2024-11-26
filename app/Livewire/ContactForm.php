@@ -6,8 +6,10 @@ use App\Models\User;
 use App\Models\Contact;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\AdminContactNotification;
+use App\Notifications\WelcomeUserMailNotification;
 
 class ContactForm extends Component
 {
@@ -37,17 +39,17 @@ class ContactForm extends Component
         $mailer = Contact::create($validated);
         session()->flash('success', 'Thanks for reaching out,' . $this->name . '!. We appreciate your message and will respond soon.!');
 
-        // $recipients=User::role('super_admin')->get()->pluck('id')->toArray();
         $recipients = User::role('super_admin')->get();
 
-        $messageAdmin = "We\'ve received mail from " . $mailer->name . "(". $mailer->email . ")";
+        $messageAdmin = "Mail from " . $mailer->name." : ". $mailer->message."";
+        $welcome_message='Thank you for reaching out,' . $this->name . '!. We appreciate your message and will respond soon.!';
 
         foreach ($recipients as $recipient) {
-
             Notification::send($recipient, new AdminContactNotification($messageAdmin));
-
-            $this->reset();
         }
+        $mailer->notify(new WelcomeUserMailNotification($welcome_message));
+
+        $this->reset();
     }
 
     public function render()

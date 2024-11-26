@@ -7,20 +7,14 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class AdminSubscribeNotification extends Notification implements ShouldQueue
+class WelcomeUserMailNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-
-    public $messageAdmin;
-    public $link;
-    /**
-     * Create a new notification instance.
-     */
-    public function __construct($messageAdmin, $link)
+    public $welcome_message;
+    public function __construct($welcome_message)
     {
-        $this->messageAdmin=$messageAdmin;
-        $this->link=$link;
+        $this->welcome_message=$welcome_message;
     }
 
     /**
@@ -38,12 +32,12 @@ class AdminSubscribeNotification extends Notification implements ShouldQueue
      */
     public function toMail(object $notifiable): MailMessage
     {
+
         return (new MailMessage)
-                    ->subject('New User Has Subscribed')
-                    ->view('emails.subscriber',[
-                        'message_admin'=>$this->messageAdmin,
-                        'link'=>$this->link,
-                    ]);
+            ->subject('Thanks for reaching out')
+            ->view('emails.user-welcome-contact',[
+                'welcome_message'=>$this->welcome_message,
+            ]);
     }
 
     /**

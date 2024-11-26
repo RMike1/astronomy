@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Has Subscribed</title>
+    <title>Thanks for reaching out</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -40,12 +40,11 @@
 
 <div class="container">
     <div class="header">
-        New User Has Subscribed
+        Thanks for reaching out
     </div>
 
     <div class="content">
-        <p>{{$message_admin}}</p>
-        <p>View Subscribers <u> <a href="{{$link}}">here</a></u></p>
+        <p>{{$welcome_message}}</p>
         <p>Thank you</p>
     </div>
 </div>
