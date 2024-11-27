@@ -17,7 +17,6 @@
             
             <div class="mb-10 max-w-[571px] w-full">
                     @php
-                        $company_profile=App\Models\About::select('logo')->first();
                         $general_setting=App\Models\GeneralSetting::select(['site_name','site_description'])->first();
                     @endphp
                 <a class="mb-8.5 inline-block" href="{{route('home')}}">

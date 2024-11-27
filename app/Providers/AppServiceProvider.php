@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Setting;
 use App\Models\GeneralSetting;
+use App\Models\About;
 use App\Http\Responses\LogoutResponse;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
@@ -34,6 +35,9 @@ class AppServiceProvider extends ServiceProvider
         Config::set('mail.mailers.smtp.encryption', $mail->email_settings['smtp_encryption']);
         Config::set('mail.from.address', $mail->email_from_address);
         Config::set('mail.from.name', $mail->email_from_name);
+
+        $company_profile=About::select('logo')->first();
+        view()->share('company_profile', $company_profile);
 
         $general_setting = GeneralSetting::select(['site_name', 'site_description'])->first();
         view()->share('general_setting', $general_setting);
