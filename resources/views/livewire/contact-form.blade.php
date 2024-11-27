@@ -39,7 +39,7 @@
 
                     <div>
                         @error('name')
-                            <span class="error text-red-600 ">{{ $message }}</span>
+                            <span class="error text-yellow-600 text-opacity-95">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                         class="rounded-lg border border-white/[0.12] bg-white/[0.05] focus:border-purple w-full py-3 px-6 focus:outline-none focus:border-gray-600 focus:ring-gray-600" />
                     <div>
                         @error('email')
-                            <span class="error text-red-600 ">{{ $message }}</span>
+                            <span class="error text-yellow-600 text-opacity-95">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                         class="rounded-lg border border-white/[0.12] bg-white/[0.05] focus:border-purple w-full py-5 px-6 focus:outline-none focus:border-gray-600 focus:ring-gray-600"></textarea>
                     <div>
                         @error('message')
-                            <span class="error text-red-600 ">{{ $message }}</span>
+                            <span class="error text-yellow-600 text-opacity-95">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>

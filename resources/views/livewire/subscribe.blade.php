@@ -43,7 +43,7 @@
         </div>
         @error('email')
             <div class="">
-                <span class="error text-red-500">{{ $message }}</span>
+                <span class="error text-yellow-600 text-opacity-95">{{ $message }}</span>
             </div>
         @enderror
     </form>
