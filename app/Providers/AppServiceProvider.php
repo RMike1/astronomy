@@ -28,13 +28,13 @@ class AppServiceProvider extends ServiceProvider
     {
 
         $mail = GeneralSetting::first();
-        Config::set('mail.mailers.smtp.host', $mail->email_settings['smtp_host']);
-        Config::set('mail.mailers.smtp.port', $mail->email_settings['smtp_port']);
-        Config::set('mail.mailers.smtp.username', $mail->email_settings['smtp_username']);
-        Config::set('mail.mailers.smtp.password', $mail->email_settings['smtp_password']);
-        Config::set('mail.mailers.smtp.encryption', $mail->email_settings['smtp_encryption']);
-        Config::set('mail.from.address', $mail->email_from_address);
-        Config::set('mail.from.name', $mail->email_from_name);
+        Config::set('mail.mailers.smtp.host', $mail->email_settings['smtp_host'] ?? 'sandbox.smtp.mailtrap.io');
+        Config::set('mail.mailers.smtp.port', $mail->email_settings['smtp_port'] ?? '2525');
+        Config::set('mail.mailers.smtp.username', $mail->email_settings['smtp_username'] ?? '025d71d3b87eaa');
+        Config::set('mail.mailers.smtp.password', $mail->email_settings['smtp_password'] ?? '6d1435bd200ba8');
+        Config::set('mail.mailers.smtp.encryption', $mail->email_settings['smtp_encryption'] ?? 'tls');
+        Config::set('mail.from.address', $mail->email_from_address ?? 'gnosis@gnosis.com');
+        Config::set('mail.from.name', $mail->email_from_name ?? 'Gnosis');
 
         $company_profile=About::select('logo')->first();
         view()->share('company_profile', $company_profile);
